@@ -1,0 +1,355 @@
+
+<html>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<head>
+<meta charset="utf-8">
+<script src="http://login926.github.io/htmlcengfantu/js/jquery-1.11.1.min.js"></script>
+<script type="text/javascript" src="http://login926.github.io/htmlcengfantu/js/raphael-min.js"></script>
+<script type="text/javascript" src="http://login926.github.io/htmlcengfantu/js/chinaMapConfig.js"></script>
+<script type="text/javascript" src="http://login926.github.io/htmlcengfantu/js/map-min.js"></script>
+<style>
+	*{margin:0;padding:0;border: none;}
+	body { color: #333; text-align: center; font: 12px "微软雅黑";background-color: #ffffff; }
+	.mapTipText{width: 280px;height: 110px;background-color: #ffffff;}
+	.mapTipText .mapTipImg{height: 66px; width: 66px; float: left;border: 2px solid #ffffff; border-radius: 50%;overflow: hidden;margin: -12px 5px 0 -12px;}
+	.mapTipText .mapTipImg img{width: 100%;height: 100%;}
+	.mapTipText .mapTipList{float: left;margin-left: 4px;}
+	.mapTipText .mapTipList h2{text-align: left;}
+	.mapTipText .mapTipList h2 a{font-size: 24px; color: #262626;text-decoration:none;}
+	.mapTipText .mapTipList h2 a:hover{ color: #0085d2;}
+	.mapTipText .mapTipList h2 a span{font-size: 16px;margin-left: 3px;}
+	.mapTipText .mapTipList ul{ width: 203px;padding-right: 10px;}
+	.mapTipText .mapTipList ul li{list-style: none;float: left;padding: 7px 3px 0 3px;}
+	.mapTipText .mapTipList ul li a{color: #262626;text-decoration:none;}
+	.mapTipText .mapTipList ul li a:hover{background-color:#2ebcfe;color:#ffffff;}
+</style>
+<script type="text/javascript">
+	$(function(){
+		$('#ChinaMap').SVGMap({
+			mapWidth: 1000,
+			mapHeight: 900
+		});
+	});
+</script>
+</head>
+<body>
+<div class="wrap" style="margin-top: 50px;">
+	<div style="text-align:center;clear:both;"></div>
+
+	<div class="itemCon" style="float: left">
+		<div id="ChinaMap" style="margin: 50px;"></div>
+		<div id="stateTip" style="position: absolute;left: 100%;text-align: left;display: inline;"></div>
+	</div>
+
+	<div id="mapTipContent" style="width: 900px;margin: 0 auto;display: none">
+		<div class="mapTipText mapTipText0">
+			<div class="mapTipImg"><img src="images/heilongjiang.jpg" alt=""></div>
+			<div class="mapTipList">
+				<h2><a href="https://www.baidu.com/s?ie=UTF-8&wd=黑龙江美食" target="_blank" rel="external">黑龙江</a></h2>
+				<ul>
+					<li><a href="https://login926.github.io/loginabout/" target="_blank">好像没法在这儿蹭饭</a></li>
+				</ul>
+			</div>
+		</div>
+		<div class="mapTipText mapTipText1">
+			<div class="mapTipImg"><img src="images/jilin.jpg" alt=""></div>
+			<div class="mapTipList">
+				<h2><a href="https://www.baidu.com/s?ie=UTF-8&wd=吉林美食" target="_blank" rel="external">吉林</a></h2>
+				<ul>
+					<li><a href="">好像没法在这儿蹭饭</a></li>
+				</ul>
+			</div>
+		</div>
+		<div class="mapTipText mapTipText2">
+			<div class="mapTipImg"><img src="images/liaoning.jpg" alt=""></div>
+			<div class="mapTipList">
+				<h2><a href="https://www.baidu.com/s?ie=UTF-8&wd=辽宁美食" target="_blank" rel="external">辽宁</a></h2>
+				<ul>
+					<li><a href="">好像没法在这儿蹭饭</a></li>
+				</ul>
+			</div>
+		</div>
+		<div class="mapTipText mapTipText3">
+			<div class="mapTipImg"><img src="images/hebei.jpg" alt=""></div>
+			<div class="mapTipList">
+				<h2><a href="https://www.baidu.com/s?ie=UTF-8&wd=河北美食" target="_blank" rel="external">河北</a></h2>
+				<ul>
+					<li><a href="">好像没法在这儿蹭饭</a></li>
+				</ul>
+			</div>
+		</div>
+		<div class="mapTipText mapTipText4">
+			<div class="mapTipImg"><img src="images/shandong.jpg" alt=""></div>
+			<div class="mapTipList">
+				<h2><a href="https://www.baidu.com/s?ie=UTF-8&wd=山东美食" target="_blank" rel="external">山东</a></h2>
+				<ul>
+					<li><a href="">好像没法在这儿蹭饭</a></li>
+				</ul>
+			</div>
+		</div>
+		<div class="mapTipText mapTipText5">
+			<div class="mapTipImg"><img src="images/jiangsu.jpg" alt=""></div>
+			<div class="mapTipList">
+				<h2><a href="https://www.baidu.com/s?ie=UTF-8&wd=江苏美食" target="_blank" rel="external">江苏</a></h2>
+				<ul>
+					<li><a href="">好像没法在这儿蹭饭</a></li>
+				</ul>
+			</div>
+		</div>
+		<div class="mapTipText mapTipText6">
+			<div class="mapTipImg"><img src="images/zhejiang.jpg" alt=""></div>
+			<div class="mapTipList">
+				<h2><a href="https://www.baidu.com/s?ie=UTF-8&wd=浙江美食" target="_blank" rel="external">浙江</a></h2>
+				<ul>
+					<li><a href="">好像没法在这儿蹭饭</a></li>
+				</ul>
+			</div>
+		</div>
+		<div class="mapTipText mapTipText7">
+			<div class="mapTipImg"><img src="images/anhui.jpg" alt=""></div>
+			<div class="mapTipList">
+				<h2><a href="https://www.baidu.com/s?ie=UTF-8&wd=安徽美食" target="_blank" rel="external">安徽</a></h2>
+				<ul>
+					<li><a href="">好像没法在这儿蹭饭</a></li>
+				</ul>
+			</div>
+		</div>
+		<div class="mapTipText mapTipText8">
+			<div class="mapTipImg"><img src="images/henan.jpg" alt=""></div>
+			<div class="mapTipList">
+				<h2><a href="https://www.baidu.com/s?ie=UTF-8&wd=河南美食" target="_blank" rel="external">河南</a></h2>
+				<ul>
+					<li><a href="">好像没法在这儿蹭饭</a></li>
+				</ul>
+			</div>
+		</div>
+		<div class="mapTipText mapTipText9">
+			<div class="mapTipImg"><img src="images/shan1xi.jpg" alt=""></div>
+			<div class="mapTipList">
+				<h2><a href="https://www.baidu.com/s?ie=UTF-8&wd=山西美食" target="_blank" rel="external">山西</a></h2>
+				<ul>
+					<li><a href="">好像没法在这儿蹭饭</a></li>
+				</ul>
+			</div>
+		</div>
+		<div class="mapTipText mapTipText10">
+			<div class="mapTipImg"><img src="images/shan3xi.jpg" alt=""></div>
+			<div class="mapTipList">
+				<h2><a href="https://www.baidu.com/s?ie=UTF-8&wd=陕西美食" target="_blank" rel="external">陕西</a></h2>
+				<ul>
+					<li><a href="">好像没法在这儿蹭饭</a></li>
+				</ul>
+			</div>
+		</div>
+		<div class="mapTipText mapTipText11">
+			<div class="mapTipImg"><img src="images/gansu.jpg" alt=""></div>
+			<div class="mapTipList">
+				<h2><a href="https://www.baidu.com/s?ie=UTF-8&wd=甘肃美食" target="_blank" rel="external">甘肃</a></h2>
+				<ul>
+					<li><a href="">好像没法在这儿蹭饭</a></li>
+				</ul>
+			</div>
+		</div>
+		<div class="mapTipText mapTipText12">
+			<div class="mapTipImg"><img src="images/hubei.jpg" alt=""></div>
+			<div class="mapTipList">
+				<h2><a href="https://www.baidu.com/s?ie=UTF-8&wd=湖北美食" target="_blank" rel="external">湖北</a></h2>
+				<ul>
+					<li><a href="">好像没法在这儿蹭饭</a></li>
+				</ul>
+			</div>
+		</div>
+		<div class="mapTipText mapTipText13">
+			<div class="mapTipImg"><img src="images/jiangxi.jpg" alt=""></div>
+			<div class="mapTipList">
+				<h2><a href="https://www.baidu.com/s?ie=UTF-8&wd=江西美食" target="_blank" rel="external">江西</a></h2>
+				<ul>
+					<li><a href="">好像没法在这儿蹭饭</a></li>
+				</ul>
+			</div>
+		</div>
+		<div class="mapTipText mapTipText14">
+			<div class="mapTipImg"><img src="images/fujian.jpg" alt=""></div>
+			<div class="mapTipList">
+				<h2><a href="https://www.baidu.com/s?ie=UTF-8&wd=福建美食" target="_blank" rel="external">福建</a></h2>
+				<ul>
+					<li><a href="">好像没法在这儿蹭饭</a></li>
+				</ul>
+			</div>
+		</div>
+		<div class="mapTipText mapTipText15">
+			<div class="mapTipImg"><img src="images/hunan.jpg" alt=""></div>
+			<div class="mapTipList">
+				<h2><a href="https://www.baidu.com/s?ie=UTF-8&wd=湖南美食" target="_blank" rel="external">湖南</a></h2>
+				<ul>
+					<li><a href="">好像没法在这儿蹭饭</a></li>
+				</ul>
+			</div>
+		</div>
+		<div class="mapTipText mapTipText16">
+			<div class="mapTipImg"><img src="images/guizhou.jpg" alt=""></div>
+			<div class="mapTipList">
+				<h2><a href="https://www.baidu.com/s?ie=UTF-8&wd=贵州美食" target="_blank" rel="external">贵州</a></h2>
+				<ul>
+					<li><a href="">好像没法在这儿蹭饭</a></li>
+				</ul>
+			</div>
+		</div>
+		<div class="mapTipText mapTipText17">
+			<div class="mapTipImg"><img src="images/sichuan.jpg" alt=""></div>
+			<div class="mapTipList">
+				<h2><a href="https://www.baidu.com/s?ie=UTF-8&wd=四川美食" target="_blank" rel="external">四川</a></h2>
+				<ul>
+					<li><a href="">好像没法在这儿蹭饭</a></li>
+				</ul>
+			</div>
+		</div>
+		<div class="mapTipText mapTipText18">
+			<div class="mapTipImg"><img src="images/yunnan.jpg" alt=""></div>
+			<div class="mapTipList">
+				<h2><a href="https://www.baidu.com/s?ie=UTF-8&wd=云南美食" target="_blank" rel="external">云南</a></h2>
+				<ul>
+					<li><a href="">好像没法在这儿蹭饭</a></li>
+				</ul>
+			</div>
+		</div>
+		<div class="mapTipText mapTipText19">
+			<div class="mapTipImg"><img src="images/qinghai.jpg" alt=""></div>
+			<div class="mapTipList">
+				<h2><a href="https://www.baidu.com/s?ie=UTF-8&wd=青海美食" target="_blank" rel="external">青海</a></h2>
+				<ul>
+					<li><a href="">好像没法在这儿蹭饭</a></li>
+				</ul>
+			</div>
+		</div>
+		<div class="mapTipText mapTipText20">
+			<div class="mapTipImg"><img src="images/hainan.jpg" alt=""></div>
+			<div class="mapTipList">
+				<h2><a href="https://www.baidu.com/s?ie=UTF-8&wd=海南美食" target="_blank" rel="external">海南</a></h2>
+				<ul>
+					<li><a href="">好像没法在这儿蹭饭</a></li>
+				</ul>
+			</div>
+		</div>
+		<div class="mapTipText mapTipText21">
+			<div class="mapTipImg"><img src="images/shanghai.jpg" alt=""></div>
+			<div class="mapTipList">
+				<h2><a href="https://www.baidu.com/s?ie=UTF-8&wd=上海美食" target="_blank" rel="external">上海</a></h2>
+				<ul>
+					<li><a href="">好像没法在这儿蹭饭</a></li>
+				</ul>
+			</div>
+		</div>
+		<div class="mapTipText mapTipText22">
+			<div class="mapTipImg"><img src="images/chongqing.jpg" alt=""></div>
+			<div class="mapTipList">
+				<h2><a href="https://www.baidu.com/s?ie=UTF-8&wd=重庆美食" target="_blank" rel="external">重庆</a></h2>
+				<ul>
+					<li><a href="">好像没法在这儿蹭饭</a></li>
+				</ul>
+			</div>
+		</div>
+		<div class="mapTipText mapTipText23">
+			<div class="mapTipImg"><img src="images/tianjin.jpg" alt=""></div>
+			<div class="mapTipList">
+				<h2><a href="https://www.baidu.com/s?ie=UTF-8&wd=天津美食" target="_blank" rel="external">天津</a></h2>
+				<ul>
+					<li><a href="">好像没法在这儿蹭饭</a></li>
+				</ul>
+			</div>
+		</div>
+		<div class="mapTipText mapTipText24">
+			<div class="mapTipImg"><img src="images/beijing.jpg" alt=""></div>
+			<div class="mapTipList">
+				<h2><a href="https://www.baidu.com/s?ie=UTF-8&wd=北京美食" target="_blank" rel="external">北京</a></h2>
+				<ul>
+					<li><a href="">好像没法在这儿蹭饭</a></li>
+				</ul>
+			</div>
+		</div>
+		<div class="mapTipText mapTipText25">
+			<div class="mapTipImg"><img src="images/ningxia.jpg" alt=""></div>
+			<div class="mapTipList">
+				<h2><a href="https://www.baidu.com/s?ie=UTF-8&wd=宁夏美食" target="_blank" rel="external">宁夏</a></h2>
+				<ul>
+					<li><a href="">好像没法在这儿蹭饭</a></li>
+				</ul>
+			</div>
+		</div>
+		<div class="mapTipText mapTipText26">
+			<div class="mapTipImg"><img src="images/neimenggu.jpg" alt=""></div>
+			<div class="mapTipList">
+				<h2><a href="https://www.baidu.com/s?ie=UTF-8&wd=内蒙古美食" target="_blank" rel="external">内蒙古</a></h2>
+				
+				<ul>
+					<li><a href="">好像没法在这儿蹭饭</a></li>
+				</ul>
+			</div>
+		</div>
+		<div class="mapTipText mapTipText27">
+			<div class="mapTipImg"><img src="images/guangxi.jpg" alt=""></div>
+			<div class="mapTipList">
+				<h2><a href="https://www.baidu.com/s?ie=UTF-8&wd=广西美食" target="_blank" rel="external">广西</a></h2>
+				<ul>
+					<li><a href="">好像没法在这儿蹭饭</a></li>
+				</ul>
+			</div>
+		</div>
+		<div class="mapTipText mapTipText28">
+			<div class="mapTipImg"><img src="images/xinjiang.jpg" alt=""></div>
+			<div class="mapTipList">
+				<h2><a href="https://www.baidu.com/s?ie=UTF-8&wd=新疆美食" target="_blank" rel="external">新疆</a></h2>
+				<ul>
+					<li><a href="">好像没法在这儿蹭饭</a></li>
+				</ul>
+			</div>
+		</div>
+		<div class="mapTipText mapTipText29">
+			<div class="mapTipImg"><img src="images/xizang.jpg" alt=""></div>
+			<div class="mapTipList">
+				<h2><a href="https://www.baidu.com/s?ie=UTF-8&wd=西藏美食" target="_blank" rel="external">西藏</a></h2>
+				<ul>
+					<li><a href="">好像没法在这儿蹭饭</a></li>
+				</ul>
+			</div>
+		</div>
+		<div class="mapTipText mapTipText30">
+			<div class="mapTipImg"><img src="images/guangdong.jpg" alt=""></div>
+			<div class="mapTipList">
+				<h2><a href="https://www.baidu.com/s?ie=UTF-8&wd=广东美食" target="_blank" rel="external">广东</a></h2>
+				<ul>
+					<li><a href="">好像没法在这儿蹭饭</a></li>
+				</ul>
+			</div>
+		</div>
+		<div class="mapTipText mapTipText31">
+			<div class="mapTipImg"><img src="images/xianggang.jpg" alt=""></div>
+			<div class="mapTipList">
+				<h2><a href="https://www.baidu.com/s?ie=UTF-8&wd=香港美食" target="_blank" rel="external">香港</a></h2>
+				<ul>
+					<li><a href="">好像没法在这儿蹭饭</a></li>
+				</ul>
+			</div>
+		</div>
+		<div class="mapTipText mapTipText32">
+			<div class="mapTipImg"><img src="images/taiwan.jpg" alt=""></div>
+			<div class="mapTipList">
+				<h2><a href="https://www.baidu.com/s?ie=UTF-8&wd=台湾美食" target="_blank" rel="external">台湾</a></h2>
+				<ul>
+					<li><a href="">好像没法在这儿蹭饭</a></li>
+				</ul>
+			</div>
+		</div>
+		<div class="mapTipText mapTipText33">
+			<div class="mapTipImg"><img src="images/aomen.jpg" alt=""></div>
+			<div class="mapTipList">
+				<h2><a href="https://www.baidu.com/s?ie=UTF-8&wd=澳门美食" target="_blank" rel="external">澳门</a></h2>
+				<ul>
+					<li><a href="">好像没法在这儿蹭饭</a></li>
+				</ul>
+			</div>
+		</div>
+	</div>
+</div>
+</body>
+</html>
