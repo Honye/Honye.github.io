@@ -1,0 +1,64 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta charset="utf-8">
+<title>见缝插针</title>
+<!-- AA -->
+<style type="text/css">
+html, body {
+	padding: 0;
+	margin: 0;
+	border: 0;
+	overflow: hidden;
+	text-align: center;
+	background-color: #aaa;
+	-moz-user-select: none;
+	-webkit-user-select: none;
+	user-select: none;
+}
+body {
+	overflow: visible;
+}/* for Android Native Browser bug */
+canvas {
+	background-color: #aaa;
+	vertical-align: middle;
+	opacity: 1;
+	border-top: solid 1px #000;
+}
+.title {
+	font-size: 24px;
+	font-family: 微软雅黑, 黑体;
+	color: #000;
+	letter-spacing: 4px;
+	margin-bottom: 4px;
+}
+
+@media all and (min-width: 480px) and (max-height: 479px) {
+canvas {
+	-webkit-transform: translateY(-80px) rotate(-90deg);
+	-moz-transform: translateY(-80px) rotate(-90deg);
+	transform: translateY(-80px) rotate(-90deg);
+	border-top: 0;
+	border-right: solid 1px #000;
+}
+}
+</style>
+<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1, maximum-scale=1">
+<meta name="Author" content="cxp">
+<meta name="Date" content="2015-02-04">
+<meta name="renderer" content="webkit">
+<!-- for 360 browser -->
+</head>
+
+<body>
+<div class="title">见缝插针</div>
+<canvas id="canvas1" width="320" height="480"></canvas>
+<script src="./js/MyCtx.min.js"></script> 
+<script src="./js/aa.cc.min.js"></script> 
+
+</body>
+</html>
