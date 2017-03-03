@@ -3099,6 +3099,10 @@
 					padding: 0;
 				}
 
+				#footer .copyright .noborder-left {
+					border-left: 0;
+				}
+
 /* XLarge */
 
 	@media screen and (max-width: 1680px) {

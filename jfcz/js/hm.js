@@ -199,7 +199,7 @@
 		return a
 	};
 	mt.H.ta = function(a, b, f, d, g) {
-		return '<object classid="clsid:d27cdb6e-ae6d-11cf-96b8-444553540000" id="' + a + '" width="' + f + '" height="' + d + '"><param name="movie" value="' + b + '"><param name="flashvars" value="' + (g || " ")="" +="" '"=""><param name="allowscriptaccess" value="always"><embed type="application/x-shockwave-flash" name="' + a + '" width="' + f + '" height="' + d + '" src="' + b + '" flashvars="' + (g || " ")="" +="" '"="" allowscriptaccess="always"></object>'
+		return '<object classid="clsid:d27cdb6e-ae6d-11cf-96b8-444553540000" id="' + a + '" width="' + f + '" height="' + d + '"><param name="movie" value="' + b + '" /><param name="flashvars" value="' + (g || "") + '" /><param name="allowscriptaccess" value="always" /><embed type="application/x-shockwave-flash" name="' + a + '" width="' + f + '" height="' + d + '" src="' + b + '" flashvars="' + (g || "") + '" allowscriptaccess="always" /></object>'
 	};
 	mt.url = {};
 	mt.url.k = function(a, b) {
@@ -600,7 +600,9 @@
 				a = 4 != b ? 1 : 0;
 				if (d = this.getData("Hm_lvt_" + c.id)) {
 					e = d.split(",");
-					for (f = e.length - 1; 0 <= 13="=" f;="" f--)="" e[f].length="" &&="" (e[f]="" +="" math.round(e[f]="" 1e3));="" for="" (;="" 2592e3="" <="" k.h="" -="" e[0];)="" e.shift();="" f="4"> e.length ? 2 : 3;
+					for (f = e.length - 1; 0 <= f; f--) 13 == e[f].length && (e[f] = "" + Math.round(e[f] / 1E3));
+					for (; 2592E3 < k.h - e[0];) e.shift();
+					f = 4 > e.length ? 2 : 3;
 					for (1 === a && e.push(k.h); 4 < e.length;) e.shift();
 					d = e.join(",");
 					e = e[e.length - 1]
@@ -712,4 +714,4 @@
 		};
 		return new a
 	})();
-})();</=>
+})();
