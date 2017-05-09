@@ -5,7 +5,7 @@
   
 
 
-<html class="theme-next pisces use-motion" lang="">
+<html class="theme-next pisces use-motion" lang="zh-Hans">
 <head>
   <meta charset="UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -98,7 +98,7 @@
 <meta property="og:site_name" content="Hongye">
 <meta property="og:description" content="多平台发布在 GitHub 和 Coding 上都有博客，分开一一发布比较麻烦，其实 Hexo 是支持在多个平台发布的。修改 Hexo 主目录下的 _config.yml 配置文件即可
 1234567deploy:  - type: git    repository: https://github.com/Hongye567/Hongye567.github.io.git    branch:">
-<meta property="og:updated_time" content="2017-03-04T05:53:39.388Z">
+<meta property="og:updated_time" content="2017-05-09T04:03:12.474Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Hexo 在 GitHub 和 Coding 同时发布">
 <meta name="twitter:description" content="多平台发布在 GitHub 和 Coding 上都有博客，分开一一发布比较麻烦，其实 Hexo 是支持在多个平台发布的。修改 Hexo 主目录下的 _config.yml 配置文件即可
@@ -116,7 +116,7 @@
     motion: true,
     duoshuo: {
       userId: '0',
-      author: '作者'
+      author: '博主'
     },
     algolia: {
       applicationID: '',
@@ -139,7 +139,7 @@
   <title>Hexo 在 GitHub 和 Coding 同时发布 | Hongye</title>
 </head>
 
-<body itemscope itemtype="http://schema.org/WebPage" lang="">
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
 
   
 
@@ -302,9 +302,9 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Posted on</span>
+                <span class="post-meta-item-text">发表于</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-03-04T13:08:58+08:00">
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-03-04T13:08:58+08:00">
                 2017-03-04
               </time>
             
@@ -328,7 +328,7 @@
                  <i class="fa fa-eye"></i>
                </span>
                
-                 <span class="post-meta-item-text">Visitors </span>
+                 <span class="post-meta-item-text">阅读次数 </span>
                
                  <span class="leancloud-visitors-count"></span>
              </span>
@@ -352,7 +352,9 @@
       
         <h3 id="多平台发布"><a href="#多平台发布" class="headerlink" title="多平台发布"></a>多平台发布</h3><p>在 GitHub 和 Coding 上都有博客，分开一一发布比较麻烦，其实 Hexo 是支持在多个平台发布的。<br>修改 Hexo 主目录下的 _config.yml 配置文件即可</p>
 <figure class="highlight yaml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="attr">deploy:</span></div><div class="line"><span class="attr">  - type:</span> git</div><div class="line"><span class="attr">    repository:</span> https://github.com/Hongye567/Hongye567.github.io.git</div><div class="line"><span class="attr">    branch:</span> master</div><div class="line"><span class="attr">  - type:</span> git</div><div class="line"><span class="attr">    repository:</span> https://git.coding.net/Honye/Honye.git</div><div class="line"><span class="attr">    branch:</span> master</div></pre></td></tr></table></figure>
-<h3 id="免输入密码"><a href="#免输入密码" class="headerlink" title="免输入密码"></a>免输入密码</h3><p>Hexo 每次提交时都要求输入用户名和密码，尤其在多平台发布时需要多次输入用户名和密码很是麻烦。<br>要求输入密码的原因是我们的仓库地址用的是 HTTPS 不是 SSH。<br><strong>1. 首先生成 SSH 密钥</strong></p>
+<h3 id="免输入密码"><a href="#免输入密码" class="headerlink" title="免输入密码"></a>免输入密码</h3><p>Hexo 每次提交时都要求输入用户名和密码，尤其在多平台发布时需要多次输入用户名和密码很是麻烦。<br>要求输入密码的原因是我们的仓库地址用的是 HTTPS 不是 SSH。</p>
+<a id="more"></a>
+<p><strong>1. 首先生成 SSH 密钥</strong></p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">$ git config --global user.name &quot;yourname&quot;  // 配置 git 用户名</div><div class="line">$ git config --global user.email &quot;youremail@email.com&quot;  // 配置 git 邮箱</div><div class="line">$ cd ~/.ssh  // 查看是否已有.ssh文件夹，若有可备份删除</div><div class="line">$ ssh-keygen -t rsa -C &quot;youremail@email.com&quot;  // 生成 SSH 密钥</div></pre></td></tr></table></figure>
 <p>生成密钥时会提示选择密钥保存路径，直接回车默认路径即可。<br>会提示输入密码和确认密码，直接回车代表不设置密码。</p>
 <p><strong>2. 部署公钥</strong><br>在 GitHub 和 Coding 在部署公钥操作基本一样，我不一一赘述，仅以 GitHub 为例。<br>打开 GitHub 项目，选择上方菜单 Settings，接着选择左侧菜单 Deploy keys，接着 Add deploy key，打开前面密钥所在文件夹，将 id_rsa.pub 文件中的内容粘贴在 GitHub 即可。</p>
@@ -367,7 +369,7 @@
       
         
 <div id="wechat_subscriber" style="display: block; padding: 10px 0; margin: 20px auto; width: 100%; text-align: center">
-    <img id="wechat_subscriber_qcode" src="/images/avatar.jpg" alt="Hongye wechat" style="width: 200px; max-width: 100%;"/>
+    <img id="wechat_subscriber_qcode" src="/images/subscriber.jpg" alt="Hongye wechat" style="width: 200px; max-width: 100%;"/>
     <div>subscribe to my blog by scanning my public wechat account</div>
 </div>
 
@@ -441,6 +443,10 @@
 
           <div class="post-nav-prev post-nav-item">
             
+              <a href="/2017/05/09/Android-style-样式/" rel="prev" title="">
+                 <i class="fa fa-chevron-right"></i>
+              </a>
+            
           </div>
         </div>
       
@@ -488,10 +494,10 @@
       
         <ul class="sidebar-nav motion-element">
           <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
-            Table of Contents
+            文章目录
           </li>
           <li class="sidebar-nav-overview" data-target="site-overview">
-            Overview
+            站点概览
           </li>
         </ul>
       
@@ -511,8 +517,8 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">5</span>
-                <span class="site-state-item-name">posts</span>
+                <span class="site-state-item-count">15</span>
+                <span class="site-state-item-name">日志</span>
               </a>
             </div>
           
@@ -525,7 +531,7 @@
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
                 <span class="site-state-item-count">4</span>
-                <span class="site-state-item-name">tags</span>
+                <span class="site-state-item-name">标签</span>
               </a>
             </div>
           
@@ -558,7 +564,7 @@
               <span class="links-of-author-item">
                 <a href="hongye.jun@qq.com" target="_blank" title="Email">
                   
-                    <i class="fa fa-fw fa-globe"></i>
+                    <i class="fa fa-fw fa-envelope"></i>
                   
                   Email
                 </a>
@@ -646,11 +652,11 @@
 
 
 <div class="powered-by">
-  Powered by <a class="theme-link" href="https://hexo.io">Hexo</a>
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
 </div>
 
 <div class="theme-info">
-  Theme -
+  主题 -
   <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
     NexT.Pisces
   </a>
