@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://www.hongye567.top/"/>
-  <updated>2017-06-10T11:18:23.003Z</updated>
+  <updated>2017-06-22T15:17:16.230Z</updated>
   <id>http://www.hongye567.top/</id>
   
   <author>
@@ -14,6 +14,71 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>React Native 集成极光推送 jpush-react-native</title>
+    <link href="http://www.hongye567.top/2017/06/22/React-Native-%E9%9B%86%E6%88%90%E6%9E%81%E5%85%89%E6%8E%A8%E9%80%81-jpush-react-native/"/>
+    <id>http://www.hongye567.top/2017/06/22/React-Native-集成极光推送-jpush-react-native/</id>
+    <published>2017-06-22T13:35:43.000Z</published>
+    <updated>2017-06-22T15:17:16.230Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><p><a href="https://github.com/jpush/jpush-react-native" target="_blank" rel="external">jpush-react-native</a> 是极光推送官方开发的 React Native 版本插件，可以快速集成推送功能。现在最新版本的 JPush SDK 分离了 JPush 及 JCore，让开发者可以分开集成 JMessage 及 JPush（以前 JMessage 包含了 JPush）。<br>我没有 mac 设备，所以只说 Android 的配置。</p>
+<a id="more"></a>
+<h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><p>打开终端，进入项目文件夹，执行以下命令：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">$ npm install jpush-react-native --save</div><div class="line"><span class="comment"># jpush-react-native 1.4.2 版本以后需要同时安装 jcore-react-native</span></div><div class="line">$ npm install jcore-react-native --save</div></pre></td></tr></table></figure>
+<h2 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h2><h3 id="1-自动配置部分"><a href="#1-自动配置部分" class="headerlink" title="1. 自动配置部分"></a>1. 自动配置部分</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ react-native link</div></pre></td></tr></table></figure>
+<p>执行完 link 项目后可能会出现报错，这没关系，需要手动配置一下 build.gradle 文件。</p>
+<h3 id="2-手动配置部分"><a href="#2-手动配置部分" class="headerlink" title="2. 手动配置部分"></a>2. 手动配置部分</h3><p>在 Android Studio 中打开你的项目，然后找到 app 或者你自己定义的需要集成 jpush-react-native 的模块，打开此模块下的 build.gradle 文件，做以下改动：</p>
+<blockquote>
+<p>project/android/app/build.gradle</p>
+</blockquote>
+<figure class="highlight groovy"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line">android &#123;</div><div class="line">    ...</div><div class="line">    defaultConfig &#123;</div><div class="line">        applicationId <span class="string">"yourApplicationId"</span> <span class="comment">// 此处改成你在极光官网上申请应用时填写的包名</span></div><div class="line">        ...</div><div class="line">        manifestPlaceholders = [</div><div class="line"><span class="symbol">                JPUSH_APPKEY:</span> <span class="string">"yourAppKey"</span>, <span class="comment">//在此替换你的 APPKey</span></div><div class="line"><span class="symbol">                APP_CHANNEL:</span> <span class="string">"developer-default"</span>    <span class="comment">//应用渠道号, 默认即可</span></div><div class="line">        ]</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line">...</div><div class="line">dependencies &#123;</div><div class="line">    compile fileTree(<span class="string">dir:</span> <span class="string">"libs"</span>, <span class="string">include:</span> [<span class="string">"*.jar"</span>])</div><div class="line">    compile project(<span class="string">':jpush-react-native'</span>)  <span class="comment">// 添加 jpush 依赖</span></div><div class="line">    compile project(<span class="string">':jcore-react-native'</span>)  <span class="comment">// 添加 jcore 依赖</span></div><div class="line">    compile <span class="string">"com.facebook.react:react-native:+"</span>  <span class="comment">// From node_modules</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>检查 android 项目下的 settings.gradle 配置有没有包含以下内容：</p>
+<blockquote>
+<p>project/android/settings.gradle</p>
+</blockquote>
+<figure class="highlight groovy"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">include <span class="string">':app'</span>, <span class="string">':jpush-react-native'</span>, <span class="string">':jcore-react-native'</span></div><div class="line">project(<span class="string">':jpush-react-native'</span>).projectDir = <span class="keyword">new</span> File(rootProject.projectDir, <span class="string">'../node_modules/jpush-react-native/android'</span>)</div><div class="line">project(<span class="string">':jcore-react-native'</span>).projectDir = <span class="keyword">new</span> File(rootProject.projectDir, <span class="string">'../node_modules/jcore-react-native/android'</span>)</div></pre></td></tr></table></figure>
+<p>检查一下 app 下的 AndroidManifest 配置，有没有增加 \<meta-data\> 部分。</meta-data\></p>
+<blockquote>
+<p>project/android/app/AndroidManifest.xml</p>
+</blockquote>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">&lt;application</div><div class="line">    ...</div><div class="line">    &lt;!-- Required . Enable it you can get statistics data with channel --&gt;</div><div class="line">    &lt;meta-data android:name="JPUSH_CHANNEL" android:value="$&#123;APP_CHANNEL&#125;"/&gt;</div><div class="line">    &lt;meta-data android:name="JPUSH_APPKEY" android:value="$&#123;JPUSH_APPKEY&#125;"/&gt;</div><div class="line"></div><div class="line">&lt;/application&gt;</div></pre></td></tr></table></figure>
+<p>现在重新 sync 一下项目，应该能看到 jpush-react-native 以及 jcore-react-native 作为 android Library 项目导进来了。</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/1745101-4eb12666d3d3099f.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<p>接下来加入 JPushPackage</p>
+<ul>
+<li>RN 0.29.0 以下版本</li>
+</ul>
+<p>打开 app 下的 MainActivity，在 ReactInstanceManager 的 build 方法中加入 JPushPackage：</p>
+<blockquote>
+<p>project/android/app/MainActivity.java</p>
+</blockquote>
+<p><img src="https://github.com/KenChoi1992/SomeArticles/raw/master/screenshots/plugin3.png" alt=""></p>
+<ul>
+<li>RN 0.29.0 以上版本</li>
+</ul>
+<p>打开 app 下的 MainApplication.java 文件，然后加入 JPushPackage，<a href="https://github.com/jpush/jpush-react-native/blob/master/example/android/app/src/com/pushdemo/MainApplication.java" target="_blank" rel="external">参考 demo</a>：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 设置为 true 将不弹出 toast</span></div><div class="line"><span class="keyword">private</span> <span class="keyword">boolean</span> SHUTDOWN_TOAST = <span class="keyword">false</span>;</div><div class="line"><span class="comment">// 设置为 true 将不打印 log</span></div><div class="line"><span class="keyword">private</span> <span class="keyword">boolean</span> SHUTDOWN_LOG = <span class="keyword">false</span>;</div><div class="line"></div><div class="line"><span class="keyword">private</span> <span class="keyword">final</span> ReactNativeHost mReactNativeHost = <span class="keyword">new</span> ReactNativeHost(<span class="keyword">this</span>) &#123;</div><div class="line"></div><div class="line">    <span class="meta">@Override</span></div><div class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">boolean</span> <span class="title">getUseDeveloperSupport</span><span class="params">()</span> </span>&#123;</div><div class="line">        <span class="keyword">return</span> BuildConfig.DEBUG;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="meta">@Override</span></div><div class="line">    <span class="function"><span class="keyword">protected</span> List&lt;ReactPackage&gt; <span class="title">getPackages</span><span class="params">()</span> </span>&#123;</div><div class="line">        <span class="keyword">return</span> Arrays.&lt;ReactPackage&gt;asList(</div><div class="line">                <span class="keyword">new</span> MainReactPackage(),</div><div class="line">                <span class="keyword">new</span> JPushPackage(SHUTDOWN_TOAST, SHUTDOWN_LOG)</div><div class="line">        );</div><div class="line">    &#125;</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
+<p>然后在 MainActivity 中加入一些初始化代码即可：</p>
+<blockquote>
+<p>project/android/app/src/java/…/MainActivity.java</p>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MainActivity</span> <span class="keyword">extends</span> <span class="title">ReactActivity</span> </span>&#123;</div><div class="line">    ...</div><div class="line">    </div><div class="line">    <span class="meta">@Override</span></div><div class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onCreate</span><span class="params">(Bundle savedInstanceState)</span> </span>&#123;</div><div class="line">        <span class="keyword">super</span>.onCreate(savedInstanceState);</div><div class="line">        JPushInterface.init(<span class="keyword">this</span>);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="meta">@Override</span></div><div class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onPause</span><span class="params">()</span> </span>&#123;</div><div class="line">        <span class="keyword">super</span>.onPause();</div><div class="line">        JPushInterface.onPause(<span class="keyword">this</span>);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="meta">@Override</span></div><div class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onResume</span><span class="params">()</span> </span>&#123;</div><div class="line">        <span class="keyword">super</span>.onResume();</div><div class="line">        JPushInterface.onResume(<span class="keyword">this</span>);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="meta">@Override</span></div><div class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onDestroy</span><span class="params">()</span> </span>&#123;</div><div class="line">        <span class="keyword">super</span>.onDestroy();</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>这样就完成了所有的配置。接下来就可以在 JS 中调用插件提供的 API 了。</p>
+<h2 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> JPushModule <span class="keyword">from</span> <span class="string">'jpush-react-native'</span>;</div><div class="line"></div><div class="line">...</div><div class="line"></div><div class="line">componentDidMount() &#123;</div><div class="line">    JPushModule.notifyJSDidLoad();</div><div class="line">    <span class="comment">// 接收自定义消息</span></div><div class="line">    JPushModule.addReceiveCustomMsgListener(<span class="function">(<span class="params">message</span>) =&gt;</span> &#123;</div><div class="line">      <span class="keyword">this</span>.setState(&#123;<span class="attr">pushMsg</span>: message&#125;);</div><div class="line">    &#125;);</div><div class="line">    <span class="comment">// 接收推送通知</span></div><div class="line">    JPushModule.addReceiveNotificationListener(<span class="function">(<span class="params">message</span>) =&gt;</span> &#123;</div><div class="line">      <span class="built_in">console</span>.log(<span class="string">"receive notification: "</span> + message);</div><div class="line">    &#125;)</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  componentWillUnmount() &#123;</div><div class="line">    JPushModule.removeReceiveCustomMsgListener();</div><div class="line">    JPushModule.removeReceiveNotificationListener();</div><div class="line">  &#125;</div></pre></td></tr></table></figure>
+<p>更多高级应用查看<a href="https://github.com/jpush/jpush-react-native#api" target="_blank" rel="external">官方说明</a></p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;概述&quot;&gt;&lt;a href=&quot;#概述&quot; class=&quot;headerlink&quot; title=&quot;概述&quot;&gt;&lt;/a&gt;概述&lt;/h2&gt;&lt;p&gt;&lt;a href=&quot;https://github.com/jpush/jpush-react-native&quot;&gt;jpush-react-native&lt;/a&gt; 是极光推送官方开发的 React Native 版本插件，可以快速集成推送功能。现在最新版本的 JPush SDK 分离了 JPush 及 JCore，让开发者可以分开集成 JMessage 及 JPush（以前 JMessage 包含了 JPush）。&lt;br&gt;我没有 mac 设备，所以只说 Android 的配置。&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="React Native" scheme="http://www.hongye567.top/tags/React-Native/"/>
+    
+  </entry>
   
   <entry>
     <title>《成功者战胜100个弱点》</title>
@@ -447,9 +512,9 @@
     
       <category term="Hexo" scheme="http://www.hongye567.top/tags/Hexo/"/>
     
-      <category term="Coding" scheme="http://www.hongye567.top/tags/Coding/"/>
-    
       <category term="Github" scheme="http://www.hongye567.top/tags/Github/"/>
+    
+      <category term="Coding" scheme="http://www.hongye567.top/tags/Coding/"/>
     
   </entry>
   
