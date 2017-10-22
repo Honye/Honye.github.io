@@ -1,0 +1,119 @@
+# Hexo Configuration
+## Docs: https://hexo.io/docs/configuration.html
+## Source: https://github.com/hexojs/hexo/
+
+# Site
+title: Honye's Blog      #网站标题
+subtitle:       #网站副标题
+description: This moment nap, you will have a dream. But this moment study, you will interpret a dream.      #网站描述
+author: Honye      #作者
+language: zh-Hans    #网站使用的语言
+timezone:      #网站时区
+favicon: https://static.hinpc.com/image/2016/20160807-hi-logo.png      # 网站标签显示图标
+
+# URL
+## If your site is put in a subdirectory, set url as 'http://yoursite.com/child' and root as '/child/'
+url: http://www.hongye567.top
+root: /
+# permalink: :year/:month/:day/:title/    # 永久链接格式
+permalink: posts/:abbrlink.html    # 此处使用插件hexo-abbrlink
+abbrlink: 
+  alg: crc32    # 算法: crc16(default) and crc32
+  rep: hex      # 进制：dec(default) and hex
+permalink_defaults:
+
+# Directory
+source_dir: source      #源文件夹，这个文件夹用来存放内容
+public_dir: public      #公共文件夹，这个文件夹用于存放生成的站点文件
+tag_dir: tags      #标签文件夹
+archive_dir: archives      #归档文件夹
+category_dir: categories    #分类文件夹
+code_dir: downloads/code      #include code 文件夹
+i18n_dir: :lang      #国际化（i18n）文件夹
+skip_render:      #跳过指定文件的渲染，您可使用 glob 表达式来匹配路径
+  - 2048/js/*
+  - json/*
+
+# Writing
+new_post_name: :year-:month-:day-:title.md      # 默认文件名称
+default_layout: post      #默认布局 draft-草稿；
+titlecase: false # Transform title into titlecase
+external_link: true # Open external links in new tab
+filename_case: 0      #转换文件名，1代表小写；2代表大写；默认为0，意思就是创建文章的时候，是否自动帮你转换文件名，默认就行，意义不大
+render_drafts: false
+post_asset_folder: false
+relative_link: false
+future: true
+highlight:
+  enable: true
+  line_number: true
+  auto_detect: false
+  tab_replace:
+
+# Category & Tag
+default_category: uncategorized
+category_map:
+tag_map:
+
+# Date / Time format
+## Hexo uses Moment.js to parse and display date
+## You can customize the date format as defined in
+## http://momentjs.com/docs/#/displaying/format/
+date_format: YYYY-MM-DD
+time_format: HH:mm:ss
+
+# Pagination
+## Set per_page to 0 to disable pagination
+per_page: 10      #每页显示的文章量 (0 = 关闭分页功能)
+pagination_dir: page
+
+# Extensions
+## Plugins: https://hexo.io/plugins/
+## Themes: https://hexo.io/themes/
+theme: next
+
+# Deployment
+## Docs: https://hexo.io/docs/deployment.html
+deploy:
+  # Github
+  # - type: git
+  #   repository: git@github.com:Hongye567/Hongye567.github.io.git
+  #   branch: master
+  # Coding
+  # - type: git
+  #   repository: git@git.coding.net:Honye/Honye.git
+  #   branch: master
+  # oschina
+  # - type: git
+  #   repository: https://git.oschina.net/x1299906945/x1299906945.git
+  #   branch: master
+  # gitee
+  - type: git
+    repository: 'https://gitee.com/Honyex/Honyex.git'
+    branch: master
+
+# Site Search
+## Plugin: $ npm install hexo-generator-json-content --save
+jsonContent:
+  meta: false
+  pages: false
+  posts:
+    title: true
+    date: true
+    path: true
+    text: true
+    raw: false
+    content: false
+    slug: false
+    updated: false
+    comments: false
+    link: false
+    permalink: false
+    excerpt: false
+    categories: false
+    tags: true
+
+# 评论配置
+disqus_shortname: your-disqus-shortname
+# 多说评论则替换成如下配置：
+# duoshuo_shortname: your-duoshuo-shortname

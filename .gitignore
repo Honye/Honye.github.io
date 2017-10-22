@@ -1,0 +1,10 @@
+.DS_Store
+Thumbs.db
+db.json
+*.log
+public/
+.deploy*/
+.Archive/
+node_modules/
+/source/_posts/.md_configs.data
+/source/_posts/.me_configs.data
