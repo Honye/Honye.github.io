@@ -1,0 +1,26 @@
+[
+    {
+        "id": 3,
+        "image": "https://img3.doubanio.com/view/photo/photo/public/p2157195602.webp",
+        "quote": "假设爱情是一个艺术品，在拍卖会上，出价最高的人可以拥有世上最伟大的爱情",
+        "source": "《最佳出价》",
+        "likeCount": 172,
+        "shareCount": 19
+    },
+    {
+        "id": 1,
+        "image": "https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1506261359094&di=dacba607aa7de66c2d21db3e17e9945b&imgtype=0&src=http%3A%2F%2Fimg.sc115.com%2Fuploads%2Fsc%2Fjpgs%2F1206apic2389_sc115.com.jpg",
+        "quote": "We laughed and kept saying \"See you soon\". But inside we both knew we'd never see each other again. \n虽然我们互相笑着说“回头见”，但是我们都心知肚明，分离即永别。",
+        "source": "《海上钢琴师》",
+        "likeCount": 283,
+        "shareCount": 127
+    },
+    {
+        "id": 2,
+        "image": "https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1506272458940&di=cac8711f1e5fe46fe4298f407a8c88fa&imgtype=0&src=http%3A%2F%2Ftupian.enterdesk.com%2F2013%2Fmxy%2F12%2F25%2F4%2F7.jpg",
+        "quote": "我想每个人都至少有这么一个挚友，你和他在人生的拐点遇到，惊叹于彼此的不同或者相似，有过不少平淡无奇却值得纪念的时光，任白云苍狗，风格云变化。",
+        "source": "《触不可及》",
+        "likeCount": 399,
+        "shareCount": 45
+    }
+]

@@ -33,6 +33,7 @@ i18n_dir: :lang      #国际化（i18n）文件夹
 skip_render:      #跳过指定文件的渲染，您可使用 glob 表达式来匹配路径
   - 2048/js/*
   - json/*
+  - static/*
 
 # Writing
 new_post_name: :year-:month-:day-:title.md      # 默认文件名称
@@ -76,17 +77,13 @@ theme: next
 ## Docs: https://hexo.io/docs/deployment.html
 deploy:
   # Github
-  # - type: git
-  #   repository: git@github.com:Hongye567/Hongye567.github.io.git
-  #   branch: master
+  - type: git
+    repository: git@github.com:Hongye567/Hongye567.github.io.git
+    branch: master
   # Coding
-  # - type: git
-  #   repository: git@git.coding.net:Honye/Honye.git
-  #   branch: master
-  # oschina
-  # - type: git
-  #   repository: https://git.oschina.net/x1299906945/x1299906945.git
-  #   branch: master
+  - type: git
+    repository: git@git.coding.net:Honye/Honye.git
+    branch: master
   # gitee
   - type: git
     repository: 'https://gitee.com/Honyex/Honyex.git'
