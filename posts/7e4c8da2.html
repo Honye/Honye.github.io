@@ -363,20 +363,20 @@
 </blockquote>
 <h2 id="搭建环境"><a href="#搭建环境" class="headerlink" title="搭建环境"></a>搭建环境</h2><blockquote>
 <ol>
-<li><a href="https://nodejs.org/" target="_blank" rel="external">node.js</a></li>
-<li><a href="https://git-scm.com/" target="_blank" rel="external">git</a></li>
+<li><a href="https://nodejs.org/" target="_blank" rel="noopener">node.js</a></li>
+<li><a href="https://git-scm.com/" target="_blank" rel="noopener">git</a></li>
 <li>hexo</li>
 </ol>
 </blockquote>
-<p>node.js 和 git 我就不多说了，自己在官网按着官方指示一步一步下载安装。我主要来说明下hexo的安装。<br>node.js 和 git 安装完成后，新建一个博客目录，在目录下使用 <code>git bash here</code> （可用命令行）执行<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ npm install -g hexo</div></pre></td></tr></table></figure></p>
+<p>node.js 和 git 我就不多说了，自己在官网按着官方指示一步一步下载安装。我主要来说明下hexo的安装。<br>node.js 和 git 安装完成后，新建一个博客目录，在目录下使用 <code>git bash here</code> （可用命令行）执行<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ npm install -g hexo</span><br></pre></td></tr></table></figure></p>
 <p>根据网络情况下载，等待安装完成</p>
 <a id="more"></a>
-<h2 id="搭建本地博客"><a href="#搭建本地博客" class="headerlink" title="搭建本地博客"></a>搭建本地博客</h2><p>cd 到本地博客路径，初始化<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo init</div></pre></td></tr></table></figure></p>
-<p>安装依赖包<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ npm install</div></pre></td></tr></table></figure></p>
-<p>重启后再在博客目录下,生成必要文件和部署<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">$ hexo generate</div><div class="line">$ hexo deploy</div></pre></td></tr></table></figure></p>
-<p>启动 hexo，在本地预览<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo server</div></pre></td></tr></table></figure></p>
-<p>在浏览器输入 <a href="http://localhost:4000/" target="_blank" rel="external">http://localhost:4000</a> 预览。若正常显示，则本地博客初始化成功</p>
-<h2 id="同步到-GitHub"><a href="#同步到-GitHub" class="headerlink" title="同步到 GitHub"></a>同步到 GitHub</h2><p>登录 <a href="https://github.com/" target="_blank" rel="external">GitHub</a>，没有账号的 Sign up（注册）一个，已有账号的直接登录 Sign in（登录）<br>登陆后点击“+”选择“New repository”</p>
+<h2 id="搭建本地博客"><a href="#搭建本地博客" class="headerlink" title="搭建本地博客"></a>搭建本地博客</h2><p>cd 到本地博客路径，初始化<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo init</span><br></pre></td></tr></table></figure></p>
+<p>安装依赖包<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ npm install</span><br></pre></td></tr></table></figure></p>
+<p>重启后再在博客目录下,生成必要文件和部署<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure></p>
+<p>启动 hexo，在本地预览<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure></p>
+<p>在浏览器输入 <a href="http://localhost:4000/" target="_blank" rel="noopener">http://localhost:4000</a> 预览。若正常显示，则本地博客初始化成功</p>
+<h2 id="同步到-GitHub"><a href="#同步到-GitHub" class="headerlink" title="同步到 GitHub"></a>同步到 GitHub</h2><p>登录 <a href="https://github.com/" target="_blank" rel="noopener">GitHub</a>，没有账号的 Sign up（注册）一个，已有账号的直接登录 Sign in（登录）<br>登陆后点击“+”选择“New repository”</p>
 <blockquote>
 <ul>
 <li>Repository name：指定格式：’GitHub用户名’.github.io</li>
@@ -384,12 +384,12 @@
 <li>Public：必须公开</li>
 </ul>
 </blockquote>
-<p>在本地博客目录下有一个<code>_config.yml</code>配置文件，使用编辑器打开，修改<code>Deployment</code>部分：<br><figure class="highlight yaml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># Deployment</span></div><div class="line"><span class="comment">## Docs: http://hexo.io/docs/deployment.html</span></div><div class="line"><span class="attr">deploy:</span></div><div class="line"><span class="attr">  type:</span> <span class="string">github</span></div><div class="line"><span class="attr">  repository:</span> <span class="attr">https://github.com/voidking/voidking.github.io.git</span></div><div class="line"><span class="attr">  branch:</span> <span class="string">master</span></div></pre></td></tr></table></figure></p>
-<p><strong>注意：冒号后面必须跟一个空格，不然会出错</strong><br>再在博客目录下执行如下命令同步到GitHub<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">$ hexo generate</div><div class="line">$ hexo deploy</div></pre></td></tr></table></figure></p>
+<p>在本地博客目录下有一个<code>_config.yml</code>配置文件，使用编辑器打开，修改<code>Deployment</code>部分：<br><figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Deployment</span></span><br><span class="line"><span class="comment">## Docs: http://hexo.io/docs/deployment.html</span></span><br><span class="line"><span class="attr">deploy:</span></span><br><span class="line"><span class="attr">  type:</span> <span class="string">github</span></span><br><span class="line"><span class="attr">  repository:</span> <span class="attr">https://github.com/voidking/voidking.github.io.git</span></span><br><span class="line"><span class="attr">  branch:</span> <span class="string">master</span></span><br></pre></td></tr></table></figure></p>
+<p><strong>注意：冒号后面必须跟一个空格，不然会出错</strong><br>再在博客目录下执行如下命令同步到GitHub<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure></p>
 <p>若报错 <code>error deployer not found:github</code> 可能是 hexo 更新问题<br>解决方案：将 <code>github</code> 改为 <code>git</code>、将 <code>https</code> 改为 <code>http</code> 后重试</p>
-<figure class="highlight yaml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># Deployment</span></div><div class="line"><span class="comment">## Docs: http://hexo.io/docs/deployment.html</span></div><div class="line"><span class="attr">deploy:</span></div><div class="line"><span class="attr">  type:</span> <span class="string">git</span></div><div class="line"><span class="attr">  repository:</span> <span class="attr">http://github.com/voidking/voidking.github.io.git</span></div><div class="line"><span class="attr">  branch:</span> <span class="string">master</span></div></pre></td></tr></table></figure>
-<p>若还是报错，先执行如下指令后重试<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ npm install hexo-deployer-git --save</div></pre></td></tr></table></figure></p>
-<p>在浏览器访问<a href="https://chengjunx.github.io/" target="_blank" rel="external">https://‘GitHub用户名’.github.io</a>，若正常显示，则博客已同步到GitHub</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Deployment</span></span><br><span class="line"><span class="comment">## Docs: http://hexo.io/docs/deployment.html</span></span><br><span class="line"><span class="attr">deploy:</span></span><br><span class="line"><span class="attr">  type:</span> <span class="string">git</span></span><br><span class="line"><span class="attr">  repository:</span> <span class="attr">http://github.com/voidking/voidking.github.io.git</span></span><br><span class="line"><span class="attr">  branch:</span> <span class="string">master</span></span><br></pre></td></tr></table></figure>
+<p>若还是报错，先执行如下指令后重试<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ npm install hexo-deployer-git --save</span><br></pre></td></tr></table></figure></p>
+<p>在浏览器访问<a href="https://chengjunx.github.io/" target="_blank" rel="noopener">https://‘GitHub用户名’.github.io</a>，若正常显示，则博客已同步到GitHub</p>
 <p>至此静态博客就初步搭建完成了！！！</p>
 
       
