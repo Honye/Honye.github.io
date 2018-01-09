@@ -2,6 +2,7 @@
     {
         "id": 1,
         "title": "类型",
+        "icon": "http://opz28dn03.bkt.clouddn.com/images/icon-classify.png",
         "children": [
             "科幻",
             "爱情",
@@ -17,6 +18,7 @@
     {
         "id": 2,
         "title": "地区",
+        "icon": "http://opz28dn03.bkt.clouddn.com/images/icon-earth.png",
         "children": [
             "大陆",
             "香港",
@@ -28,6 +30,7 @@
     {
         "id": 3,
         "title": "标签",
+        "icon": "http://opz28dn03.bkt.clouddn.com/images/icon-tag.png",
         "children": [
             "热门",
             "心情",
@@ -52,6 +55,7 @@
     {
         "id": 4,
         "title": "榜单",
+        "icon": "http://opz28dn03.bkt.clouddn.com/images/icon-rank.png",
         "children": [
             "帝国杂志",
             "电影旬报",
@@ -62,6 +66,7 @@
     {
         "id": 5,
         "title": "获奖",
+        "icon": "http://opz28dn03.bkt.clouddn.com/images/icon-trophy.png",
         "children": [
             "戛纳电影节",
             "柏林电影节",

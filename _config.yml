@@ -32,8 +32,10 @@ code_dir: downloads/code      #include code 文件夹
 i18n_dir: :lang      #国际化（i18n）文件夹
 skip_render:      #跳过指定文件的渲染，您可使用 glob 表达式来匹配路径
   - 2048/js/*
-  - json/*
   - static/*
+  - static/js/*
+  - static/js/bhkouling.js
+  - README.md
 
 # Writing
 new_post_name: :year-:month-:day-:title.md      # 默认文件名称
@@ -81,13 +83,13 @@ deploy:
     repository: git@github.com:Hongye567/Hongye567.github.io.git
     branch: master
   # Coding
-  - type: git
-    repository: git@git.coding.net:Honye/Honye.git
-    branch: master
+  # - type: git
+  #   repository: git@git.coding.net:Honye/Honye.git
+  #   branch: master
   # gitee
-  - type: git
-    repository: 'https://gitee.com/Honyex/Honyex.git'
-    branch: master
+  # - type: git
+  #   repository: 'https://gitee.com/Honyex/Honyex.git'
+  #   branch: master
 
 # Site Search
 ## Plugin: $ npm install hexo-generator-json-content --save
