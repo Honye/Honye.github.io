@@ -356,7 +356,6 @@
         
           <h3 id="多平台发布"><a href="#多平台发布" class="headerlink" title="多平台发布"></a>多平台发布</h3><p>在 GitHub 和 Coding 上都有博客，分开一一发布比较麻烦，其实 Hexo 是支持在多个平台发布的。<br>修改 Hexo 主目录下的 _config.yml 配置文件即可</p>
 <figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">deploy:</span></span><br><span class="line"><span class="attr">  - type:</span> <span class="string">git</span></span><br><span class="line"><span class="attr">    repository:</span> <span class="attr">https://github.com/Hongye567/Hongye567.github.io.git</span></span><br><span class="line"><span class="attr">    branch:</span> <span class="string">master</span></span><br><span class="line"><span class="attr">  - type:</span> <span class="string">git</span></span><br><span class="line"><span class="attr">    repository:</span> <span class="attr">https://git.coding.net/Honye/Honye.git</span></span><br><span class="line"><span class="attr">    branch:</span> <span class="string">master</span></span><br></pre></td></tr></table></figure>
-<h3 id="免输入密码"><a href="#免输入密码" class="headerlink" title="免输入密码"></a>免输入密码</h3><p>Hexo 每次提交时都要求输入用户名和密码，尤其在多平台发布时需要多次输入用户名和密码很是麻烦。<br>要求输入密码的原因是我们的仓库地址用的是 HTTPS 不是 SSH。</p>
           <!--noindex-->
           <div class="post-button text-center">
             <a class="btn" href="/posts/d973cb7c.html#more" rel="contents">
@@ -486,7 +485,6 @@
           <p>之前是在 GitHub 上部署的静态博客，由于 GitHub 属于国外网站，访问速度慢，听闻可以在 Coding 部署博客，故而转向 Coding。</p>
 <h3 id="1-Hexo-环境搭建"><a href="#1-Hexo-环境搭建" class="headerlink" title="1. Hexo 环境搭建"></a>1. Hexo 环境搭建</h3><p>Hexo 的环境搭建我之前在 GitHub 搭建博客教程中已经说明，不在赘述。也可到 Hexo 官网查看文档。</p>
 <h3 id="2-在-Coding-上新建项目"><a href="#2-在-Coding-上新建项目" class="headerlink" title="2. 在 Coding 上新建项目"></a>2. 在 Coding 上新建项目</h3><p>理论上项目名称没要求，但是在我实际操作中出现了引用资源未找到的问题。在引用路径上缺少了一个项目名。所以我的项目名和我的用户名一致，理由是如果项目名和用户名不一致，访问地址必须是 {user_name}.coding.me/{project_name}，如果项目名与用户名一致，可使用 {user_name}.coding.me 直接访问，也避免了上面说的资源引用问题，是我推荐的。<br>若有大神能解决资源引用问题用其他名字也是可行的。项目可私有，不影响访问。<br>选择项目，进入代码页面，选择 Pages 服务，部署来源后即可访问。</p>
-<h3 id="3-Hexo-Push"><a href="#3-Hexo-Push" class="headerlink" title="3. Hexo Push"></a>3. Hexo Push</h3><p>提交和在 GitHub 大致没什么区别，只需要在 Hexo 主目录的 _config.yml 配置文件中更改下仓库地址即可。</p>
           <!--noindex-->
           <div class="post-button text-center">
             <a class="btn" href="/posts/b3459307.html#more" rel="contents">
@@ -883,15 +881,6 @@
 <li>购买设置专属域名（可选）</li>
 </ol>
 </blockquote>
-<h2 id="搭建环境"><a href="#搭建环境" class="headerlink" title="搭建环境"></a>搭建环境</h2><blockquote>
-<ol>
-<li><a href="https://nodejs.org/" target="_blank" rel="noopener">node.js</a></li>
-<li><a href="https://git-scm.com/" target="_blank" rel="noopener">git</a></li>
-<li>hexo</li>
-</ol>
-</blockquote>
-<p>node.js 和 git 我就不多说了，自己在官网按着官方指示一步一步下载安装。我主要来说明下hexo的安装。<br>node.js 和 git 安装完成后，新建一个博客目录，在目录下使用 <code>git bash here</code> （可用命令行）执行<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ npm install -g hexo</span><br></pre></td></tr></table></figure></p>
-<p>根据网络情况下载，等待安装完成</p>
           <!--noindex-->
           <div class="post-button text-center">
             <a class="btn" href="/posts/7e4c8da2.html#more" rel="contents">
@@ -1071,6 +1060,133 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://www.hongye567.top/posts/6c8e222d.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Honye">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Honye's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/posts/6c8e222d.html" itemprop="url">几个常见的 Git 代码托管平台</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-11-01T20:03:01+08:00">
+                2016-11-01
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/posts/6c8e222d.html" class="leancloud_visitors" data-flag-title="几个常见的 Git 代码托管平台">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数 </span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <p>说到 Git 代码托管平台，首先推荐的是 GitHub，好多好的开源项目都来自 GitHub，但是 GitHub 只能新建公开的 Git 仓库，私有仓库要收费，如果你做的是一个开源项目，可以首选 GitHub。下面推荐几个比较好的 Git 代码托管平台，这里我不做过多的说明和评价，也好让大家多看看，比较一下，找到自己的”真爱”。</p>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/posts/6c8e222d.html#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
     <link itemprop="mainEntityOfPage" href="http://www.hongye567.top/posts/dd07dd9c.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1149,8 +1265,10 @@
 
       
         
-          <h2 id="一、SSH配置"><a href="#一、SSH配置" class="headerlink" title="一、SSH配置"></a>一、SSH配置</h2><p>首先单机鼠标右键，打开<code>Git Bash here</code>，打开 Git 命令窗口，输入命令：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ ssh-keygen -t rsa -C <span class="string">"your_email@youremail.com"</span></span><br></pre></td></tr></table></figure></p>
-<p>点击回车，出现如下提示：<br><img src="http://static.open-open.com/lib/uploadImg/20150108/20150108160808_123.png" alt="生成SSH"><br>这个时候我们看到询问我们保存key的路径，使用默认即可，直接敲回车继续，这里我已经生成过了，所以我输入了新的路径和文件名，回车后会让输入两次密码(passphrase),输入一个大于4位的密码即可。然后会看到 SSH 生成成功，如图：<br><img src="http://static.open-open.com/lib/uploadImg/20150108/20150108160808_16.png" alt="成功生成SSH"></p>
+          <h2 id="一、SSH配置"><a href="#一、SSH配置" class="headerlink" title="一、SSH配置"></a>一、SSH配置</h2><p>首先单机鼠标右键，打开<code>Git Bash here</code>，打开 Git 命令窗口，输入命令：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ ssh-keygen -t rsa -C <span class="string">"your_email@youremail.com"</span></span><br></pre></td></tr></table></figure>
+<p>点击回车，出现如下提示：</p>
+<p><img src="http://static.open-open.com/lib/uploadImg/20150108/20150108160808_123.png" alt="生成SSH"></p>
           <!--noindex-->
           <div class="post-button text-center">
             <a class="btn" href="/posts/dd07dd9c.html#more" rel="contents">
@@ -1239,7 +1357,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">17</span>
+                <span class="site-state-item-count">18</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -1252,7 +1370,7 @@
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
-                <span class="site-state-item-count">15</span>
+                <span class="site-state-item-count">18</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>

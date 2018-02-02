@@ -92,13 +92,13 @@
 
 
 
-<meta name="description" content="一、SSH配置首先单机鼠标右键，打开Git Bash here，打开 Git 命令窗口，输入命令：1$ ssh-keygen -t rsa -C &quot;your_email@youremail.com&quot; 点击回车，出现如下提示：这个时候我们看到询问我们保存key的路径，使用默认即可，直接敲回车继续，这里我已经生成过了，所以我输入了新的路径和文件名，回车后会让输入两次密码(passphrase),输入一">
+<meta name="description" content="一、SSH配置首先单机鼠标右键，打开Git Bash here，打开 Git 命令窗口，输入命令： 1$ ssh-keygen -t rsa -C &quot;your_email@youremail.com&quot; 点击回车，出现如下提示：">
 <meta name="keywords" content="Git">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Git 代码托管">
 <meta property="og:url" content="http://www.hongye567.top/posts/dd07dd9c.html">
 <meta property="og:site_name" content="Honye&#39;s Blog">
-<meta property="og:description" content="一、SSH配置首先单机鼠标右键，打开Git Bash here，打开 Git 命令窗口，输入命令：1$ ssh-keygen -t rsa -C &quot;your_email@youremail.com&quot; 点击回车，出现如下提示：这个时候我们看到询问我们保存key的路径，使用默认即可，直接敲回车继续，这里我已经生成过了，所以我输入了新的路径和文件名，回车后会让输入两次密码(passphrase),输入一">
+<meta property="og:description" content="一、SSH配置首先单机鼠标右键，打开Git Bash here，打开 Git 命令窗口，输入命令： 1$ ssh-keygen -t rsa -C &quot;your_email@youremail.com&quot; 点击回车，出现如下提示：">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://static.open-open.com/lib/uploadImg/20150108/20150108160808_123.png">
 <meta property="og:image" content="http://static.open-open.com/lib/uploadImg/20150108/20150108160808_16.png">
@@ -107,18 +107,10 @@
 <meta property="og:image" content="http://static.open-open.com/lib/uploadImg/20150108/20150108160809_107.png">
 <meta property="og:image" content="http://static.open-open.com/lib/uploadImg/20150108/20150108160809_544.png">
 <meta property="og:image" content="http://static.open-open.com/lib/uploadImg/20150108/20150108160810_199.png">
-<meta property="og:image" content="http://static.open-open.com/lib/uploadImg/20150108/20150108160808_916.png">
-<meta property="og:image" content="http://static.open-open.com/lib/uploadImg/20150108/20150108160808_277.png">
-<meta property="og:image" content="http://static.open-open.com/lib/uploadImg/20150108/20150108160808_866.png">
-<meta property="og:image" content="http://static.open-open.com/lib/uploadImg/20150108/20150108160808_540.png">
-<meta property="og:image" content="http://static.open-open.com/lib/uploadImg/20150108/20150108160808_985.png">
-<meta property="og:image" content="http://static.open-open.com/lib/uploadImg/20150108/20150108160808_51.png">
-<meta property="og:image" content="http://static.open-open.com/lib/uploadImg/20150108/20150108160809_562.png">
-<meta property="og:image" content="http://static.open-open.com/lib/uploadImg/20150108/20150108160809_941.png">
-<meta property="og:updated_time" content="2017-10-22T14:15:08.896Z">
+<meta property="og:updated_time" content="2018-02-02T13:47:19.253Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Git 代码托管">
-<meta name="twitter:description" content="一、SSH配置首先单机鼠标右键，打开Git Bash here，打开 Git 命令窗口，输入命令：1$ ssh-keygen -t rsa -C &quot;your_email@youremail.com&quot; 点击回车，出现如下提示：这个时候我们看到询问我们保存key的路径，使用默认即可，直接敲回车继续，这里我已经生成过了，所以我输入了新的路径和文件名，回车后会让输入两次密码(passphrase),输入一">
+<meta name="twitter:description" content="一、SSH配置首先单机鼠标右键，打开Git Bash here，打开 Git 命令窗口，输入命令： 1$ ssh-keygen -t rsa -C &quot;your_email@youremail.com&quot; 点击回车，出现如下提示：">
 <meta name="twitter:image" content="http://static.open-open.com/lib/uploadImg/20150108/20150108160808_123.png">
 
 
@@ -367,23 +359,15 @@
       
 
       
-        <h2 id="一、SSH配置"><a href="#一、SSH配置" class="headerlink" title="一、SSH配置"></a>一、SSH配置</h2><p>首先单机鼠标右键，打开<code>Git Bash here</code>，打开 Git 命令窗口，输入命令：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ ssh-keygen -t rsa -C <span class="string">"your_email@youremail.com"</span></span><br></pre></td></tr></table></figure></p>
-<p>点击回车，出现如下提示：<br><img src="http://static.open-open.com/lib/uploadImg/20150108/20150108160808_123.png" alt="生成SSH"><br>这个时候我们看到询问我们保存key的路径，使用默认即可，直接敲回车继续，这里我已经生成过了，所以我输入了新的路径和文件名，回车后会让输入两次密码(passphrase),输入一个大于4位的密码即可。然后会看到 SSH 生成成功，如图：<br><img src="http://static.open-open.com/lib/uploadImg/20150108/20150108160808_16.png" alt="成功生成SSH"></p>
+        <h2 id="一、SSH配置"><a href="#一、SSH配置" class="headerlink" title="一、SSH配置"></a>一、SSH配置</h2><p>首先单机鼠标右键，打开<code>Git Bash here</code>，打开 Git 命令窗口，输入命令：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ ssh-keygen -t rsa -C <span class="string">"your_email@youremail.com"</span></span><br></pre></td></tr></table></figure>
+<p>点击回车，出现如下提示：</p>
+<p><img src="http://static.open-open.com/lib/uploadImg/20150108/20150108160808_123.png" alt="生成SSH"></p>
 <a id="more"></a>
+<p>这个时候我们看到询问我们保存 key 的路径，使用默认即可，直接敲回车继续，这里我已经生成过了，所以我输入了新的路径和文件名，回车后会让输入两次密码( passphrase ), 输入一个大于 4 位的密码即可。然后会看到 SSH 生成成功，如图：<br><img src="http://static.open-open.com/lib/uploadImg/20150108/20150108160808_16.png" alt="成功生成SSH"></p>
 <p>这里可以看到，我们的公钥保存到了<code>yunfeifei_rsa.pub</code>文件中，大家用的是默认路径的话，就打开路径<code>C:\Users\Admin\.ssh</code>，会看到如图所示文件：<br><img src="http://static.open-open.com/lib/uploadImg/20150108/20150108160808_325.png" alt=""><br>用文本编辑工具如记事本打开<code>id_rsa.pub</code>,复制里面的内容，先保存起来，到后面使用。<br>输入如下口令查看公钥：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ cat ~/.ssh/id_rsa.pub</span><br></pre></td></tr></table></figure></p>
-<h2 id="二、使用SSH"><a href="#二、使用SSH" class="headerlink" title="二、使用SSH"></a>二、使用SSH</h2><p>在上面我们使用 Git bash 生成了 SSH 的公钥和私钥，下面以coding.net为例介绍一下如何将公钥部署到远程 Git 仓库，打开设置中心，如图：<br><img src="http://static.open-open.com/lib/uploadImg/20150108/20150108160809_561.png" alt=""><br>选择 SSH 公钥，填写公钥名称(可以随意起名字)，然后把我们刚刚从<code>id_rsa.pub</code>里面复制出来的东西粘贴到 SSH-RSA 公钥 key 这个文本框中即可。如图：<br><img src="http://static.open-open.com/lib/uploadImg/20150108/20150108160809_107.png" alt=""><br>添加完成后，我们打开 Git 命令窗口测试，输入如下命令：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ ssh -T git@coding.net</span><br></pre></td></tr></table></figure></p>
+<h2 id="二、使用SSH"><a href="#二、使用SSH" class="headerlink" title="二、使用SSH"></a>二、使用SSH</h2><p>在上面我们使用 Git bash 生成了 SSH 的公钥和私钥，下面以 coding.net 为例介绍一下如何将公钥部署到远程 Git 仓库，打开设置中心，如图：<br><img src="http://static.open-open.com/lib/uploadImg/20150108/20150108160809_561.png" alt=""><br>选择 SSH 公钥，填写公钥名称(可以随意起名字)，然后把我们刚刚从<code>id_rsa.pub</code>里面复制出来的东西粘贴到 SSH-RSA 公钥 key 这个文本框中即可。如图：<br><img src="http://static.open-open.com/lib/uploadImg/20150108/20150108160809_107.png" alt=""><br>添加完成后，我们打开 Git 命令窗口测试，输入如下命令：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ ssh -T git@coding.net</span><br></pre></td></tr></table></figure></p>
 <p>这个时候会提示你是否继续连接,如图：<br><img src="http://static.open-open.com/lib/uploadImg/20150108/20150108160809_544.png" alt=""><br>输入 yes, 回车继续，会出现如下提示,如图:<br><img src="http://static.open-open.com/lib/uploadImg/20150108/20150108160810_199.png" alt=""></p>
-<h3 id="几个常见的Git代码托管平台"><a href="#几个常见的Git代码托管平台" class="headerlink" title="几个常见的Git代码托管平台"></a>几个常见的Git代码托管平台</h3><p>说到 Git 代码托管平台，首先推荐的是 GitHub，好多好的开源项目都来自 GitHub，但是 GitHub 只能新建公开的 Git 仓库，私有仓库要收费，如果你做的是一个开源项目，可以首选 GitHub。下面推荐几个比较好的 Git 代码托管平台，这里我不做过多的说明和评价，也好让大家多看看，比较一下，找到自己的”真爱”。</p>
-<ol>
-<li>GitHub<br>关于GItHub相信大家都有耳闻，我就不详细介绍了。GitHub地址：<a href="https://github.com/" target="_blank" rel="noopener">https://github.com/</a>，其首页如图：<br><img src="http://static.open-open.com/lib/uploadImg/20150108/20150108160808_916.png" alt=""></li>
-<li>GitLab<br>对于有些人，提到 GitHub 就会自然的想到 Gitlab, Gitlab 支持无限的公有项目和私有项目。Gitlab 地址：<a href="https://about.gitlab.com/" target="_blank" rel="noopener">https://about.gitlab.com/</a>，其首页截图如图：<br><img src="http://static.open-open.com/lib/uploadImg/20150108/20150108160808_277.png" alt=""></li>
-<li>Bitbucket<br>Bitbucket 免费支持5个开发成员的团队创建无限私有代码托管库。Bitbucket地址：<a href="https://bitbucket.org/" target="_blank" rel="noopener">https://bitbucket.org/</a>，首页如图：<br><img src="http://static.open-open.com/lib/uploadImg/20150108/20150108160808_866.png" alt=""></li>
-<li>(推荐)开源中国代码托管<br>前面说的都是国外的，下面来说几个国内的。开源中国一个账号最多可以创建1000个项目，包含公有和私有。Git @ OSC 是开源中国社区团队基于开源项目 GitLab 开发的在线代码托管平台。Git @ OSC 除了提供最基础的 git 代码托管之外，还提供代码在线查看、历史版本查看、Fork、Pull Reuqest 、打包下载任意版本、Issue、Wiki 等方便管理、开发、协作、共享的功能，具体请查看帮助。开源中国代码托管地址：<a href="http://git.oschina.net/" target="_blank" rel="noopener">http://git.oschina.net/</a>，其首页如图：<br><img src="http://static.open-open.com/lib/uploadImg/20150108/20150108160808_540.png" alt=""><br>开源中国在几个月前又发布了团队协作开发平台，和代码托管平台一起，打造了一个十分好的团队开发平台，开源中国团队协作平台地址：<a href="http://team.oschina.net/" target="_blank" rel="noopener">http://team.oschina.net/</a>，团队协作平台支持任务的创建、讨论、便签等，如图：<br><img src="http://static.open-open.com/lib/uploadImg/20150108/20150108160808_985.png" alt=""></li>
-<li>(推荐)Coding.net<br>谈到 coding.net, 首先必须提的是速度快，功能与开源中国相似，同样一个账号最多可以创建1000个项目，也支持任务的创建等。coding.net地址：<a href="https://coding.net/home.html" target="_blank" rel="noopener">https://coding.net/home.html</a>，其首页如图：<br><img src="http://static.open-open.com/lib/uploadImg/20150108/20150108160808_51.png" alt=""></li>
-<li>CSDN 代码托管<br>2013年6月28日推出代码托管与社交编程平台“CODE”，CSDN CODE 系统搭建于阿里云 IaaS 平台之上，向个人开发者、IT 团队及企业提供代码托管、在线协作、社交编程、项目管理等服务。作为 CSDN 整体服务的一部分， CSDN CODE 平台使用 CSDN 通行证系统，与 CSDN 其他业务账号互通， 方便用户在各个业务间切换。CSDN 代码托管地址：<a href="https://code.csdn.net/" target="_blank" rel="noopener">https://code.csdn.net/</a>，首页如图：<br><img src="http://static.open-open.com/lib/uploadImg/20150108/20150108160809_562.png" alt=""></li>
-<li>京东代码托管平台<br>作为京东电商云生态的重要一环，京东云汇中的代码托管平台2013年7月份起全面对外开放，用户只要拥有京东账号即可使用的代码托管服务。此外，为了支持国内程序员开源社区建设，目前平台对每个项目均提供免费的1G存储空间，并设置了“代码一键迁移”功能，用户可以方便的从其他GIT代码托管平台转移其项目到京东代码库。京东云汇中开放的免费代码托管平台实现了基于Git的开发任务分包管理、代码在线和离线编辑、编码助手、代码版本管理等全程的代码管理服务。京东代码托管平台地址：<a href="https://code.jd.com/" target="_blank" rel="noopener">https://code.jd.com/</a>，首页如图：<br><img src="http://static.open-open.com/lib/uploadImg/20150108/20150108160809_941.png" alt=""></li>
-<li>淘宝代码托管平台 <a href="http://code.taobao.org/" target="_blank" rel="noopener">http://code.taobao.org/</a><br>TaoCode 是为开源爱好者和广大技术人员提供交流、孵化、创新项目的平台，同时平台也遵循开源理念全面开源，欢迎更多朋友来参与平台建设，希望在我们共同的努力下能加速中国开源消费者向开源贡献者的转变。</li>
-</ol>
 <h2 id="Git-版本控制入门"><a href="#Git-版本控制入门" class="headerlink" title="Git 版本控制入门"></a>Git 版本控制入门</h2><p>如果你不熟悉 Git，点此查看权威 Git 书籍 <a href="http://git.oschina.net/progit" target="_blank" rel="noopener">ProGit（中文版）</a>，新手老鸟均适合。<br><a href="http://git-scm.com" target="_blank" rel="noopener">Git 官网</a><br><a href="http://dl.oschina.net/search?key=git&amp;type=soft&amp;root=&amp;sub=&amp;only_title=true&amp;p=1" target="_blank" rel="noopener">Git 客户端下载地址</a><br><a href="http://git-scm.com/docs" target="_blank" rel="noopener">Git 手册</a><br><a href="http://git.oschina.net/oschina/git-osc/wikis/%E5%B8%AE%E5%8A%A9#继续阅读" target="_blank" rel="noopener">网友整理的Git@osc教程</a>。<br><a href="http://www.liaoxuefeng.com/wiki/0013739516305929606dd18361248578c67b8067c8c017b000/001373962845513aefd77a99f4145f0a2c7a7ca057e7570000" target="_blank" rel="noopener">一份很好的 Git 入门教程</a><br><a href="http://git.oschina.net/wzw/git-quick-start" target="_blank" rel="noopener">Git 快速入门（gif动画版）</a></p>
 <h2 id="如何在-Git-码云上上传项目"><a href="#如何在-Git-码云上上传项目" class="headerlink" title="如何在 Git 码云上上传项目"></a>如何在 Git 码云上上传项目</h2><p>首先,注册码云账号,添加新项目,打开终端:<br>步骤如下:</p>
 <ol>
@@ -474,8 +458,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/posts/4a17b156.html" rel="prev" title="Hello World">
-                Hello World <i class="fa fa-chevron-right"></i>
+              <a href="/posts/6c8e222d.html" rel="prev" title="几个常见的 Git 代码托管平台">
+                几个常见的 Git 代码托管平台 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -548,7 +532,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">17</span>
+                <span class="site-state-item-count">18</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -561,7 +545,7 @@
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
-                <span class="site-state-item-count">15</span>
+                <span class="site-state-item-count">18</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
@@ -658,7 +642,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#一、SSH配置"><span class="nav-number">1.</span> <span class="nav-text">一、SSH配置</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#二、使用SSH"><span class="nav-number">2.</span> <span class="nav-text">二、使用SSH</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#几个常见的Git代码托管平台"><span class="nav-number">2.1.</span> <span class="nav-text">几个常见的Git代码托管平台</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Git-版本控制入门"><span class="nav-number">3.</span> <span class="nav-text">Git 版本控制入门</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#如何在-Git-码云上上传项目"><span class="nav-number">4.</span> <span class="nav-text">如何在 Git 码云上上传项目</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#一、SSH配置"><span class="nav-number">1.</span> <span class="nav-text">一、SSH配置</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#二、使用SSH"><span class="nav-number">2.</span> <span class="nav-text">二、使用SSH</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Git-版本控制入门"><span class="nav-number">3.</span> <span class="nav-text">Git 版本控制入门</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#如何在-Git-码云上上传项目"><span class="nav-number">4.</span> <span class="nav-text">如何在 Git 码云上上传项目</span></a></li></ol></div>
             
 
           </div>

@@ -74,7 +74,7 @@
 <link href="/css/main.css?v=5.1.1" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Java," />
+  <meta name="keywords" content="Git," />
 
 
 
@@ -92,18 +92,27 @@
 
 
 
-<meta name="description" content="1. 通过 Map.keySet 遍历 key 和 value，二次取值（常用） 123for ( String key : map.keySet() ) &amp;#123;    System.out.println( &quot;key = &quot; + key +&quot; and value = &quot; + map.get( key ) );&amp;#125; 2. 通过 Map.entrySet 使用 iterator 遍历">
-<meta name="keywords" content="Java">
+<meta name="description" content="说到 Git 代码托管平台，首先推荐的是 GitHub，好多好的开源项目都来自 GitHub，但是 GitHub 只能新建公开的 Git 仓库，私有仓库要收费，如果你做的是一个开源项目，可以首选 GitHub。下面推荐几个比较好的 Git 代码托管平台，这里我不做过多的说明和评价，也好让大家多看看，比较一下，找到自己的”真爱”。">
+<meta name="keywords" content="Git">
 <meta property="og:type" content="article">
-<meta property="og:title" content="遍历 Map 的四种方法">
-<meta property="og:url" content="http://www.hongye567.top/posts/6fa78ea3.html">
+<meta property="og:title" content="几个常见的 Git 代码托管平台">
+<meta property="og:url" content="http://www.hongye567.top/posts/6c8e222d.html">
 <meta property="og:site_name" content="Honye&#39;s Blog">
-<meta property="og:description" content="1. 通过 Map.keySet 遍历 key 和 value，二次取值（常用） 123for ( String key : map.keySet() ) &amp;#123;    System.out.println( &quot;key = &quot; + key +&quot; and value = &quot; + map.get( key ) );&amp;#125; 2. 通过 Map.entrySet 使用 iterator 遍历">
+<meta property="og:description" content="说到 Git 代码托管平台，首先推荐的是 GitHub，好多好的开源项目都来自 GitHub，但是 GitHub 只能新建公开的 Git 仓库，私有仓库要收费，如果你做的是一个开源项目，可以首选 GitHub。下面推荐几个比较好的 Git 代码托管平台，这里我不做过多的说明和评价，也好让大家多看看，比较一下，找到自己的”真爱”。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2017-10-22T14:15:08.943Z">
+<meta property="og:image" content="http://static.open-open.com/lib/uploadImg/20150108/20150108160808_916.png">
+<meta property="og:image" content="http://static.open-open.com/lib/uploadImg/20150108/20150108160808_277.png">
+<meta property="og:image" content="http://static.open-open.com/lib/uploadImg/20150108/20150108160808_866.png">
+<meta property="og:image" content="http://static.open-open.com/lib/uploadImg/20150108/20150108160808_540.png">
+<meta property="og:image" content="http://static.open-open.com/lib/uploadImg/20150108/20150108160808_985.png">
+<meta property="og:image" content="http://static.open-open.com/lib/uploadImg/20150108/20150108160808_51.png">
+<meta property="og:image" content="http://static.open-open.com/lib/uploadImg/20150108/20150108160809_562.png">
+<meta property="og:image" content="http://static.open-open.com/lib/uploadImg/20150108/20150108160809_941.png">
+<meta property="og:updated_time" content="2018-02-02T12:14:33.575Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="遍历 Map 的四种方法">
-<meta name="twitter:description" content="1. 通过 Map.keySet 遍历 key 和 value，二次取值（常用） 123for ( String key : map.keySet() ) &amp;#123;    System.out.println( &quot;key = &quot; + key +&quot; and value = &quot; + map.get( key ) );&amp;#125; 2. 通过 Map.entrySet 使用 iterator 遍历">
+<meta name="twitter:title" content="几个常见的 Git 代码托管平台">
+<meta name="twitter:description" content="说到 Git 代码托管平台，首先推荐的是 GitHub，好多好的开源项目都来自 GitHub，但是 GitHub 只能新建公开的 Git 仓库，私有仓库要收费，如果你做的是一个开源项目，可以首选 GitHub。下面推荐几个比较好的 Git 代码托管平台，这里我不做过多的说明和评价，也好让大家多看看，比较一下，找到自己的”真爱”。">
+<meta name="twitter:image" content="http://static.open-open.com/lib/uploadImg/20150108/20150108160808_916.png">
 
 
 
@@ -131,13 +140,13 @@
 
 
 
-  <link rel="canonical" href="http://www.hongye567.top/posts/6fa78ea3.html"/>
+  <link rel="canonical" href="http://www.hongye567.top/posts/6c8e222d.html"/>
 
 
 
 
 
-  <title>遍历 Map 的四种方法 | Honye's Blog</title>
+  <title>几个常见的 Git 代码托管平台 | Honye's Blog</title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -276,7 +285,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://www.hongye567.top/posts/6fa78ea3.html">
+    <link itemprop="mainEntityOfPage" href="http://www.hongye567.top/posts/6c8e222d.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Honye">
@@ -293,7 +302,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">遍历 Map 的四种方法</h1>
+          <h1 class="post-title" itemprop="name headline">几个常见的 Git 代码托管平台</h1>
         
 
         <div class="post-meta">
@@ -305,8 +314,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-03-21T11:07:19+08:00">
-                2017-03-21
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-11-01T20:03:01+08:00">
+                2016-11-01
               </time>
             
 
@@ -323,7 +332,7 @@
 
           
           
-             <span id="/posts/6fa78ea3.html" class="leancloud_visitors" data-flag-title="遍历 Map 的四种方法">
+             <span id="/posts/6c8e222d.html" class="leancloud_visitors" data-flag-title="几个常见的 Git 代码托管平台">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -351,14 +360,34 @@
       
 
       
-        <p><strong>1. 通过 Map.keySet 遍历 key 和 value，二次取值（常用）</strong></p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> ( String key : map.keySet() ) &#123;</span><br><span class="line">    System.out.println( <span class="string">"key = "</span> + key +<span class="string">" and value = "</span> + map.get( key ) );</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p><strong>2. 通过 Map.entrySet 使用 iterator 遍历 key 和 value</strong></p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Iterator&lt;Map.Entry&lt;String, String&gt;&gt; it = map.entrySet().iterator();</span><br><span class="line"><span class="keyword">while</span> ( it.hasNext() ) &#123;</span><br><span class="line">    Map.Entry&lt;String, String&gt; entry = it.next();</span><br><span class="line">    System.out.println( <span class="string">"key = "</span> + entry.getKey() + <span class="string">" and value = "</span> + entry.getValue() );</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p><strong>3. 通过 Map.entrySet 遍历 key 和 value（推荐，尤其容量大的时候）</strong></p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> ( Map.Entry&lt;String, String&gt; entry : map.entrySet() ) &#123;</span><br><span class="line">    System.out.println( <span class="string">"key = "</span> + entry.getKey() + <span class="string">" and value = "</span> + entry.getValue() );</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p><strong>4. 通过 Map.values() 遍历所有的 value，但不能遍历 key</strong></p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> ( String v : map.values() ) &#123;</span><br><span class="line">    System.out.println( <span class="string">"value = "</span> + v );</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+        <p>说到 Git 代码托管平台，首先推荐的是 GitHub，好多好的开源项目都来自 GitHub，但是 GitHub 只能新建公开的 Git 仓库，私有仓库要收费，如果你做的是一个开源项目，可以首选 GitHub。下面推荐几个比较好的 Git 代码托管平台，这里我不做过多的说明和评价，也好让大家多看看，比较一下，找到自己的”真爱”。</p>
+<a id="more"></a>
+<p>1、GitHub</p>
+<p>关于GItHub相信大家都有耳闻，我就不详细介绍了。GitHub地址：<a href="https://github.com/" target="_blank" rel="noopener">https://github.com/</a>，其首页如图：</p>
+<p>  <img src="http://static.open-open.com/lib/uploadImg/20150108/20150108160808_916.png" alt=""></p>
+<p>2、GitLab</p>
+<p>对于有些人，提到 GitHub 就会自然的想到 Gitlab, Gitlab 支持无限的公有项目和私有项目。Gitlab 地址：<a href="https://about.gitlab.com/" target="_blank" rel="noopener">https://about.gitlab.com/</a>，其首页截图如图：</p>
+<p>  <img src="http://static.open-open.com/lib/uploadImg/20150108/20150108160808_277.png" alt=""></p>
+<p>3、Bitbucket</p>
+<p>Bitbucket 免费支持5个开发成员的团队创建无限私有代码托管库。Bitbucket地址：<a href="https://bitbucket.org/" target="_blank" rel="noopener">https://bitbucket.org/</a>，首页如图：</p>
+<p><img src="http://static.open-open.com/lib/uploadImg/20150108/20150108160808_866.png" alt=""></p>
+<p>4、(推荐)开源中国代码托管</p>
+<p>前面说的都是国外的，下面来说几个国内的。开源中国一个账号最多可以创建1000个项目，包含公有和私有。Git @ OSC 是开源中国社区团队基于开源项目 GitLab 开发的在线代码托管平台。Git @ OSC 除了提供最基础的 git 代码托管之外，还提供代码在线查看、历史版本查看、Fork、Pull Reuqest 、打包下载任意版本、Issue、Wiki 等方便管理、开发、协作、共享的功能，具体请查看帮助。开源中国代码托管地址：<a href="http://git.oschina.net/" target="_blank" rel="noopener">http://git.oschina.net/</a>，其首页如图：</p>
+<p><img src="http://static.open-open.com/lib/uploadImg/20150108/20150108160808_540.png" alt=""></p>
+<p>开源中国在几个月前又发布了团队协作开发平台，和代码托管平台一起，打造了一个十分好的团队开发平台，开源中国团队协作平台地址：<a href="http://team.oschina.net/" target="_blank" rel="noopener">http://team.oschina.net/</a>，团队协作平台支持任务的创建、讨论、便签等，如图：</p>
+<p><img src="http://static.open-open.com/lib/uploadImg/20150108/20150108160808_985.png" alt=""></p>
+<p>5、(推荐)Coding.net</p>
+<p>谈到 coding.net, 首先必须提的是速度快，功能与开源中国相似，同样一个账号最多可以创建1000个项目，也支持任务的创建等。coding.net地址：<a href="https://coding.net/home.html" target="_blank" rel="noopener">https://coding.net/home.html</a>，其首页如图：</p>
+<p><img src="http://static.open-open.com/lib/uploadImg/20150108/20150108160808_51.png" alt=""></p>
+<p>6、CSDN 代码托管</p>
+<p>2013年6月28日推出代码托管与社交编程平台“CODE”，CSDN CODE 系统搭建于阿里云 IaaS 平台之上，向个人开发者、IT 团队及企业提供代码托管、在线协作、社交编程、项目管理等服务。作为 CSDN 整体服务的一部分， CSDN CODE 平台使用 CSDN 通行证系统，与 CSDN 其他业务账号互通， 方便用户在各个业务间切换。CSDN 代码托管地址：<a href="https://code.csdn.net/" target="_blank" rel="noopener">https://code.csdn.net/</a>，首页如图：</p>
+<p><img src="http://static.open-open.com/lib/uploadImg/20150108/20150108160809_562.png" alt=""></p>
+<p>7、京东代码托管平台</p>
+<p>作为京东电商云生态的重要一环，京东云汇中的代码托管平台2013年7月份起全面对外开放，用户只要拥有京东账号即可使用的代码托管服务。此外，为了支持国内程序员开源社区建设，目前平台对每个项目均提供免费的1G存储空间，并设置了“代码一键迁移”功能，用户可以方便的从其他GIT代码托管平台转移其项目到京东代码库。京东云汇中开放的免费代码托管平台实现了基于Git的开发任务分包管理、代码在线和离线编辑、编码助手、代码版本管理等全程的代码管理服务。京东代码托管平台地址：<a href="https://code.jd.com/" target="_blank" rel="noopener">https://code.jd.com/</a>，首页如图：</p>
+<p><img src="http://static.open-open.com/lib/uploadImg/20150108/20150108160809_941.png" alt=""></p>
+<p>8、淘宝代码托管平台 <a href="http://code.taobao.org/" target="_blank" rel="noopener">http://code.taobao.org/</a></p>
+<p>TaoCode 是为开源爱好者和广大技术人员提供交流、孵化、创新项目的平台，同时平台也遵循开源理念全面开源，欢迎更多朋友来参与平台建设，希望在我们共同的努力下能加速中国开源消费者向开源贡献者的转变。</p>
+
       
     </div>
 
@@ -413,7 +442,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/Java/" rel="tag"># Java</a>
+            <a href="/tags/Git/" rel="tag"># Git</a>
           
         </div>
       
@@ -426,8 +455,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/posts/d973cb7c.html" rel="next" title="Hexo 在 GitHub 和 Coding 同时发布">
-                <i class="fa fa-chevron-left"></i> Hexo 在 GitHub 和 Coding 同时发布
+              <a href="/posts/dd07dd9c.html" rel="next" title="Git 代码托管">
+                <i class="fa fa-chevron-left"></i> Git 代码托管
               </a>
             
           </div>
@@ -436,8 +465,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/posts/2883d964.html" rel="prev" title="JS 实现倒计时">
-                JS 实现倒计时 <i class="fa fa-chevron-right"></i>
+              <a href="/posts/4a17b156.html" rel="prev" title="Hello World">
+                Hello World <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
