@@ -33,8 +33,6 @@ i18n_dir: :lang      #国际化（i18n）文件夹
 skip_render:      #跳过指定文件的渲染，您可使用 glob 表达式来匹配路径
   - 2048/js/*
   - static/*
-  - static/js/*
-  - static/js/bhkouling.js
   - README.md
 
 # Writing

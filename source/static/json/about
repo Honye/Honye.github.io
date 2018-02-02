@@ -1,28 +1,31 @@
 {
-	"image": "",
-	"labels": [
-		{
-			"label": "博主",
-			"value": "红叶",
-			"url": ""
-		},{
-			"label": "职业",
-			"value": "Web、Android",
-			"url": ""
-		},{
-			"label": "简书",
-			"value": "红叶、秋鸣",
-			"url": "https:\/\/www.jianshu.com\/u\/5c5afd105339"
-		},{
-			"label": "邮箱",
-			"value": "hongye.jun@qq.com",
-			"url": "mailto:hongye.jun@qq.com"
-		}
-	],
-	"content": "此小程序模仿于原生应用“Mark”，仅用于学习，更多功能请下载原生应用体验。\\n该小程序已在 GitHub 上开源，源码可在公众号内找到。大家可以关注下，虽然现在没什么文章，但我也想个攒用户，说不定过不了多久它就活过来了",
-	"bgm": {
-		"title": "HONYE",
-		"url": "http:\/\/ws.stream.qqmusic.qq.com\/M500001VfvsJ21xFqb.mp3?guid=ffffffff82def4af4b12b3cd9337d5e7&uin=346897220&vkey=6292F51E1E384E061FF02C31F716658E5C81F5594D561F2E88B854E81CAAB7806D5E4F103E55D33C16F3FAC506D1AB172DE8600B37E43FAD&fromtag=46",
-		"image": "" 
-	}
+    "image": "http://bing.ioliu.cn/v1/rand",
+    "labels": [
+        {
+            "label": "博主",
+            "value": "红叶",
+            "url": ""
+        },
+        {
+            "label": "职业",
+            "value": "Web、Android",
+            "url": ""
+        },
+        {
+            "label": "简书",
+            "value": "红叶、秋鸣",
+            "url": "https://www.jianshu.com/u/5c5afd105339"
+        },
+        {
+            "label": "邮箱",
+            "value": "hongye.jun@qq.com",
+            "url": "mailto:hongye.jun@qq.com"
+        }
+    ],
+    "content": "此小程序模仿于原生应用“Mark”，仅用于学习，更多功能请下载原生应用体验。\n该小程序已在 GitHub 上开源，源码可在公众号内找到。",
+    "bgm": {
+        "title": "HONYE",
+        "url": "http://ws.stream.qqmusic.qq.com/M500001VfvsJ21xFqb.mp3?guid=ffffffff82def4af4b12b3cd9337d5e7&uin=346897220&vkey=6292F51E1E384E061FF02C31F716658E5C81F5594D561F2E88B854E81CAAB7806D5E4F103E55D33C16F3FAC506D1AB172DE8600B37E43FAD&fromtag=46",
+        "image": ""
+    }
 }
