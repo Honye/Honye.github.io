@@ -78,12 +78,12 @@ theme: next
 deploy:
   # Github
   - type: git
-    repository: git@github.com:Hongye567/Hongye567.github.io.git
+    repository: https://github.com/Hongye567/Hongye567.github.io.git
     branch: master
   # Coding
-  # - type: git
-  #   repository: git@git.coding.net:Honye/Honye.git
-  #   branch: master
+  - type: git
+    repository: https://git.coding.net/Honye/Honye.git
+    branch: master
   # gitee
   # - type: git
   #   repository: 'https://gitee.com/Honyex/Honyex.git'

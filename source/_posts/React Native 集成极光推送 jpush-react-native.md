@@ -8,6 +8,7 @@ date: 2017-06-22 21:35:43
 
 ## 概述
 [jpush-react-native][jpush-react-native] 是极光推送官方开发的 React Native 版本插件，可以快速集成推送功能。现在最新版本的 JPush SDK 分离了 JPush 及 JCore，让开发者可以分开集成 JMessage 及 JPush（以前 JMessage 包含了 JPush）。
+
 我没有 mac 设备，所以只说 Android 的配置。
 
 <!-- more -->
@@ -25,8 +26,17 @@ $ npm install jcore-react-native --save
 
 ### 1. 自动配置部分
 
+官方：
+
 ```bash
 $ react-native link
+```
+
+作者推荐：
+```bash
+# 针对性的link，避免之前手动配置的其它插件重复配置造成报错
+$ react-native link jpush-react-native
+$ react-native link jcore-react-native
 ```
 
 执行完 link 项目后可能会出现报错，这没关系，需要手动配置一下 build.gradle 文件。
@@ -159,7 +169,11 @@ import JPushModule from 'jpush-react-native';
 ...
 
 componentDidMount() {
-    JPushModule.notifyJSDidLoad();
+     // 新版本必需写回调函数
+    // JPushModule.notifyJSDidLoad();
+    JPushModule.notifyJSDidLoad((resultCode) => {
+      if (resultCode === 0) {}
+    });   
     // 接收自定义消息
     JPushModule.addReceiveCustomMsgListener((message) => {
       this.setState({pushMsg: message});
@@ -167,7 +181,14 @@ componentDidMount() {
     // 接收推送通知
     JPushModule.addReceiveNotificationListener((message) => {
       console.log("receive notification: " + message);
-    })
+    });
+    // 打开通知
+    JPushModule.addReceiveOpenNotificationListener((map) => {
+      console.log("Opening notification!");
+      console.log("map.extra: " + map.extras);
+      // 可执行跳转操作，也可跳转原生页面
+      // this.props.navigation.navigate("SecondActivity");
+    });
   }
 
   componentWillUnmount() {

@@ -82,6 +82,10 @@
   <meta property="fb:app_id" content="{{ theme.facebook_sdk.app_id }}" />
 {% endif %}
 
+{% if theme.apple_touch_icon %}
+  <link rel="apple-touch-icon" href="{{ theme.apple_touch_icon }}" />
+{% endif %}
+
 
 {{
   open_graph({

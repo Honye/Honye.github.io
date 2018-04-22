@@ -610,3 +610,6 @@ feed:
   limit: 20
   hub:
   content:
+
+# Custom Apple Config
+apple_touch_icon: /images/app-icon.png

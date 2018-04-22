@@ -2,7 +2,7 @@
 title: Hexo 在 GitHub 和 Coding 同时发布
 tags:
   - Hexo
-  - Github
+  - GitHub
   - Coding
 abbrlink: d973cb7c
 date: 2017-03-04 13:08:58
@@ -23,12 +23,12 @@ deploy:
     branch: master
 ```
 
+<!-- more -->
+
 ### 免输入密码
 
 Hexo 每次提交时都要求输入用户名和密码，尤其在多平台发布时需要多次输入用户名和密码很是麻烦。
 要求输入密码的原因是我们的仓库地址用的是 HTTPS 不是 SSH。
-
-<!-- more -->
 
 **1. 首先生成 SSH 密钥**
 

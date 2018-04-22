@@ -14,6 +14,8 @@ date: 2017-05-07 19:13:28
 
 如果阅读完本文档后还碰到很多环境搭建的问题，我们建议你还可以再看看由本站提供的环境搭建视频教程([macOS iOS][video_mac_IOS]、[macOS Android][video_mac_android]、[windows Android][video_win_android])、[windows环境搭建文字教程][video_win_envir]、以及[常见问题][problemes]。
 
+<!-- more -->
+
 目标平台： iOS Android 开发平台： macOS Linux Windows
 
 ## 安装
@@ -21,8 +23,6 @@ date: 2017-05-07 19:13:28
 #### Chocolatey
 
 [Chocolatey](https://chocolatey.org/)是一个Windows上的包管理器，类似于linux上的yum和 apt-get。 你可以在其[官方网站](https://chocolatey.org/)上查看具体的使用说明。一般的安装步骤应该是下面这样：
-
-<!-- more -->
 
 ```shell
 @powershell -NoProfile -ExecutionPolicy Bypass -Command "iex ((new-object net.webclient).DownloadString('https://chocolatey.org/install.ps1'))" && SET PATH=%PATH%;%ALLUSERSPROFILE%\chocolatey\bin 
