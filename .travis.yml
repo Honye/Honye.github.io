@@ -2,21 +2,22 @@ language: node_js
 node_js: stable
 
 # S: Build Lifecycle
+before_script:
+  - git config --global user.name "Honye"
+  - git config --global user.email "hongye.jun@qq.com"
+
 install:
+  - npm install hexo-cli -g
+  - npm install hexo-deployer-git --save
   - npm install
 
-
-#before_script:
- # - npm install -g gulp
-
 script:
+  - hexo clean
   - hexo g
 
 after_script:
   - cd ./public
   - git init
-  - git config user.name "Honye"
-  - git config user.email "hongye.jun@qq.com"
   - git add .
   - git commit -m "Site updated"
   - git push --force --quiet "https://${GH_TOKEN}@${GH_REF}" master:master
@@ -25,6 +26,9 @@ after_script:
 branches:
   only:
     - hexo-config
+cache:
+  directories:
+    - node_modules
 env:
  global:
    - GH_REF: github.com/Hongye567/Hongye567.github.io
