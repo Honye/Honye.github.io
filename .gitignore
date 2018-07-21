@@ -8,3 +8,5 @@ public/
 node_modules/
 /source/_posts/.md_configs.data
 /source/_posts/.me_configs.data
+
+package-lock.json
