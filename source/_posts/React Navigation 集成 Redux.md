@@ -3,7 +3,7 @@ title: React Navigation 集成 Redux
 date: 2017-12-07 21:54:53
 tags:
   - React Native
-  - redux
+  - Redux
 abbrlink: 9aae91d8
 ---
 更新时间：2018-03-03

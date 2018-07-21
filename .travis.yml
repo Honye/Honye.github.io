@@ -8,7 +8,6 @@ before_script:
 
 install:
   - npm install hexo-cli -g
-  - npm install hexo-deployer-git --save
   - npm install
 
 script:
@@ -31,4 +30,4 @@ cache:
     - node_modules
 env:
  global:
-   - GH_REF: github.com/Hongye567/Hongye567.github.io
+   - GH_REF: github.com/Hongye567/Hongye567.github.io.git
