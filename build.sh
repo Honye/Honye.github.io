@@ -7,7 +7,7 @@ cd ../
 mv .deploy_git/.git/ ./public/
 cd ./public/
 git add .
-git commit -m "Travis CI auto built at `date +"%Y-%m-%d %H:%M"`"
+git commit -m "Travis CI build at `date +"%Y-%m-%d %H:%M:%S"`"
 # GitHub Pages
 git push --force --quiet "https://${GH_TOKEN}@${GH_REF}" master:master
 # Coding Pages

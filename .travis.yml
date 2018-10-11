@@ -28,4 +28,4 @@ cache:
 env:
  global:
    - GH_REF: github.com/Hongye567/Hongye567.github.io.git
-   - CODING_REF: git.coding.net:Honye/Honye.git
+   - CODING_REF: git.coding.net/Honye/Honye.git
