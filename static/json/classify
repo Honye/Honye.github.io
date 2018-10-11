@@ -1,0 +1,76 @@
+[
+    {
+        "id": 1,
+        "title": "类型",
+        "icon": "http://opz28dn03.bkt.clouddn.com/images/icon-classify.png",
+        "children": [
+            "科幻",
+            "爱情",
+            "动作",
+            "喜剧",
+            "悬疑",
+            "动画",
+            "记录",
+            "情色",
+            "剧情"
+        ]
+    },
+    {
+        "id": 2,
+        "title": "地区",
+        "icon": "http://opz28dn03.bkt.clouddn.com/images/icon-earth.png",
+        "children": [
+            "大陆",
+            "香港",
+            "英国",
+            "日本",
+            "韩国"
+        ]
+    },
+    {
+        "id": 3,
+        "title": "标签",
+        "icon": "http://opz28dn03.bkt.clouddn.com/images/icon-tag.png",
+        "children": [
+            "热门",
+            "心情",
+            "话题",
+            "每周一部",
+            "导演",
+            "演员",
+            "文艺",
+            "青春",
+            "励志",
+            "犯罪",
+            "惊悚",
+            "魔幻",
+            "战争",
+            "cult",
+            "音乐",
+            "灾难",
+            "院线",
+            "同性"
+        ]
+    },
+    {
+        "id": 4,
+        "title": "榜单",
+        "icon": "http://opz28dn03.bkt.clouddn.com/images/icon-rank.png",
+        "children": [
+            "帝国杂志",
+            "电影旬报",
+            "IMDb",
+            "BBC"
+        ]
+    },
+    {
+        "id": 5,
+        "title": "获奖",
+        "icon": "http://opz28dn03.bkt.clouddn.com/images/icon-trophy.png",
+        "children": [
+            "戛纳电影节",
+            "柏林电影节",
+            "奥斯卡"
+        ]
+    }
+]

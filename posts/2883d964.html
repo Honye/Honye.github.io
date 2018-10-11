@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+  <meta name="description" content="This moment nap, you will have a dream. But this moment study, you will interpret a dream.">
+  <meta name="keyword" content="Honye">
+  
+    <link rel="shortcut icon" type="image/ico" href="https://static.hinpc.com/image/2016/20160807-hi-logo.png"/> 
+  
+  <title>
+    
+      JS 实现倒计时 | Honye&#39;s Blog
+    
+  </title>
+  <link href="//cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+  <link href="//cdn.bootcss.com/nprogress/0.2.0/nprogress.min.css" rel="stylesheet">
+  <link href="//cdn.bootcss.com/highlight.js/9.12.0/styles/tomorrow.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="/css/style.css">
+<link rel="stylesheet" href="/css/plugins/gitment.css">
+  <script src="//cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+  <script src="//cdn.bootcss.com/geopattern/1.2.3/js/geopattern.min.js"></script>
+  <script src="//cdn.bootcss.com/nprogress/0.2.0/nprogress.min.js"></script>
+  <script src="/js/qrious.js"></script>
+<script src="/js/gitment.js"></script>
+  
+  
+    <!-- MathJax support START -->
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <!-- MathJax support END -->
+  
+
+
+</head>
+<div class="wechat-share">
+  <img src="/css/images/logo.png" />
+</div>
+
+  <body>
+    <header class="header fixed-header">
+  <div class="header-container">
+    <a class="home-link" href="/">
+      <div class="logo"></div>
+      <span>Honye's Blog</span>
+    </a>
+    <ul class="right-list">
+      
+        <li class="list-item">
+          
+            <a href="/" class="item-link">Home</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/tags/" class="item-link">Tags</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/archives/" class="item-link">Archives</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/project/" class="item-link">Projects</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/about/" class="item-link">About</a>
+          
+        </li>
+      
+    </ul>
+    <div class="menu">
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+    </div>
+    <div class="menu-mask">
+      <ul class="menu-list">
+        
+          <li class="menu-item">
+            
+              <a href="/" class="menu-link">Home</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/tags/" class="menu-link">Tags</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/archives/" class="menu-link">Archives</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/project/" class="menu-link">Projects</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/about/" class="menu-link">About</a>
+            
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</header>
+
+    <div id="article-banner">
+  <h2>JS 实现倒计时</h2>
+  <p class="post-date">2017-03-21</p>
+  <div class="arrow-down">
+    <a href="javascript:;"></a>
+  </div>
+</div>
+<main class="app-body flex-box">
+  <!-- Article START -->
+  <article class="post-article">
+    <section class="markdown-content"><h3 id="利用-window-setInterval-实现倒计时"><a href="#利用-window-setInterval-实现倒计时" class="headerlink" title="利用 window.setInterval() 实现倒计时"></a>利用 window.setInterval() 实现倒计时</h3><h4 id="示例："><a href="#示例：" class="headerlink" title="示例："></a><em>示例：</em></h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> id;</span><br><span class="line"><span class="keyword">var</span> interval = <span class="number">1000</span>; </span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * @param year 结束日期的年</span></span><br><span class="line"><span class="comment"> * @param month 结束日期的月</span></span><br><span class="line"><span class="comment"> * @param day 结束日期的日</span></span><br><span class="line"><span class="comment"> * @param divname 需做出响应的元素id</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">ShowCountDown</span>(<span class="params">year,month,day,divname</span>) </span>&#123; </span><br><span class="line">	<span class="comment">// 设置结束日期</span></span><br><span class="line">	<span class="keyword">var</span> endDate = <span class="keyword">new</span> <span class="built_in">Date</span>(year, month<span class="number">-1</span>, day); </span><br><span class="line">	<span class="comment">// 获取当前日期</span></span><br><span class="line">	<span class="keyword">var</span> now = <span class="keyword">new</span> <span class="built_in">Date</span>(); </span><br><span class="line">	<span class="comment">// 计算剩余毫秒数</span></span><br><span class="line">	<span class="keyword">var</span> leftTime=endDate.getTime()-now.getTime(); </span><br><span class="line">	<span class="comment">// 计算剩余秒数</span></span><br><span class="line">	<span class="keyword">var</span> leftsecond = <span class="built_in">parseInt</span>(leftTime/<span class="number">1000</span>); </span><br><span class="line">	<span class="comment">// 剩余天数（整数倍）</span></span><br><span class="line">	<span class="keyword">var</span> day1=<span class="built_in">Math</span>.floor(leftsecond/(<span class="number">60</span>*<span class="number">60</span>*<span class="number">24</span>)); </span><br><span class="line">	<span class="comment">// 剩余小时数（除去大单位后整数倍）</span></span><br><span class="line">	<span class="keyword">var</span> hour=<span class="built_in">Math</span>.floor((leftsecond-day1*<span class="number">24</span>*<span class="number">60</span>*<span class="number">60</span>)/<span class="number">3600</span>); </span><br><span class="line">	<span class="comment">// 剩余分钟数（除去大单位后整数倍）</span></span><br><span class="line">	<span class="keyword">var</span> minute=<span class="built_in">Math</span>.floor((leftsecond-day1*<span class="number">24</span>*<span class="number">60</span>*<span class="number">60</span>-hour*<span class="number">3600</span>)/<span class="number">60</span>); </span><br><span class="line">	<span class="comment">// 剩余秒数（除去大单位后整数倍）</span></span><br><span class="line">	<span class="keyword">var</span> second=<span class="built_in">Math</span>.floor(leftsecond-day1*<span class="number">24</span>*<span class="number">60</span>*<span class="number">60</span>-hour*<span class="number">3600</span>-minute*<span class="number">60</span>); </span><br><span class="line"></span><br><span class="line">	<span class="keyword">var</span> cc = <span class="built_in">document</span>.getElementById(divname); </span><br><span class="line">	cc.innerHTML = <span class="string">"距离"</span> + year + <span class="string">"年"</span> + month + <span class="string">"月"</span> + day + <span class="string">"日还有："</span> + day1 + <span class="string">"天"</span> + hour + <span class="string">"小时"</span> + minute + <span class="string">"分"</span> + second + <span class="string">"秒"</span>; </span><br><span class="line">&#125; </span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 开始倒计时</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">start</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">	id = <span class="built_in">window</span>.setInterval( <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line"></span><br><span class="line">			ShowCountDown(<span class="number">2023</span>,<span class="number">8</span>,<span class="number">7</span>,<span class="string">'divdown1'</span>);</span><br><span class="line"></span><br><span class="line">		&#125;, interval); </span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 停止倒计时</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">stop</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">	<span class="keyword">if</span> (id) &#123;</span><br><span class="line">		<span class="built_in">window</span>.clearInterval(id);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<a id="more"></a>
+<h3 id="window-setInterval-注解"><a href="#window-setInterval-注解" class="headerlink" title="window.setInterval() 注解"></a>window.setInterval() 注解</h3><h4 id="1-window-setInterval"><a href="#1-window-setInterval" class="headerlink" title="1. window.setInterval()"></a>1. <code>window.setInterval()</code></h4><p><strong>功能：</strong><br>按照指定的周期（以毫秒计）来调用函数或计算表达式。<br><strong>语法：</strong><br><code>setInterval(code,millisec)</code><br><strong>参数：</strong><br>code: 在定时时间到时要执行的JavaScript代码串。<br>millisec: 设定的定时时间，用毫秒数表示。<br><strong>返回值：</strong><br>定时器的ID值，可用于clearInterval()方法停止指定的定时器。<br><strong>注：</strong><br>setInterval()方法会不停地调用函数，直到用clearInterval()终止定时或窗口被关闭。</p>
+<h4 id="2-window-clearInterval"><a href="#2-window-clearInterval" class="headerlink" title="2. window.clearInterval()"></a>2. <code>window.clearInterval()</code></h4><p><strong>功能：</strong><br>取消由 setInterval() 方法设置的定时器。<br><strong>语法：</strong><br><code>clearInterval(id_of_setinterval)</code><br><strong>参数：</strong><br>id_of_setinterval: 由 setInterval() 返回的 id 值。该值标识了一个 setInterval 定时器。<br>也就是：window.setInterval() 返回的就是 window.clearInterval() 的参数</p>
+</section>
+    <!-- Tags START -->
+    
+      <div class="tags">
+        <span>Tags:</span>
+        
+  <a href="/tags#JavaScript" >
+    <span class="tag-code">JavaScript</span>
+  </a>
+
+      </div>
+    
+    <!-- Tags END -->
+    <!-- NAV START -->
+    
+  <div class="nav-container">
+    <!-- reverse left and right to put prev and next in a more logic postition -->
+    
+      <a class="nav-left" href="/posts/6fa78ea3.html">
+        <span class="nav-arrow">← </span>
+        
+          遍历 Map 的四种方法
+        
+      </a>
+    
+    
+      <a class="nav-right" href="/posts/a5a9b325.html">
+        
+          Android 下载安装APK
+        
+        <span class="nav-arrow"> →</span>
+      </a>
+    
+  </div>
+
+    <!-- NAV END -->
+    <!-- 打赏 START -->
+    
+      <div class="money-like">
+        <div class="reward-btn">
+          赏
+          <span class="money-code">
+            <span class="alipay-code">
+              <div class="code-image"></div>
+              <b>使用支付宝打赏</b>
+            </span>
+            <span class="wechat-code">
+              <div class="code-image"></div>
+              <b>使用微信打赏</b>
+            </span>
+          </span>
+        </div>
+        <p class="notice">若你觉得我的文章对你有帮助，欢迎点击上方按钮对我打赏</p>
+      </div>
+    
+    <!-- 打赏 END -->
+    <!-- 二维码 START -->
+    
+      <div class="qrcode">
+        <canvas id="share-qrcode"></canvas>
+        <p class="notice">扫描二维码，分享此文章</p>
+      </div>
+    
+    <!-- 二维码 END -->
+    
+      <!-- Gitment START -->
+      <div id="comments"></div>
+      <!-- Gitment END -->
+    
+  </article>
+  <!-- Article END -->
+  <!-- Catalog START -->
+  
+    <aside class="catalog-container">
+  <div class="toc-main">
+    <strong class="toc-title">Catalog</strong>
+    
+      <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#利用-window-setInterval-实现倒计时"><span class="toc-nav-text">利用 window.setInterval() 实现倒计时</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#示例："><span class="toc-nav-text">示例：</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#window-setInterval-注解"><span class="toc-nav-text">window.setInterval() 注解</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#1-window-setInterval"><span class="toc-nav-text">1. window.setInterval()</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#2-window-clearInterval"><span class="toc-nav-text">2. window.clearInterval()</span></a></li></ol></li></ol>
+    
+  </div>
+</aside>
+  
+  <!-- Catalog END -->
+</main>
+
+<script>
+  (function () {
+    var url = 'http://www.hongye567.top/posts/2883d964.html';
+    var banner = 'undefined'
+    if (banner !== '' && banner !== 'undefined' && banner !== 'null') {
+      $('#article-banner').css({
+        'background-image': 'url(' + banner + ')'
+      })
+    } else {
+      $('#article-banner').geopattern(url)
+    }
+    $('.header').removeClass('fixed-header')
+
+     // error image
+    $(".markdown-content img").on('error', function() {
+      $(this).attr('src', 'http://file.muyutech.com/error-img.png')
+      $(this).css({
+        'cursor': 'default'
+      })
+    })
+
+    // zoom image
+    $(".markdown-content img").on('click', function() {
+      var src = $(this).attr('src')
+      if (src !== 'http://file.muyutech.com/error-img.png') {
+        var imageW = $(this).width()
+        var imageH = $(this).height()
+        
+        var zoom = ($(window).width() * 0.95 / imageW).toFixed(2)
+        zoom = zoom < 1 ? 1 : zoom
+        zoom = zoom > 2 ? 2 : zoom
+        var transY = (($(window).height() - imageH) / 2).toFixed(2)
+
+        $('body').append('<div class="image-view-wrap"><div class="image-view-inner"><img src="'+ src +'" /></div></div>')
+        $('.image-view-wrap').addClass('wrap-active')
+        $('.image-view-wrap img').css({
+          'width': `${imageW}`,
+          'transform': `translate3d(0, ${transY}px, 0) scale3d(${zoom}, ${zoom}, 1)`
+        })
+        $('html').css('overflow', 'hidden')
+
+        $('.image-view-wrap').on('click', function() {
+          $(this).remove()
+          $('html').attr('style', '')
+        })
+      }
+    })
+
+    // qrcode
+    var qr = new QRious({
+      element: document.getElementById('share-qrcode'),
+      value: document.location.href
+    });
+
+    // gitment
+    var gitmentConfig = "Hongye567";
+    if (gitmentConfig !== 'undefined') {
+      var gitment = new Gitment({
+        id: "JS 实现倒计时",
+        owner: "Hongye567",
+        repo: "Hongye567.github.io",
+        oauth: {
+          client_id: "8ffc18ce595fbd38908c",
+          client_secret: "73df4141182caa7afb8850042eff22de859352c9"
+        },
+        theme: {
+          render(state, instance) {
+            const container = document.createElement('div')
+            container.lang = "en-US"
+            container.className = 'gitment-container gitment-root-container'
+            container.appendChild(instance.renderHeader(state, instance))
+            container.appendChild(instance.renderEditor(state, instance))
+            container.appendChild(instance.renderComments(state, instance))
+            container.appendChild(instance.renderFooter(state, instance))
+            return container;
+          }
+        }
+      })
+      gitment.render(document.getElementById('comments'))
+    }
+  })();
+</script>
+
+    <div class="scroll-top">
+  <span class="arrow-icon"></span>
+</div>
+    <footer class="app-footer">
+  <p class="copyright">
+    &copy; 2018 | Proudly powered by <a href="https://hexo.io" target="_blank">Hexo</a>
+    <br>
+    Theme by <a href="https://github.com/yanm1ng">yanm1ng</a>
+  </p>
+</footer>
+
+<script>
+  function async(u, c) {
+    var d = document, t = 'script',
+      o = d.createElement(t),
+      s = d.getElementsByTagName(t)[0];
+    o.src = u;
+    if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+    s.parentNode.insertBefore(o, s);
+  }
+</script>
+<script>
+  async("//cdn.bootcss.com/fastclick/1.0.6/fastclick.min.js", function(){
+    FastClick.attach(document.body);
+  })
+</script>
+
+<script>
+  var hasLine = 'true';
+  async("//cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js", function(){
+    $('figure pre').each(function(i, block) {
+      var figure = $(this).parents('figure');
+      if (hasLine === 'false') {
+        figure.find('.gutter').hide();
+      }
+      var lang = figure.attr('class').split(' ')[1] || 'code';
+      var codeHtml = $(this).html();
+      var codeTag = document.createElement('code');
+      codeTag.className = lang;
+      codeTag.innerHTML = codeHtml;
+      $(this).attr('class', '').empty().html(codeTag);
+      figure.attr('data-lang', lang.toUpperCase());
+      hljs.highlightBlock(block);
+    });
+  })
+</script>
+<!-- Baidu Tongji -->
+
+<script src="/js/script.js"></script>
+  </body>
+</html>
