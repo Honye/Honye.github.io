@@ -18,8 +18,11 @@ after_script:
   - cd ./public
   - git init
   - git add .
-  - git commit -m "Site updated"
+  - git commit -m "updated by Travis CI"
+  # GitHub Pages
   - git push --force --quiet "https://${GH_TOKEN}@${GH_REF}" master:master
+  # Coding Pages
+  - git push --force --quiet "https://honye:${CODING_TOKEN}@${CODING_REF}" master:master
 # E: Build LifeCycle
 
 branches:
@@ -31,3 +34,4 @@ cache:
 env:
  global:
    - GH_REF: github.com/Hongye567/Hongye567.github.io.git
+   - CODING_REF: git.coding.net:Honye/Honye.git
