@@ -146,7 +146,7 @@
 </main>
 <script>
   (function() {
-    var url = 'http://www.hongye567.top/project/index.html';
+    var url = 'http://www.honye.top/project/index.html';
     $('#article-banner').geopattern(url);
     $('.header').removeClass('fixed-header')
     $.ajax({
@@ -154,7 +154,7 @@
         Accept: 'application/vnd.github.v3.raw'
       },
       type: 'get',
-      url: 'https://api.github.com/users/Hongye567/repos',
+      url: 'https://api.github.com/users/Honye/repos',
       success: function (data) {
         var repos = data.sort(function(a, b) {
           return (b.stargazers_count - a.stargazers_count)
