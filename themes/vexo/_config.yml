@@ -31,8 +31,8 @@ qrcode: true
 comment: gitment
 
 # gitment config
-gitment_owner: Hongye567
-gitment_repo: Hongye567.github.io
+gitment_owner: Honye
+gitment_repo: Honye.github.io
 gitment_oauth_id: 8ffc18ce595fbd38908c
 gitment_oauth_secret: 73df4141182caa7afb8850042eff22de859352c9
 
@@ -47,7 +47,7 @@ about:
   description: "This moment nap, you will have a dream. But this moment study, you will interpret a dream."
   weibo_username: 3807855479
   twitter_username: 
-  github_username: Hongye567
+  github_username: Honye
   zhihu_username: 
   douban_username: 158948115
   linkedin_username: 

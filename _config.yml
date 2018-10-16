@@ -13,7 +13,7 @@ favicon: https://static.hinpc.com/image/2016/20160807-hi-logo.png      # 网站�
 
 # URL
 ## If your site is put in a subdirectory, set url as 'http://yoursite.com/child' and root as '/child/'
-url: http://www.hongye567.top
+url: http://www.honye.top
 root: /
 # permalink: :year/:month/:day/:title/    # 永久链接格式
 permalink: posts/:abbrlink.html    # 此处使用插件hexo-abbrlink
@@ -78,7 +78,7 @@ theme: vexo
 deploy:
   # Github
   - type: git
-    repository: https://github.com/Hongye567/Hongye567.github.io.git
+    repository: https://github.com/Honye/Honye.github.io.git
     branch: master
   # Coding
   - type: git

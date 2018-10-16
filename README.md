@@ -1,18 +1,18 @@
-# Honye's Blog
+ï»¿# Honye's Blog
 
 [![Build Status](https://travis-ci.org/Hongye567/Hongye567.github.io.svg?branch=hexo-config)](https://travis-ci.org/Hongye567/Hongye567.github.io)
 
-Ê¹ÓÃ [hexo](https://hexo.io/) ½¨Õ¾
+ä½¿ç”¨ [hexo](https://hexo.io/) å»ºç«™
 
-## ±Ê¼Ç
+## ç¬”è®°
 
-[ÀûÓÃhexoºÍgithub´î½¨¾²Ì¬²©¿Í£¨Ò»£©](https://www.jianshu.com/p/0c14e0000998)
+[åˆ©ç”¨hexoå’Œgithubæ­å»ºé™æ€åšå®¢ï¼ˆä¸€ï¼‰](https://www.jianshu.com/p/0c14e0000998)
 
-[Hexo ±àÒëÎÄµµÊ± JS »ìÂÒ½â¾ö·½°¸](https://www.jianshu.com/p/f432500fdfc2)
+[Hexo ç¼–è¯‘æ–‡æ¡£æ—¶ JS æ··ä¹±è§£å†³æ–¹æ¡ˆ](https://www.jianshu.com/p/f432500fdfc2)
 
-[Hexo ÔÚ Coding ÉÏ²¿Êğ²©¿Í](https://www.jianshu.com/p/f7b6d5d62dd0)
+[Hexo åœ¨ Coding ä¸Šéƒ¨ç½²åšå®¢](https://www.jianshu.com/p/f7b6d5d62dd0)
 
-[Hexo ÔÚ GitHub ºÍ Coding Í¬Ê±·¢²¼](https://www.jianshu.com/p/9215862b5eda)
+[Hexo åœ¨ GitHub å’Œ Coding åŒæ—¶å‘å¸ƒ](https://www.jianshu.com/p/9215862b5eda)
 
-## Èı·½²å¼ş
-[hexo-abbrlink Éú³ÉÓÀ¾ÃÁ´](https://github.com/rozbo/hexo-abbrlink)
+## ä¸‰æ–¹æ’ä»¶
+[hexo-abbrlink ç”Ÿæˆæ°¸ä¹…é“¾](https://github.com/rozbo/hexo-abbrlink)
