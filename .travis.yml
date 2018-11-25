@@ -27,5 +27,5 @@ cache:
     - node_modules
 env:
  global:
-   - GH_REF: github.com/Hongye567/Hongye567.github.io.git
+   - GH_REF: github.com/Honye/Honye.github.io.git
    - CODING_REF: git.coding.net/Honye/Honye.git

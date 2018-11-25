@@ -1,6 +1,6 @@
 ﻿# Honye's Blog
 
-[![Build Status](https://travis-ci.org/Hongye567/Hongye567.github.io.svg?branch=hexo-config)](https://travis-ci.org/Hongye567/Hongye567.github.io)
+[![Build Status](https://travis-ci.org/Honye/Honye.github.io.svg?branch=hexo-config)](https://travis-ci.org/Honye/Honye.github.io)
 
 使用 [hexo](https://hexo.io/) 建站
 
