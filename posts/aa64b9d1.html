@@ -10,7 +10,7 @@
   
   <title>
     
-      几个常见的 Git 代码托管平台 | Honye&#39;s Blog
+      Postman 使用之 Scripts | Honye&#39;s Blog
     
   </title>
   <link href="//cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
@@ -138,8 +138,8 @@
 </header>
 
     <div id="article-banner">
-  <h2>几个常见的 Git 代码托管平台</h2>
-  <p class="post-date">2016-11-01</p>
+  <h2>Postman 使用之 Scripts</h2>
+  <p class="post-date">2018-11-25</p>
   <div class="arrow-down">
     <a href="javascript:;"></a>
   </div>
@@ -147,44 +147,43 @@
 <main class="app-body flex-box">
   <!-- Article START -->
   <article class="post-article">
-    <section class="markdown-content"><p>说到 Git 代码托管平台，首先推荐的是 GitHub，好多好的开源项目都来自 GitHub，但是 GitHub 只能新建公开的 Git 仓库，私有仓库要收费，如果你做的是一个开源项目，可以首选 GitHub。下面推荐几个比较好的 Git 代码托管平台，这里我不做过多的说明和评价，也好让大家多看看，比较一下，找到自己的”真爱”。</p>
-<a id="more"></a>
-<p>1、GitHub</p>
-<p>关于GItHub相信大家都有耳闻，我就不详细介绍了。GitHub地址：<a href="https://github.com/" target="_blank" rel="noopener">https://github.com/</a>，其首页如图：</p>
-<p>  <img src="http://static.open-open.com/lib/uploadImg/20150108/20150108160808_916.png" alt=""></p>
-<p>2、GitLab</p>
-<p>对于有些人，提到 GitHub 就会自然的想到 Gitlab, Gitlab 支持无限的公有项目和私有项目。Gitlab 地址：<a href="https://about.gitlab.com/" target="_blank" rel="noopener">https://about.gitlab.com/</a>，其首页截图如图：</p>
-<p>  <img src="http://static.open-open.com/lib/uploadImg/20150108/20150108160808_277.png" alt=""></p>
-<p>3、Bitbucket</p>
-<p>Bitbucket 免费支持5个开发成员的团队创建无限私有代码托管库。Bitbucket地址：<a href="https://bitbucket.org/" target="_blank" rel="noopener">https://bitbucket.org/</a>，首页如图：</p>
-<p><img src="http://static.open-open.com/lib/uploadImg/20150108/20150108160808_866.png" alt=""></p>
-<p>4、(推荐)开源中国代码托管</p>
-<p>前面说的都是国外的，下面来说几个国内的。开源中国一个账号最多可以创建1000个项目，包含公有和私有。Git @ OSC 是开源中国社区团队基于开源项目 GitLab 开发的在线代码托管平台。Git @ OSC 除了提供最基础的 git 代码托管之外，还提供代码在线查看、历史版本查看、Fork、Pull Reuqest 、打包下载任意版本、Issue、Wiki 等方便管理、开发、协作、共享的功能，具体请查看帮助。开源中国代码托管地址：<a href="http://git.oschina.net/" target="_blank" rel="noopener">http://git.oschina.net/</a>，其首页如图：</p>
-<p><img src="http://static.open-open.com/lib/uploadImg/20150108/20150108160808_540.png" alt=""></p>
-<p>开源中国在几个月前又发布了团队协作开发平台，和代码托管平台一起，打造了一个十分好的团队开发平台，开源中国团队协作平台地址：<a href="http://team.oschina.net/" target="_blank" rel="noopener">http://team.oschina.net/</a>，团队协作平台支持任务的创建、讨论、便签等，如图：</p>
-<p><img src="http://static.open-open.com/lib/uploadImg/20150108/20150108160808_985.png" alt=""></p>
-<p>5、(推荐)Coding.net</p>
-<p>谈到 coding.net, 首先必须提的是速度快，功能与开源中国相似，同样一个账号最多可以创建1000个项目，也支持任务的创建等。coding.net地址：<a href="https://coding.net/home.html" target="_blank" rel="noopener">https://coding.net/home.html</a>，其首页如图：</p>
-<p><img src="http://static.open-open.com/lib/uploadImg/20150108/20150108160808_51.png" alt=""></p>
-<p>6、CSDN 代码托管</p>
-<p>2013年6月28日推出代码托管与社交编程平台“CODE”，CSDN CODE 系统搭建于阿里云 IaaS 平台之上，向个人开发者、IT 团队及企业提供代码托管、在线协作、社交编程、项目管理等服务。作为 CSDN 整体服务的一部分， CSDN CODE 平台使用 CSDN 通行证系统，与 CSDN 其他业务账号互通， 方便用户在各个业务间切换。CSDN 代码托管地址：<a href="https://code.csdn.net/" target="_blank" rel="noopener">https://code.csdn.net/</a>，首页如图：</p>
-<p><img src="http://static.open-open.com/lib/uploadImg/20150108/20150108160809_562.png" alt=""></p>
-<p>7、京东代码托管平台</p>
-<p>作为京东电商云生态的重要一环，京东云汇中的代码托管平台2013年7月份起全面对外开放，用户只要拥有京东账号即可使用的代码托管服务。此外，为了支持国内程序员开源社区建设，目前平台对每个项目均提供免费的1G存储空间，并设置了“代码一键迁移”功能，用户可以方便的从其他GIT代码托管平台转移其项目到京东代码库。京东云汇中开放的免费代码托管平台实现了基于Git的开发任务分包管理、代码在线和离线编辑、编码助手、代码版本管理等全程的代码管理服务。京东代码托管平台地址：<a href="https://code.jd.com/" target="_blank" rel="noopener">https://code.jd.com/</a>，首页如图：</p>
-<p><img src="http://static.open-open.com/lib/uploadImg/20150108/20150108160809_941.png" alt=""></p>
-<p>8、淘宝代码托管平台 <a href="http://code.taobao.org/" target="_blank" rel="noopener">http://code.taobao.org/</a></p>
-<p>TaoCode 是为开源爱好者和广大技术人员提供交流、孵化、创新项目的平台，同时平台也遵循开源理念全面开源，欢迎更多朋友来参与平台建设，希望在我们共同的努力下能加速中国开源消费者向开源贡献者的转变。</p>
+    <section class="markdown-content"><p>在我们日常开发中经常需要用到登录授权，大多接口都需要携带 Auth 信息。在 Postman 中调试接口时发送登录请求后再复制粘贴 Token，麻烦。Postman 的 Scripts 功能可以较好的解决这个问题。</p>
+<p>官文：<a href="https://learning.getpostman.com/docs/postman/scripts/intro_to_scripts/" target="_blank" rel="noopener">https://learning.getpostman.com/docs/postman/scripts/intro_to_scripts/</a></p>
+<h2 id="Test-scripts"><a href="#Test-scripts" class="headerlink" title="Test scripts"></a>Test scripts</h2><p>Test scripts 是在请求结束后运行的 JavaScript 脚本。在登录请求结束后将 Token 设置到<a href="https://learning.getpostman.com/docs/postman/environments_and_globals/intro_to_environments_and_globals" target="_blank" rel="noopener">环境变量</a>中，在需要 Auth 的接口中取用变量。</p>
+<h3 id="pm-test"><a href="#pm-test" class="headerlink" title="pm.test"></a>pm.test</h3><p><code>pm.test(testName:String, specFunction:Function):Function</code> 可以用来确认 Response 是否和预期返回的一致。</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">param</th>
+<th style="text-align:left">description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">testName</td>
+<td style="text-align:left">测试名，在 <strong>Test Results</strong> 面板中显示</td>
+</tr>
+<tr>
+<td style="text-align:left">specFunction</td>
+<td style="text-align:left">测试执行函数</td>
+</tr>
+</tbody>
+</table>
+<p>首先确认 Request 是否请求成功，HTTP 状态码为 200。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">pm.test(<span class="string">"Status code is 200"</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    pm.response.to.have.status(<span class="number">200</span>);</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<p>接着判断 Response 是否如期返回 token。如果有返回就设置到环境变量中，如果没有就不管了。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">pm.test(<span class="string">"Response has token"</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    pm.response.to.have.jsonBody(<span class="string">"token"</span>);</span><br><span class="line">    <span class="comment">// 如果上面断言不通过，下面的语句不会执行</span></span><br><span class="line">    <span class="keyword">const</span> token = pm.response.json().token;</span><br><span class="line">    pm.environment.set(<span class="string">"token"</span>, token);</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<p>合并。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">pm.test(<span class="string">"Status code is 200"</span>, <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">    pm.response.to.have.status(<span class="number">200</span>);</span><br><span class="line">    pm.test(<span class="string">'Response has token'</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">        pm.response.to.have.jsonBody(<span class="string">"token"</span>);</span><br><span class="line">        <span class="keyword">const</span> token = pm.response.json().token;</span><br><span class="line">        pm.environment.set(<span class="string">"token"</span>, token);</span><br><span class="line">    &#125;)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<p><img src="./_image/20181118172735.png" alt="Test Results (1)"></p>
+<p><img src="./_image/20181118172817.png" alt="Test Results (2)"></p>
+<h2 id="Variables"><a href="#Variables" class="headerlink" title="Variables"></a>Variables</h2><p>经过上述的 Test scripts 已经将登录请求得到的 token 设置到了环境变量中。现在在需要验证 Auth 信息的请求中引用变量，以 Authorization为例。</p>
+<p>变量引用有两种方式，一种是通过 <code></code> 的形式访问，这种形式只能在 Request Builder 中使用，也就是只能在 URL、Params、Authorzation、Headers、Body 中使用，另一种是通过 Scripts 访问，如上述用到的 <code>pm.enviroment.set(variableName:String, variableValue:String)</code>。更多查阅官文：<a href="https://learning.getpostman.com/docs/postman/environments_and_globals/variables" target="_blank" rel="noopener">https://learning.getpostman.com/docs/postman/environments_and_globals/variables</a></p>
+<p>Authorization 🌰：</p>
+<p><img src="./_image/20181118172846.png" alt="Variables demo"></p>
+<h2 id="More"><a href="#More" class="headerlink" title="More"></a>More</h2><p>Postman 的功能很强大，灵活应用可以很好提高工作效率和质量。比如灵活使用 <a href="https://learning.getpostman.com/docs/postman/environments_and_globals/intro_to_environments_and_globals" target="_blank" rel="noopener">Environment</a> 可以方便的在测试和生产环境切换，使用 <a href="https://learning.getpostman.com/docs/postman/scripts/intro_to_scripts" target="_blank" rel="noopener">Scripts</a> 可以实现依次发送多个请求，或者 token 失效后自动刷新 token。活学活用查阅官文：<a href="https://learning.getpostman.com/docs" target="_blank" rel="noopener">https://learning.getpostman.com/docs</a></p>
 </section>
     <!-- Tags START -->
-    
-      <div class="tags">
-        <span>Tags:</span>
-        
-  <a href="/tags#Git">
-    <span class="tag-code">Git</span>
-  </a>
-
-      </div>
     
     <!-- Tags END -->
     <!-- NAV START -->
@@ -192,20 +191,13 @@
   <div class="nav-container">
     <!-- reverse left and right to put prev and next in a more logic postition -->
     
-      <a class="nav-left" href="/posts/dd07dd9c.html">
+      <a class="nav-left" href="/posts/9aae91d8.html">
         <span class="nav-arrow">← </span>
         
-          Git 代码托管
+          React Navigation 集成 Redux
         
       </a>
     
-    
-      <a class="nav-right" href="/posts/4a17b156.html">
-        
-          Hello World
-        
-        <span class="nav-arrow"> →</span>
-      </a>
     
   </div>
 
@@ -251,7 +243,7 @@
   <div class="toc-main">
     <strong class="toc-title">Catalog</strong>
     
-      <ol class="nav">none</ol>
+      <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Test-scripts"><span class="toc-nav-text">Test scripts</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#pm-test"><span class="toc-nav-text">pm.test</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Variables"><span class="toc-nav-text">Variables</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#More"><span class="toc-nav-text">More</span></a></li></ol>
     
   </div>
 </aside>
@@ -261,7 +253,7 @@
 
 <script>
   (function () {
-    var url = 'http://www.honye.top/posts/6c8e222d.html';
+    var url = 'http://www.honye.top/posts/aa64b9d1.html';
     var banner = 'undefined'
     if (banner !== '' && banner !== 'undefined' && banner !== 'null') {
       $('#article-banner').css({
@@ -317,7 +309,7 @@
     var gitmentConfig = "Honye";
     if (gitmentConfig !== 'undefined') {
       var gitment = new Gitment({
-        id: "几个常见的 Git 代码托管平台",
+        id: "Postman 使用之 Scripts",
         owner: "Honye",
         repo: "Honye.github.io",
         oauth: {

@@ -1,12 +1,12 @@
 <!DOCTYPE html>
 <html>
-  <head>
+  <head><meta name="generator" content="Hexo 3.8.0">
   <meta http-equiv="content-type" content="text/html; charset=utf-8">
   <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
   <meta name="description" content="This moment nap, you will have a dream. But this moment study, you will interpret a dream.">
   <meta name="keyword" content="Honye">
   
-    <link rel="shortcut icon" type="image/ico" href="https://static.hinpc.com/image/2016/20160807-hi-logo.png"/> 
+    <link rel="shortcut icon" type="image/ico" href="https://static.hinpc.com/image/2016/20160807-hi-logo.png"> 
   
   <title>
     
@@ -51,7 +51,7 @@
 
 </head>
 <div class="wechat-share">
-  <img src="/css/images/logo.png" />
+  <img src="/css/images/logo.png">
 </div>
 
   <body>
@@ -141,12 +141,32 @@
   
     <article class="article-card">
       <h2 class="article-head">
+        <a href="/posts/2883d964.html">JS 实现倒计时</a>
+      </h2>
+      <p class="article-date">March 21, 2017</p>
+      
+        
+  <a href="/tags#JavaScript">
+    <span class="tag-code">JavaScript</span>
+  </a>
+
+      
+      <div class="article-summary">
+        
+          <h3 id="利用-window-setInterval-实现倒计时"><a href="#利用-window-setInterval-实现倒计时" class="headerlink" title="利用 window.setInterval() 实现倒计时"></a>利用 window.setInterval() 实现倒计时</h3><h4 id="示例："><a href="#示例：" class="headerlink" title="示例："></a><em>示例：</em></h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> id;</span><br><span class="line"><span class="keyword">var</span> interval = <span class="number">1000</span>; </span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * @param year 结束日期的年</span></span><br><span class="line"><span class="comment"> * @param month 结束日期的月</span></span><br><span class="line"><span class="comment"> * @param day 结束日期的日</span></span><br><span class="line"><span class="comment"> * @param divname 需做出响应的元素id</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">ShowCountDown</span>(<span class="params">year,month,day,divname</span>) </span>&#123; </span><br><span class="line">	<span class="comment">// 设置结束日期</span></span><br><span class="line">	<span class="keyword">var</span> endDate = <span class="keyword">new</span> <span class="built_in">Date</span>(year, month<span class="number">-1</span>, day); </span><br><span class="line">	<span class="comment">// 获取当前日期</span></span><br><span class="line">	<span class="keyword">var</span> now = <span class="keyword">new</span> <span class="built_in">Date</span>(); </span><br><span class="line">	<span class="comment">// 计算剩余毫秒数</span></span><br><span class="line">	<span class="keyword">var</span> leftTime=endDate.getTime()-now.getTime(); </span><br><span class="line">	<span class="comment">// 计算剩余秒数</span></span><br><span class="line">	<span class="keyword">var</span> leftsecond = <span class="built_in">parseInt</span>(leftTime/<span class="number">1000</span>); </span><br><span class="line">	<span class="comment">// 剩余天数（整数倍）</span></span><br><span class="line">	<span class="keyword">var</span> day1=<span class="built_in">Math</span>.floor(leftsecond/(<span class="number">60</span>*<span class="number">60</span>*<span class="number">24</span>)); </span><br><span class="line">	<span class="comment">// 剩余小时数（除去大单位后整数倍）</span></span><br><span class="line">	<span class="keyword">var</span> hour=<span class="built_in">Math</span>.floor((leftsecond-day1*<span class="number">24</span>*<span class="number">60</span>*<span class="number">60</span>)/<span class="number">3600</span>); </span><br><span class="line">	<span class="comment">// 剩余分钟数（除去大单位后整数倍）</span></span><br><span class="line">	<span class="keyword">var</span> minute=<span class="built_in">Math</span>.floor((leftsecond-day1*<span class="number">24</span>*<span class="number">60</span>*<span class="number">60</span>-hour*<span class="number">3600</span>)/<span class="number">60</span>); </span><br><span class="line">	<span class="comment">// 剩余秒数（除去大单位后整数倍）</span></span><br><span class="line">	<span class="keyword">var</span> second=<span class="built_in">Math</span>.floor(leftsecond-day1*<span class="number">24</span>*<span class="number">60</span>*<span class="number">60</span>-hour*<span class="number">3600</span>-minute*<span class="number">60</span>); </span><br><span class="line"></span><br><span class="line">	<span class="keyword">var</span> cc = <span class="built_in">document</span>.getElementById(divname); </span><br><span class="line">	cc.innerHTML = <span class="string">"距离"</span> + year + <span class="string">"年"</span> + month + <span class="string">"月"</span> + day + <span class="string">"日还有："</span> + day1 + <span class="string">"天"</span> + hour + <span class="string">"小时"</span> + minute + <span class="string">"分"</span> + second + <span class="string">"秒"</span>; </span><br><span class="line">&#125; </span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 开始倒计时</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">start</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">	id = <span class="built_in">window</span>.setInterval( <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line"></span><br><span class="line">			ShowCountDown(<span class="number">2023</span>,<span class="number">8</span>,<span class="number">7</span>,<span class="string">'divdown1'</span>);</span><br><span class="line"></span><br><span class="line">		&#125;, interval); </span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 停止倒计时</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">stop</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">	<span class="keyword">if</span> (id) &#123;</span><br><span class="line">		<span class="built_in">window</span>.clearInterval(id);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+        
+      </div>
+      <a class="more" href="/posts/2883d964.html">Read more</a>
+    </article>
+  
+    <article class="article-card">
+      <h2 class="article-head">
         <a href="/posts/6fa78ea3.html">遍历 Map 的四种方法</a>
       </h2>
       <p class="article-date">March 21, 2017</p>
       
         
-  <a href="/tags#Java" >
+  <a href="/tags#Java">
     <span class="tag-code">Java</span>
   </a>
 
@@ -167,15 +187,15 @@
       <p class="article-date">March 4, 2017</p>
       
         
-  <a href="/tags#Hexo" >
+  <a href="/tags#Hexo">
     <span class="tag-code">Hexo</span>
   </a>
 
-  <a href="/tags#GitHub" >
+  <a href="/tags#GitHub">
     <span class="tag-code">GitHub</span>
   </a>
 
-  <a href="/tags#Coding" >
+  <a href="/tags#Coding">
     <span class="tag-code">Coding</span>
   </a>
 
@@ -196,11 +216,11 @@
       <p class="article-date">March 4, 2017</p>
       
         
-  <a href="/tags#Hexo" >
+  <a href="/tags#Hexo">
     <span class="tag-code">Hexo</span>
   </a>
 
-  <a href="/tags#Coding" >
+  <a href="/tags#Coding">
     <span class="tag-code">Coding</span>
   </a>
 
@@ -222,7 +242,7 @@
       <p class="article-date">March 3, 2017</p>
       
         
-  <a href="/tags#Hexo" >
+  <a href="/tags#Hexo">
     <span class="tag-code">Hexo</span>
   </a>
 
@@ -248,7 +268,7 @@
       <p class="article-date">February 5, 2017</p>
       
         
-  <a href="/tags#MUI" >
+  <a href="/tags#MUI">
     <span class="tag-code">MUI</span>
   </a>
 
@@ -268,11 +288,11 @@
       <p class="article-date">December 16, 2016</p>
       
         
-  <a href="/tags#Hexo" >
+  <a href="/tags#Hexo">
     <span class="tag-code">Hexo</span>
   </a>
 
-  <a href="/tags#GitHub" >
+  <a href="/tags#GitHub">
     <span class="tag-code">GitHub</span>
   </a>
 
@@ -315,7 +335,7 @@
       <p class="article-date">November 1, 2016</p>
       
         
-  <a href="/tags#Git" >
+  <a href="/tags#Git">
     <span class="tag-code">Git</span>
   </a>
 
@@ -335,7 +355,7 @@
       <p class="article-date">November 1, 2016</p>
       
         
-  <a href="/tags#Git" >
+  <a href="/tags#Git">
     <span class="tag-code">Git</span>
   </a>
 
