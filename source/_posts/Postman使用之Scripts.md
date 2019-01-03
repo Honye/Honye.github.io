@@ -1,11 +1,14 @@
 ---
 title: Postman 使用之 Scripts
+abbrlink: aa64b9d1
 date: 2018-11-25 22:02:53
 ---
 
 在我们日常开发中经常需要用到登录授权，大多接口都需要携带 Auth 信息。在 Postman 中调试接口时发送登录请求后再复制粘贴 Token，麻烦。Postman 的 Scripts 功能可以较好的解决这个问题。
 
 官文：<https://learning.getpostman.com/docs/postman/scripts/intro_to_scripts/>
+
+<!-- more -->
 
 ## Test scripts
 
@@ -52,9 +55,9 @@ pm.test("Status code is 200", function () {
 })
 ```
 
-![Test Results (1)](./_image/20181118172735.png)
+![Test Results (1)](../images/20181118172735.png)
 
-![Test Results (2)](./_image/20181118172817.png)
+![Test Results (2)](../images/20181118172817.png)
 
 ## Variables
 
@@ -64,7 +67,7 @@ pm.test("Status code is 200", function () {
 
 Authorization 🌰：
 
-![Variables demo](./_image/20181118172846.png)
+![Variables demo](../images/20181118172846.png)
 
 ## More
 

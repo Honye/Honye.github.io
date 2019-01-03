@@ -14,41 +14,43 @@ date: 2017-05-14 16:59:29
 
 作者用于测试 web 适配，当开发的网页需要用手机测试时，不再需要手动输入二维码，用此插件生成二维码后手机扫码访问即可。
 <!-- more -->
- ![](http://opz28dn03.bkt.clouddn.com/2017-05-14-17-07-58.jpg)
- ![](http://opz28dn03.bkt.clouddn.com/2017-05-14-17-08-20.jpg)
- ![](http://opz28dn03.bkt.clouddn.com/2017-05-14-17-08-51.jpg)
+ ![](../images/2017-05-14-17-07-58.jpg)
+ ![](../images/2017-05-14-17-08-20.jpg)
 
 ## 2. Infinity 新标签页
 
 Infinity新标签页，基于Chrome的云应用服务，让你更优雅、轻松地使用Chrome。
 
- ![](http://opz28dn03.bkt.clouddn.com/2017-05-14-17-10-38.jpg)
- ![](http://opz28dn03.bkt.clouddn.com/2017-05-14-17-11-11.jpg)
+ ![](../images/2017-05-14-17-10-38.jpg)
 
 ## 3. JSON-handle
 
 对JSON格式的内容进行浏览和编辑，以树形图样式展现JSON文档，并可实时编辑。
 
- ![](http://opz28dn03.bkt.clouddn.com/2017-05-14-17-14-56.jpg)
- ![](http://opz28dn03.bkt.clouddn.com/2017-05-14-17-15-09.jpg)
+ ![](../images/2017-05-14-17-14-56.jpg)
 
 ## 4. Octotree
 
-Extension to show code tree for GitHub and GitLab.  
+Extension to show code tree for GitHub.  
  
  Features:
  * Easy-to-navigate code tree like IDEs
  * Support private repositories
- * Support GitHub and GitLab Enterprise
+ * Support GitHub Enterprise
  
-Learn more about Octotree settings: https://github.com/buunguyen/octotree#settings
+Learn more about Octotree: https://github.com/ovity/octotree
 
- ![](http://opz28dn03.bkt.clouddn.com/2017-05-14-17-19-48.jpg)
+ ![Octotree](https://raw.githubusercontent.com/ovity/octotree/master/docs/chrome-github.jpg)
 
-## 5. Postman
+## 5. ~~Postman~~
 
 Supercharge your API workflow with Postman!
+Postman Chrome 插件已停用了，可下载 PC 客户端。[下载](https://www.getpostman.com/apps)
 
- ![](http://opz28dn03.bkt.clouddn.com/2017-05-14-17-22-01.jpg)
- ![](http://opz28dn03.bkt.clouddn.com/2017-05-14-17-22-36.jpg)
+ ![Collections](https://www.getpostman.com/img/v2/products/dark-theme.svg)
 
+## 6. FeHelper
+
+FE助手：包括JSON格式化、二维码生成与解码、信息编解码、代码压缩、美化、页面取色、Markdown与HTML互转、网页滚动截屏、正则表达式、时间转换工具、编码规范检测、页面性能检测、Ajax接口调试、密码生成器、JSON比对工具、网页编码设置、便签笔记
+
+![FeHelper](https://raw.githubusercontent.com/zxlie/FeHelper/master/apps/static/screenshot/menu.png)

@@ -68,10 +68,22 @@ time_format: HH:mm:ss
 per_page: 10      #每页显示的文章量 (0 = 关闭分页功能)
 pagination_dir: page
 
+archive_generator:
+  per_page: 0  # 归档页文章数, 参数为 0 时不分页
+  yearly: false
+  monthly: false
+  daily: false
+
+tag_generator:
+  per_page: 0
+
+category_generator:
+  per_page: 0
+
 # Extensions
 ## Plugins: https://hexo.io/plugins/
 ## Themes: https://hexo.io/themes/
-theme: vexo
+theme: even
 
 # Deployment
 ## Docs: https://hexo.io/docs/deployment.html
