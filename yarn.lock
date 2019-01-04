@@ -1537,13 +1537,6 @@ hexo-renderer-marked@^0.2.10:
     object-assign "^4.1.0"
     strip-indent "^1.0.1"
 
-hexo-renderer-sass@^0.3.2:
-  version "0.3.2"
-  resolved "https://registry.yarnpkg.com/hexo-renderer-sass/-/hexo-renderer-sass-0.3.2.tgz#d93106a788d4090a41890c039adbae40c7c89382"
-  integrity sha512-0TFXrqxQftLLtmANwQJ3yS97PJa3AaAjSN4cDS2rRXM0yvnZIB9i1pDbFdZi9QusNnVAUMxsLjrFMiz/M5v0Xg==
-  dependencies:
-    node-sass "^4.5.3"
-
 hexo-renderer-scss@^1.2.0:
   version "1.2.0"
   resolved "https://registry.yarnpkg.com/hexo-renderer-scss/-/hexo-renderer-scss-1.2.0.tgz#4f4485e856c548254ca9be6731be08e118d857b6"
@@ -2524,7 +2517,7 @@ node-sass-magic-importer@^5.1.1:
     postcss-scss "^2.0.0"
     resolve "^1.9.0"
 
-node-sass@^4.5.3, node-sass@^4.7.2:
+node-sass@^4.7.2:
   version "4.11.0"
   resolved "https://registry.yarnpkg.com/node-sass/-/node-sass-4.11.0.tgz#183faec398e9cbe93ba43362e2768ca988a6369a"
   integrity sha512-bHUdHTphgQJZaF1LASx0kAviPH7sGlcyNhWade4eVIpFp6tsn7SV8xNMTbsQFpEV9VXpnwTTnNYlfsZXgGgmkA==
