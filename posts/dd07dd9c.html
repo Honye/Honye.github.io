@@ -1,0 +1,451 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+  <head><meta name="generator" content="Hexo 3.8.0">
+    
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+<meta name="theme-color" content="#f8f5ec">
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+
+  <meta name="description" content="Git 代码托管">
+
+
+
+
+  <meta name="keywords" content="Git, Honye's Blog">
+
+
+
+
+
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="Honye's Blog">
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=2.10.2">
+
+
+
+<link rel="canonical" href="http://www.honye.top/posts/dd07dd9c.html">
+
+
+
+  <link rel="stylesheet" type="text/css" href="/lib/fancybox/jquery.fancybox.css">
+
+
+
+
+  <link rel="stylesheet" type="text/css" href="/lib/nprogress/nprogress.min.css">
+
+
+
+<link rel="stylesheet" type="text/css" href="/css/style.css?v=2.10.2">
+
+
+
+  
+
+
+
+  <script id="baidu_push">
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+
+
+
+
+
+
+
+<script>
+  window.config = {"leancloud":{"app_id":null,"app_key":null},"toc":true,"fancybox":true,"pjax":true};
+</script>
+
+    <title> Git 代码托管 - Honye's Blog </title>
+  </head>
+
+  <body><div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/." class="logo">Honye's Blog</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    
+      <a href="/">
+        <li class="mobile-menu-item">
+          
+          
+            首页
+          
+        </li>
+      </a>
+    
+      <a href="/archives/">
+        <li class="mobile-menu-item">
+          
+          
+            归档
+          
+        </li>
+      </a>
+    
+      <a href="/tags">
+        <li class="mobile-menu-item">
+          
+          
+            标签
+          
+        </li>
+      </a>
+    
+      <a href="/about">
+        <li class="mobile-menu-item">
+          
+          
+            关于
+          
+        </li>
+      </a>
+    
+  </ul>
+</nav>
+
+    <div class="container" id="mobile-panel">
+      <header id="header" class="header"><div class="logo-wrapper">
+  <a href="/." class="logo">Honye's Blog</a>
+</div>
+
+<nav class="site-navbar">
+  
+    <ul id="menu" class="menu">
+      
+        <li class="menu-item">
+          <a class="menu-item-link" href="/">
+            
+            
+              首页
+            
+          </a>
+        </li>
+      
+        <li class="menu-item">
+          <a class="menu-item-link" href="/archives/">
+            
+            
+              归档
+            
+          </a>
+        </li>
+      
+        <li class="menu-item">
+          <a class="menu-item-link" href="/tags">
+            
+            
+              标签
+            
+          </a>
+        </li>
+      
+        <li class="menu-item">
+          <a class="menu-item-link" href="/about">
+            
+            
+              关于
+            
+          </a>
+        </li>
+      
+    </ul>
+  
+</nav>
+
+      </header>
+
+      <main id="main" class="main">
+        <div class="content-wrapper">
+          <div id="content" class="content">
+            
+  
+  <article class="post">
+    <header class="post-header">
+      <h1 class="post-title">
+        
+          Git 代码托管
+        
+      </h1>
+
+      <div class="post-meta">
+        <span class="post-time">
+          2016-11-01
+        </span>
+        
+        
+      </div>
+    </header>
+
+    
+    
+  <div class="post-toc" id="post-toc">
+    <h2 class="post-toc-title">文章目录</h2>
+    <div class="post-toc-content">
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#一、SSH配置"><span class="toc-text">一、SSH配置</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#二、使用SSH"><span class="toc-text">二、使用SSH</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Git-版本控制入门"><span class="toc-text">Git 版本控制入门</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#如何在-Git-码云上上传项目"><span class="toc-text">如何在 Git 码云上上传项目</span></a></li></ol>
+    </div>
+  </div>
+
+
+
+    <div class="post-content">
+      
+        <h2 id="一、SSH配置"><a href="#一、SSH配置" class="headerlink" title="一、SSH配置"></a>一、SSH配置</h2><p>首先单机鼠标右键，打开<code>Git Bash here</code>，打开 Git 命令窗口，输入命令：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ ssh-keygen -t rsa -C <span class="string">"your_email@youremail.com"</span></span><br></pre></td></tr></table></figure>
+<p>点击回车，出现如下提示：</p>
+<p><img src="http://static.open-open.com/lib/uploadImg/20150108/20150108160808_123.png" alt="生成SSH"></p>
+<a id="more"></a>
+<p>这个时候我们看到询问我们保存 key 的路径，使用默认即可，直接敲回车继续，这里我已经生成过了，所以我输入了新的路径和文件名，回车后会让输入两次密码( passphrase ), 输入一个大于 4 位的密码即可。然后会看到 SSH 生成成功，如图：<br><img src="http://static.open-open.com/lib/uploadImg/20150108/20150108160808_16.png" alt="成功生成SSH"></p>
+<p>这里可以看到，我们的公钥保存到了<code>yunfeifei_rsa.pub</code>文件中，大家用的是默认路径的话，就打开路径<code>C:\Users\Admin\.ssh</code>，会看到如图所示文件：<br><img src="http://static.open-open.com/lib/uploadImg/20150108/20150108160808_325.png" alt=""><br>用文本编辑工具如记事本打开<code>id_rsa.pub</code>,复制里面的内容，先保存起来，到后面使用。<br>输入如下口令查看公钥：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ cat ~/.ssh/id_rsa.pub</span><br></pre></td></tr></table></figure></p>
+<h2 id="二、使用SSH"><a href="#二、使用SSH" class="headerlink" title="二、使用SSH"></a>二、使用SSH</h2><p>在上面我们使用 Git bash 生成了 SSH 的公钥和私钥，下面以 coding.net 为例介绍一下如何将公钥部署到远程 Git 仓库，打开设置中心，如图：<br><img src="http://static.open-open.com/lib/uploadImg/20150108/20150108160809_561.png" alt=""><br>选择 SSH 公钥，填写公钥名称(可以随意起名字)，然后把我们刚刚从<code>id_rsa.pub</code>里面复制出来的东西粘贴到 SSH-RSA 公钥 key 这个文本框中即可。如图：<br><img src="http://static.open-open.com/lib/uploadImg/20150108/20150108160809_107.png" alt=""><br>添加完成后，我们打开 Git 命令窗口测试，输入如下命令：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ ssh -T git@coding.net</span><br></pre></td></tr></table></figure></p>
+<p>这个时候会提示你是否继续连接,如图：<br><img src="http://static.open-open.com/lib/uploadImg/20150108/20150108160809_544.png" alt=""><br>输入 yes, 回车继续，会出现如下提示,如图:<br><img src="http://static.open-open.com/lib/uploadImg/20150108/20150108160810_199.png" alt=""></p>
+<h2 id="Git-版本控制入门"><a href="#Git-版本控制入门" class="headerlink" title="Git 版本控制入门"></a>Git 版本控制入门</h2><p>如果你不熟悉 Git，点此查看权威 Git 书籍 <a href="http://git.oschina.net/progit" target="_blank" rel="noopener">ProGit（中文版）</a>，新手老鸟均适合。<br><a href="http://git-scm.com" target="_blank" rel="noopener">Git 官网</a><br><a href="http://dl.oschina.net/search?key=git&amp;type=soft&amp;root=&amp;sub=&amp;only_title=true&amp;p=1" target="_blank" rel="noopener">Git 客户端下载地址</a><br><a href="http://git-scm.com/docs" target="_blank" rel="noopener">Git 手册</a><br><a href="http://git.oschina.net/oschina/git-osc/wikis/%E5%B8%AE%E5%8A%A9#继续阅读" target="_blank" rel="noopener">网友整理的Git@osc教程</a>。<br><a href="http://www.liaoxuefeng.com/wiki/0013739516305929606dd18361248578c67b8067c8c017b000/001373962845513aefd77a99f4145f0a2c7a7ca057e7570000" target="_blank" rel="noopener">一份很好的 Git 入门教程</a><br><a href="http://git.oschina.net/wzw/git-quick-start" target="_blank" rel="noopener">Git 快速入门（gif动画版）</a></p>
+<h2 id="如何在-Git-码云上上传项目"><a href="#如何在-Git-码云上上传项目" class="headerlink" title="如何在 Git 码云上上传项目"></a>如何在 Git 码云上上传项目</h2><p>首先,注册码云账号,添加新项目,打开终端:<br>步骤如下:</p>
+<ol>
+<li>cd 切换到工程目录</li>
+<li><p>Git 全局设置</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ git config --globaluser.name <span class="string">"user.name"</span></span><br><span class="line">$ git config --global user.email <span class="string">"user.email"</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p><code>$ git init</code>  初始化一个git 仓库</p>
+</li>
+<li><code>$ touch README.md</code> 创建帮助文件</li>
+<li><code>$ git add README.md</code> 添加文件</li>
+<li><code>$ git commit -m &quot;注释内容”</code>  添加注释</li>
+<li><code>$ git remote add origin https://git.oschina.net/username/cccc.git</code> 你的远程仓库地址 // 和远程仓库进行关联</li>
+<li><code>$ git push -u origin master</code> 上传仓库到码云</li>
+</ol>
+<p>注意: 刷新页面后, 如果是只上传了 README 文件,需要执行如下操作:<br>a.  <code>$ git add .</code>  添加工程目录下所有文件 ( add 和 “.” 之间有空格)<br>b.  <code>$ git commit -m “添加注释信息&quot;</code><br>c.  <code>$ git push -u origin master</code> 推送要上传的文件<br>最后,刷新码云页面,就可以了.<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">$ git config user.name <span class="comment">#查看用户名</span></span><br><span class="line">$ git config user.email <span class="comment">#查看邮箱地址</span></span><br><span class="line">$ git config --global user.name <span class="string">"x1299906945"</span> <span class="comment">#修改用户名</span></span><br><span class="line">$ git config --global user.email <span class="string">"hongye.jun@qq.com"</span> <span class="comment">#修改邮箱地址</span></span><br><span class="line">$ mkdir Test1</span><br><span class="line">$ <span class="built_in">cd</span> Test1</span><br><span class="line">$ git init</span><br><span class="line">$ touch README.md</span><br><span class="line">$ git commit -m <span class="string">"first commit"</span></span><br><span class="line">$ git remote add origin https://git.oschina.net/x1299906945/Test1.git</span><br><span class="line">$ git push -u origin master</span><br><span class="line">$ ssh -T git@oschina.net</span><br><span class="line">$ git push -u origin master</span><br><span class="line">$ git add 使用说明.txt</span><br><span class="line">$ git commit -m <span class="string">"简单测试"</span></span><br><span class="line">$ git push -u origin master</span><br></pre></td></tr></table></figure></p>
+
+      
+    </div>
+
+    
+      
+      
+
+  <div class="post-copyright">
+    <p class="copyright-item">
+      <span>原文作者: </span>
+      <a href="http://www.honye.top">Honye</a>
+    </p>
+    <p class="copyright-item">
+      <span>原文链接: </span>
+      <a href="http://www.honye.top/posts/dd07dd9c.html">http://www.honye.top/posts/dd07dd9c.html</a>
+    </p>
+    <p class="copyright-item">
+      <span>许可协议: </span>
+      
+      <a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/" target="_blank">知识共享署名-非商业性使用 4.0 国际许可协议</a>
+    </p>
+  </div>
+
+
+
+      
+      
+    
+
+    
+      <footer class="post-footer">
+        
+          <div class="post-tags">
+            
+              <a href="/tags/Git/">Git</a>
+            
+          </div>
+        
+        
+        
+  <nav class="post-nav">
+    
+      <a class="prev" href="/posts/6c8e222d.html">
+        <i class="iconfont icon-left"></i>
+        <span class="prev-text nav-default">几个常见的 Git 代码托管平台</span>
+        <span class="prev-text nav-mobile">上一篇</span>
+      </a>
+    
+    
+  </nav>
+
+
+      </footer>
+    
+
+  </article>
+
+
+          </div>
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+      </main>
+
+      <footer id="footer" class="footer">
+
+  <div class="social-links">
+    
+      
+        
+          <a href="mailto:hongye.jun@qq.com" class="iconfont icon-email" title="email"></a>
+        
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+        
+          <a href="https://github.com/honye" class="iconfont icon-github" title="github"></a>
+        
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+
+    
+      <a href="/atom.xml" class="iconfont icon-rss" title="rss"></a>
+    
+  </div>
+
+
+
+<div class="copyright">
+  <span class="power-by">
+    由 <a class="hexo-link" href="https://hexo.io/">Hexo</a> 强力驱动
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    主题 - 
+    <a class="theme-link" href="https://github.com/ahonn/hexo-theme-even">Even</a>
+  </span>
+
+  <span class="copyright-year">
+    
+    &copy; 
+     
+      2016 - 
+    
+    2019
+
+    <span class="heart">
+      <i class="iconfont icon-heart"></i>
+    </span>
+    <span class="author">Honye</span>
+  </span>
+</div>
+
+      </footer>
+
+      <div class="back-to-top" id="back-to-top">
+        <i class="iconfont icon-up"></i>
+      </div>
+    </div>
+
+    
+  
+  
+
+  
+
+
+
+    
+  
+
+
+
+  
+  
+
+
+
+
+
+  
+    <script type="text/javascript" src="/lib/jquery/jquery.min.js"></script>
+  
+
+  
+    <script type="text/javascript" src="/lib/slideout/slideout.js"></script>
+  
+
+  
+    <script type="text/javascript" src="/lib/fancybox/jquery.fancybox.pack.js"></script>
+  
+
+  
+    <script type="text/javascript" src="/lib/pjax/jquery.pjax.min.js"></script>
+  
+
+  
+    <script type="text/javascript" src="/lib/nprogress/nprogress.min.js"></script>
+  
+
+
+    <script type="text/javascript" src="/js/src/even.js?v=2.10.2"></script>
+
+  </body>
+</html>

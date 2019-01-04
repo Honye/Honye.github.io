@@ -1,0 +1,454 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+  <head><meta name="generator" content="Hexo 3.8.0">
+    
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+<meta name="theme-color" content="#f8f5ec">
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+
+  <meta name="description" content="Postman 使用之 Scripts">
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="Honye's Blog">
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=2.10.2">
+
+
+
+<link rel="canonical" href="http://www.honye.top/posts/aa64b9d1.html">
+
+
+
+  <link rel="stylesheet" type="text/css" href="/lib/fancybox/jquery.fancybox.css">
+
+
+
+
+  <link rel="stylesheet" type="text/css" href="/lib/nprogress/nprogress.min.css">
+
+
+
+<link rel="stylesheet" type="text/css" href="/css/style.css?v=2.10.2">
+
+
+
+  
+
+
+
+  <script id="baidu_push">
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+
+
+
+
+
+
+
+<script>
+  window.config = {"leancloud":{"app_id":null,"app_key":null},"toc":true,"fancybox":true,"pjax":true};
+</script>
+
+    <title> Postman 使用之 Scripts - Honye's Blog </title>
+  </head>
+
+  <body><div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/." class="logo">Honye's Blog</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    
+      <a href="/">
+        <li class="mobile-menu-item">
+          
+          
+            首页
+          
+        </li>
+      </a>
+    
+      <a href="/archives/">
+        <li class="mobile-menu-item">
+          
+          
+            归档
+          
+        </li>
+      </a>
+    
+      <a href="/tags">
+        <li class="mobile-menu-item">
+          
+          
+            标签
+          
+        </li>
+      </a>
+    
+      <a href="/about">
+        <li class="mobile-menu-item">
+          
+          
+            关于
+          
+        </li>
+      </a>
+    
+  </ul>
+</nav>
+
+    <div class="container" id="mobile-panel">
+      <header id="header" class="header"><div class="logo-wrapper">
+  <a href="/." class="logo">Honye's Blog</a>
+</div>
+
+<nav class="site-navbar">
+  
+    <ul id="menu" class="menu">
+      
+        <li class="menu-item">
+          <a class="menu-item-link" href="/">
+            
+            
+              首页
+            
+          </a>
+        </li>
+      
+        <li class="menu-item">
+          <a class="menu-item-link" href="/archives/">
+            
+            
+              归档
+            
+          </a>
+        </li>
+      
+        <li class="menu-item">
+          <a class="menu-item-link" href="/tags">
+            
+            
+              标签
+            
+          </a>
+        </li>
+      
+        <li class="menu-item">
+          <a class="menu-item-link" href="/about">
+            
+            
+              关于
+            
+          </a>
+        </li>
+      
+    </ul>
+  
+</nav>
+
+      </header>
+
+      <main id="main" class="main">
+        <div class="content-wrapper">
+          <div id="content" class="content">
+            
+  
+  <article class="post">
+    <header class="post-header">
+      <h1 class="post-title">
+        
+          Postman 使用之 Scripts
+        
+      </h1>
+
+      <div class="post-meta">
+        <span class="post-time">
+          2018-11-25
+        </span>
+        
+        
+      </div>
+    </header>
+
+    
+    
+  <div class="post-toc" id="post-toc">
+    <h2 class="post-toc-title">文章目录</h2>
+    <div class="post-toc-content">
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Test-scripts"><span class="toc-text">Test scripts</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#pm-test"><span class="toc-text">pm.test</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Variables"><span class="toc-text">Variables</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#More"><span class="toc-text">More</span></a></li></ol>
+    </div>
+  </div>
+
+
+
+    <div class="post-content">
+      
+        <p>在我们日常开发中经常需要用到登录授权，大多接口都需要携带 Auth 信息。在 Postman 中调试接口时发送登录请求后再复制粘贴 Token，麻烦。Postman 的 Scripts 功能可以较好的解决这个问题。</p>
+<p>官文：<a href="https://learning.getpostman.com/docs/postman/scripts/intro_to_scripts/" target="_blank" rel="noopener">https://learning.getpostman.com/docs/postman/scripts/intro_to_scripts/</a></p>
+<a id="more"></a>
+<h2 id="Test-scripts"><a href="#Test-scripts" class="headerlink" title="Test scripts"></a>Test scripts</h2><p>Test scripts 是在请求结束后运行的 JavaScript 脚本。在登录请求结束后将 Token 设置到<a href="https://learning.getpostman.com/docs/postman/environments_and_globals/intro_to_environments_and_globals" target="_blank" rel="noopener">环境变量</a>中，在需要 Auth 的接口中取用变量。</p>
+<h3 id="pm-test"><a href="#pm-test" class="headerlink" title="pm.test"></a>pm.test</h3><p><code>pm.test(testName:String, specFunction:Function):Function</code> 可以用来确认 Response 是否和预期返回的一致。</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">param</th>
+<th style="text-align:left">description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">testName</td>
+<td style="text-align:left">测试名，在 <strong>Test Results</strong> 面板中显示</td>
+</tr>
+<tr>
+<td style="text-align:left">specFunction</td>
+<td style="text-align:left">测试执行函数</td>
+</tr>
+</tbody>
+</table>
+<p>首先确认 Request 是否请求成功，HTTP 状态码为 200。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">pm.test(<span class="string">"Status code is 200"</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    pm.response.to.have.status(<span class="number">200</span>);</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<p>接着判断 Response 是否如期返回 token。如果有返回就设置到环境变量中，如果没有就不管了。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">pm.test(<span class="string">"Response has token"</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    pm.response.to.have.jsonBody(<span class="string">"token"</span>);</span><br><span class="line">    <span class="comment">// 如果上面断言不通过，下面的语句不会执行</span></span><br><span class="line">    <span class="keyword">const</span> token = pm.response.json().token;</span><br><span class="line">    pm.environment.set(<span class="string">"token"</span>, token);</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<p>合并。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">pm.test(<span class="string">"Status code is 200"</span>, <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">    pm.response.to.have.status(<span class="number">200</span>);</span><br><span class="line">    pm.test(<span class="string">'Response has token'</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">        pm.response.to.have.jsonBody(<span class="string">"token"</span>);</span><br><span class="line">        <span class="keyword">const</span> token = pm.response.json().token;</span><br><span class="line">        pm.environment.set(<span class="string">"token"</span>, token);</span><br><span class="line">    &#125;)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<p><img src="../images/20181118172735.png" alt="Test Results (1)"></p>
+<p><img src="../images/20181118172817.png" alt="Test Results (2)"></p>
+<h2 id="Variables"><a href="#Variables" class="headerlink" title="Variables"></a>Variables</h2><p>经过上述的 Test scripts 已经将登录请求得到的 token 设置到了环境变量中。现在在需要验证 Auth 信息的请求中引用变量，以 Authorization为例。</p>
+<p>变量引用有两种方式，一种是通过 <code></code> 的形式访问，这种形式只能在 Request Builder 中使用，也就是只能在 URL、Params、Authorzation、Headers、Body 中使用，另一种是通过 Scripts 访问，如上述用到的 <code>pm.enviroment.set(variableName:String, variableValue:String)</code>。更多查阅官文：<a href="https://learning.getpostman.com/docs/postman/environments_and_globals/variables" target="_blank" rel="noopener">https://learning.getpostman.com/docs/postman/environments_and_globals/variables</a></p>
+<p>Authorization 🌰：</p>
+<p><img src="../images/20181118172846.png" alt="Variables demo"></p>
+<h2 id="More"><a href="#More" class="headerlink" title="More"></a>More</h2><p>Postman 的功能很强大，灵活应用可以很好提高工作效率和质量。比如灵活使用 <a href="https://learning.getpostman.com/docs/postman/environments_and_globals/intro_to_environments_and_globals" target="_blank" rel="noopener">Environment</a> 可以方便的在测试和生产环境切换，使用 <a href="https://learning.getpostman.com/docs/postman/scripts/intro_to_scripts" target="_blank" rel="noopener">Scripts</a> 可以实现依次发送多个请求，或者 token 失效后自动刷新 token。活学活用查阅官文：<a href="https://learning.getpostman.com/docs" target="_blank" rel="noopener">https://learning.getpostman.com/docs</a></p>
+
+      
+    </div>
+
+    
+      
+      
+
+  <div class="post-copyright">
+    <p class="copyright-item">
+      <span>原文作者: </span>
+      <a href="http://www.honye.top">Honye</a>
+    </p>
+    <p class="copyright-item">
+      <span>原文链接: </span>
+      <a href="http://www.honye.top/posts/aa64b9d1.html">http://www.honye.top/posts/aa64b9d1.html</a>
+    </p>
+    <p class="copyright-item">
+      <span>许可协议: </span>
+      
+      <a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/" target="_blank">知识共享署名-非商业性使用 4.0 国际许可协议</a>
+    </p>
+  </div>
+
+
+
+      
+      
+    
+
+    
+      <footer class="post-footer">
+        
+        
+        
+  <nav class="post-nav">
+    
+    
+      <a class="next" href="/posts/9aae91d8.html">
+        <span class="next-text nav-default">React Navigation 集成 Redux</span>
+        <span class="prev-text nav-mobile">下一篇</span>
+        <i class="iconfont icon-right"></i>
+      </a>
+    
+  </nav>
+
+
+      </footer>
+    
+
+  </article>
+
+
+          </div>
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+      </main>
+
+      <footer id="footer" class="footer">
+
+  <div class="social-links">
+    
+      
+        
+          <a href="mailto:hongye.jun@qq.com" class="iconfont icon-email" title="email"></a>
+        
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+        
+          <a href="https://github.com/honye" class="iconfont icon-github" title="github"></a>
+        
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+
+    
+      <a href="/atom.xml" class="iconfont icon-rss" title="rss"></a>
+    
+  </div>
+
+
+
+<div class="copyright">
+  <span class="power-by">
+    由 <a class="hexo-link" href="https://hexo.io/">Hexo</a> 强力驱动
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    主题 - 
+    <a class="theme-link" href="https://github.com/ahonn/hexo-theme-even">Even</a>
+  </span>
+
+  <span class="copyright-year">
+    
+    &copy; 
+     
+      2016 - 
+    
+    2019
+
+    <span class="heart">
+      <i class="iconfont icon-heart"></i>
+    </span>
+    <span class="author">Honye</span>
+  </span>
+</div>
+
+      </footer>
+
+      <div class="back-to-top" id="back-to-top">
+        <i class="iconfont icon-up"></i>
+      </div>
+    </div>
+
+    
+  
+  
+
+  
+
+
+
+    
+  
+
+
+
+  
+  
+
+
+
+
+
+  
+    <script type="text/javascript" src="/lib/jquery/jquery.min.js"></script>
+  
+
+  
+    <script type="text/javascript" src="/lib/slideout/slideout.js"></script>
+  
+
+  
+    <script type="text/javascript" src="/lib/fancybox/jquery.fancybox.pack.js"></script>
+  
+
+  
+    <script type="text/javascript" src="/lib/pjax/jquery.pjax.min.js"></script>
+  
+
+  
+    <script type="text/javascript" src="/lib/nprogress/nprogress.min.js"></script>
+  
+
+
+    <script type="text/javascript" src="/js/src/even.js?v=2.10.2"></script>
+
+  </body>
+</html>

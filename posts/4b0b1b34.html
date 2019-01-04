@@ -1,0 +1,543 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+  <head><meta name="generator" content="Hexo 3.8.0">
+    
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+<meta name="theme-color" content="#f8f5ec">
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+
+  <meta name="description" content="React Native 之搭建开发环境">
+
+
+
+
+  <meta name="keywords" content="React, Honye's Blog">
+
+
+
+
+
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="Honye's Blog">
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=2.10.2">
+
+
+
+<link rel="canonical" href="http://www.honye.top/posts/4b0b1b34.html">
+
+
+
+  <link rel="stylesheet" type="text/css" href="/lib/fancybox/jquery.fancybox.css">
+
+
+
+
+  <link rel="stylesheet" type="text/css" href="/lib/nprogress/nprogress.min.css">
+
+
+
+<link rel="stylesheet" type="text/css" href="/css/style.css?v=2.10.2">
+
+
+
+  
+
+
+
+  <script id="baidu_push">
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+
+
+
+
+
+
+
+<script>
+  window.config = {"leancloud":{"app_id":null,"app_key":null},"toc":true,"fancybox":true,"pjax":true};
+</script>
+
+    <title> React Native 之搭建开发环境 - Honye's Blog </title>
+  </head>
+
+  <body><div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/." class="logo">Honye's Blog</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    
+      <a href="/">
+        <li class="mobile-menu-item">
+          
+          
+            首页
+          
+        </li>
+      </a>
+    
+      <a href="/archives/">
+        <li class="mobile-menu-item">
+          
+          
+            归档
+          
+        </li>
+      </a>
+    
+      <a href="/tags">
+        <li class="mobile-menu-item">
+          
+          
+            标签
+          
+        </li>
+      </a>
+    
+      <a href="/about">
+        <li class="mobile-menu-item">
+          
+          
+            关于
+          
+        </li>
+      </a>
+    
+  </ul>
+</nav>
+
+    <div class="container" id="mobile-panel">
+      <header id="header" class="header"><div class="logo-wrapper">
+  <a href="/." class="logo">Honye's Blog</a>
+</div>
+
+<nav class="site-navbar">
+  
+    <ul id="menu" class="menu">
+      
+        <li class="menu-item">
+          <a class="menu-item-link" href="/">
+            
+            
+              首页
+            
+          </a>
+        </li>
+      
+        <li class="menu-item">
+          <a class="menu-item-link" href="/archives/">
+            
+            
+              归档
+            
+          </a>
+        </li>
+      
+        <li class="menu-item">
+          <a class="menu-item-link" href="/tags">
+            
+            
+              标签
+            
+          </a>
+        </li>
+      
+        <li class="menu-item">
+          <a class="menu-item-link" href="/about">
+            
+            
+              关于
+            
+          </a>
+        </li>
+      
+    </ul>
+  
+</nav>
+
+      </header>
+
+      <main id="main" class="main">
+        <div class="content-wrapper">
+          <div id="content" class="content">
+            
+  
+  <article class="post">
+    <header class="post-header">
+      <h1 class="post-title">
+        
+          React Native 之搭建开发环境
+        
+      </h1>
+
+      <div class="post-meta">
+        <span class="post-time">
+          2017-05-07
+        </span>
+        
+        
+      </div>
+    </header>
+
+    
+    
+  <div class="post-toc" id="post-toc">
+    <h2 class="post-toc-title">文章目录</h2>
+    <div class="post-toc-content">
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#安装"><span class="toc-text">安装</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#必需的软件"><span class="toc-text">必需的软件</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Chocolatey"><span class="toc-text">Chocolatey</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Python-2"><span class="toc-text">Python 2</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Node"><span class="toc-text">Node</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Yarn、React-Native的命令行工具（react-native-cli）"><span class="toc-text">Yarn、React Native的命令行工具（react-native-cli）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Android-Studio"><span class="toc-text">Android Studio</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#ANDROID-HOME环境变量"><span class="toc-text">ANDROID_HOME环境变量</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#推荐安装的工具"><span class="toc-text">推荐安装的工具</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Gradle-Daemon"><span class="toc-text">Gradle Daemon</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#将Android-SDK的Tools目录添加到PATH变量中"><span class="toc-text">将Android SDK的Tools目录添加到PATH变量中</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#可选的安装项"><span class="toc-text">可选的安装项</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Git"><span class="toc-text">Git</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Genymotion"><span class="toc-text">Genymotion</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Visual-Studio-Emulator-for-Android"><span class="toc-text">Visual Studio Emulator for Android</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#测试安装"><span class="toc-text">测试安装</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#修改项目"><span class="toc-text">修改项目</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#完成了！"><span class="toc-text">完成了！</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#接下来"><span class="toc-text">接下来</span></a></li></ol>
+    </div>
+  </div>
+
+
+
+    <div class="post-content">
+      
+        <blockquote>
+<p>转自: <a href="http://reactnative.cn/docs/0.44/getting-started.html" target="_blank" rel="noopener">http://reactnative.cn/docs/0.44/getting-started.html</a></p>
+</blockquote>
+<p>欢迎使用React Native！这篇文档会帮助你搭建基本的React Native开发环境。如果你已经搭好了环境，那么可以尝试一下<a href="http://reactnative.cn/docs/0.44/tutorial.html" target="_blank" rel="noopener">编写Hello World</a>。</p>
+<p>根据你所使用的操作系统、针对的目标平台不同，具体步骤有所不同。如果想同时开发iOS和Android也没问题，你只需要先选一个平台开始，另一个平台的环境搭建只是稍有不同。</p>
+<p>如果阅读完本文档后还碰到很多环境搭建的问题，我们建议你还可以再看看由本站提供的环境搭建视频教程(<a href="https://ke.qq.com/webcourse/index.html#course_id=197101&amp;term_id=100233637&amp;taid=1220865928921581&amp;vid=a1417i5op7k" target="_blank" rel="noopener">macOS iOS</a>、<a href="https://ke.qq.com/webcourse/index.html#course_id=197101&amp;term_id=100233637&amp;taid=1220870223888877&amp;vid=z1417kmxask" target="_blank" rel="noopener">macOS Android</a>、<a href="https://ke.qq.com/webcourse/index.html#course_id=197101&amp;term_id=100233637&amp;taid=1220874518856173&amp;vid=d1417tgg1ez" target="_blank" rel="noopener">windows Android</a>)、<a href="http://bbs.reactnative.cn/topic/10" target="_blank" rel="noopener">windows环境搭建文字教程</a>、以及<a href="http://bbs.reactnative.cn/topic/130" target="_blank" rel="noopener">常见问题</a>。</p>
+<a id="more"></a>
+<p>目标平台： iOS Android 开发平台： macOS Linux Windows</p>
+<h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><h3 id="必需的软件"><a href="#必需的软件" class="headerlink" title="必需的软件"></a>必需的软件</h3><h4 id="Chocolatey"><a href="#Chocolatey" class="headerlink" title="Chocolatey"></a>Chocolatey</h4><p><a href="https://chocolatey.org/" target="_blank" rel="noopener">Chocolatey</a>是一个Windows上的包管理器，类似于linux上的yum和 apt-get。 你可以在其<a href="https://chocolatey.org/" target="_blank" rel="noopener">官方网站</a>上查看具体的使用说明。一般的安装步骤应该是下面这样：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">@powershell -NoProfile -ExecutionPolicy Bypass -Command "iex ((new-object net.webclient).DownloadString('https://chocolatey.org/install.ps1'))" &amp;&amp; SET PATH=%PATH%;%ALLUSERSPROFILE%\chocolatey\bin</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>一般来说，使用Chocolatey来安装软件的时候，需要以管理员的身份来运行命令提示符窗口。译注：chocolatey的网站可能在国内访问困难，导致上述安装命令无法正常完成。请使用稳定的翻墙工具。 如果你实在装不上这个工具，也不要紧。下面所需的python2和nodejs你可以分别单独去对应的官方网站下载安装即可。</p>
+</blockquote>
+<h4 id="Python-2"><a href="#Python-2" class="headerlink" title="Python 2"></a>Python 2</h4><p>打开命令提示符窗口，使用Chocolatey来安装Python 2.</p>
+<blockquote>
+<p>注意目前不支持Python 3版本。</p>
+</blockquote>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">choco install python2</span><br></pre></td></tr></table></figure>
+<h4 id="Node"><a href="#Node" class="headerlink" title="Node"></a>Node</h4><p>打开命令提示符窗口，使用Chocolatey来安装NodeJS。注意，目前已知Node 7.1版本在windows上无法正常工作，请避开这个版本！</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">choco install nodejs.install</span><br></pre></td></tr></table></figure>
+<p>安装完node后建议设置npm镜像以加速后面的过程（或使用科学上网工具）。注意：不要使用cnpm！cnpm安装的模块路径比较奇怪，packager不能正常识别！</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">npm config set registry https://registry.npm.taobao.org --global</span><br><span class="line">npm config set disturl https://npm.taobao.org/dist --global</span><br></pre></td></tr></table></figure>
+<h4 id="Yarn、React-Native的命令行工具（react-native-cli）"><a href="#Yarn、React-Native的命令行工具（react-native-cli）" class="headerlink" title="Yarn、React Native的命令行工具（react-native-cli）"></a>Yarn、React Native的命令行工具（react-native-cli）</h4><p><a href="http://yarnpkg.com/" target="_blank" rel="noopener">Yarn</a>是Facebook提供的替代npm的工具，可以加速node模块的下载。React Native的命令行工具用于执行创建、初始化、更新项目、运行打包服务（packager）等任务。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install -g yarn react-native-cli</span><br></pre></td></tr></table></figure>
+<p>安装完yarn后同理也要设置镜像源：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">yarn config set registry https://registry.npm.taobao.org --global</span><br><span class="line">yarn config set disturl https://npm.taobao.org/dist --global</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>如果你遇到<code>EACCES: permission denied</code>权限错误，可以尝试运行下面的命令（限linux系统）： <code>sudo npm install -g yarn react-native-cli</code>.</p>
+</blockquote>
+<h4 id="Android-Studio"><a href="#Android-Studio" class="headerlink" title="Android Studio"></a>Android Studio</h4><p><a href="http://developer.android.com/sdk/index.html" target="_blank" rel="noopener">Android Studio</a> 2.0 or higher.</p>
+<p>React Native目前需要<a href="http://developer.android.com/sdk/index.html" target="_blank" rel="noopener">Android Studio</a>2.0或更高版本。</p>
+<blockquote>
+<p>Android Studio需要Java Development Kit [JDK] 1.8或更高版本。你可以在命令行中输入<code>javac -version</code>来查看你当前安装的JDK版本。如果版本不合要求，则可以到 <a href="http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html" target="_blank" rel="noopener">官网</a>上下载。 或是使用包管理器来安装（比如<code>choco install jdk8</code>或是<code>apt-get install default-jdk</code>）</p>
+</blockquote>
+<p>Android Studio包含了运行和测试React Native应用所需的Android SDK和模拟器。</p>
+<blockquote>
+<p>除非特别注明，请不要改动安装过程中的选项。比如Android Studio默认安装了 <code>Android Support Repository</code>，而这也是React Native必须的（否则在react-native run-android时会报appcompat-v7包找不到的错误）。</p>
+</blockquote>
+<ul>
+<li>确定所有安装都勾选了，尤其是<code>Android SDK</code>和<code>Android Device Emulator</code>。</li>
+<li>在初步安装完成后，选择<code>Custom</code>安装项：</li>
+</ul>
+<p><img src="http://reactnative.cn/static/docs/0.44/img/react-native-android-studio-custom-install-windows.png" alt="custom installation"></p>
+<ul>
+<li>检查已安装的组件，尤其是模拟器和HAXM加速驱动。</li>
+</ul>
+<p><img src="http://reactnative.cn/static/docs/0.44/img/react-native-android-studio-verify-installs-windows.png" alt="verify installs"></p>
+<ul>
+<li>安装完成后，在Android Studio的欢迎界面中选择<code>Configure | SDK Manager</code>。</li>
+</ul>
+<p><img src="http://reactnative.cn/static/docs/0.44/img/react-native-android-studio-configure-sdk-windows.png" alt="configure sdk"></p>
+<ul>
+<li>在<code>SDK Platforms</code>窗口中，选择<code>Show Package Details</code>，然后在<code>Android 6.0 (Marshmallow)</code>中勾选<code>Google APIs</code>、<code>Android SDK Platform 23</code>、<code>Intel x86 Atom System Image</code>、<code>Intel x86 Atom\_64 System Image</code>以及<code>Google APIs Intel x86 Atom\_64 System Image</code>。</li>
+</ul>
+<p><img src="http://reactnative.cn/static/docs/0.44/img/react-native-android-studio-android-sdk-platforms-windows.png" alt="platforms"></p>
+<ul>
+<li>在<code>SDK Tools中</code>，选择<code>Show Package Details</code>，然后在<code>Android SDK Build Tools</code>中勾选<code>Android SDK Build-Tools 23.0.1</code>（必须是这个版本）。然后还要勾选最底部的<code>Android Support Repository</code>.</li>
+</ul>
+<p><img src="http://reactnative.cn/static/docs/0.44/img/react-native-android-studio-android-sdk-build-tools-windows.png" alt="build tools"></p>
+<h4 id="ANDROID-HOME环境变量"><a href="#ANDROID-HOME环境变量" class="headerlink" title="ANDROID_HOME环境变量"></a>ANDROID_HOME环境变量</h4><p>确保<code>ANDROID\_HOME</code>环境变量正确地指向了你安装的Android SDK的路径。</p>
+<p>打开<code>控制面板</code> -&gt; <code>系统和安全</code> -&gt; <code>系统</code> -&gt; <code>高级系统设置</code> -&gt; <code>高级</code> -&gt; <code>环境变量</code> -&gt; <code>新建</code></p>
+<blockquote>
+<p>具体的路径可能和下图不一致，请自行确认。<br><img src="http://reactnative.cn/static/docs/0.44/img/react-native-android-sdk-environment-variable-windows.png" alt="env variable"></p>
+</blockquote>
+<blockquote>
+<p>你需要关闭现有的命令符提示窗口然后重新打开，这样新的环境变量才能生效。</p>
+</blockquote>
+<h3 id="推荐安装的工具"><a href="#推荐安装的工具" class="headerlink" title="推荐安装的工具"></a>推荐安装的工具</h3><h4 id="Gradle-Daemon"><a href="#Gradle-Daemon" class="headerlink" title="Gradle Daemon"></a>Gradle Daemon</h4><p>开启<a href="https://docs.gradle.org/2.9/userguide/gradle_daemon.html" target="_blank" rel="noopener">Gradle Daemon</a>可以极大地提升java代码的增量编译速度。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">(if not exist "%USERPROFILE%/.gradle" mkdir "%USERPROFILE%/.gradle") &amp;&amp; (echo org.gradle.daemon=true &gt;&gt; "%USERPROFILE%/.gradle/gradle.properties")</span><br></pre></td></tr></table></figure>
+<h4 id="将Android-SDK的Tools目录添加到PATH变量中"><a href="#将Android-SDK的Tools目录添加到PATH变量中" class="headerlink" title="将Android SDK的Tools目录添加到PATH变量中"></a>将Android SDK的Tools目录添加到<code>PATH</code>变量中</h4><p>你可以把Android SDK的tools和platform-tools目录添加到<code>PATH</code>变量中，以便在终端中运行一些Android工具，例如<code>android avd</code>或是<code>adb logcat</code>等。</p>
+<p>打开<code>控制面板</code> -&gt; <code>系统和安全</code> -&gt; 系统 -&gt; <code>高级系统设置</code> -&gt; <code>高级</code> -&gt; <code>环境变量</code> -&gt; 选中<code>PATH</code> -&gt; 双击进行编辑</p>
+<blockquote>
+<p>注意你的具体路径可能和下图不同</p>
+</blockquote>
+<p><img src="http://reactnative.cn/static/docs/0.44/img/react-native-android-tools-environment-variable-windows.png" alt="env variable"></p>
+<h3 id="可选的安装项"><a href="#可选的安装项" class="headerlink" title="可选的安装项"></a>可选的安装项</h3><h4 id="Git"><a href="#Git" class="headerlink" title="Git"></a>Git</h4><p>你可以使用Chocolatey来安装<code>git</code>:</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">choco install git</span><br></pre></td></tr></table></figure>
+<p>另外你也可以直接去下载<a href="https://git-for-windows.github.io/" target="_blank" rel="noopener">Git for Windows</a>。 在安装过程中注意勾选”Run Git from Windows Command Prompt”，这样才会把<code>git</code>命令添加到<code>PATH</code>环境变量中。</p>
+<h4 id="Genymotion"><a href="#Genymotion" class="headerlink" title="Genymotion"></a>Genymotion</h4><p>比起Android Studio自带的原装模拟器，Genymotion是一个性能更好的选择，但它只对个人用户免费。</p>
+<ol>
+<li>下载和安装<a href="https://www.genymotion.com/download" target="_blank" rel="noopener">Genymotion</a>（genymotion需要依赖VirtualBox虚拟机，下载选项中提供了包含VirtualBox和不包含的选项，请按需选择）。</li>
+<li>打开Genymotion。如果你还没有安装VirtualBox，则此时会提示你安装。</li>
+<li>创建一个新模拟器并启动。</li>
+<li>启动React Native应用后，可以按下F1来打开开发者菜单。</li>
+</ol>
+<h4 id="Visual-Studio-Emulator-for-Android"><a href="#Visual-Studio-Emulator-for-Android" class="headerlink" title="Visual Studio Emulator for Android"></a>Visual Studio Emulator for Android</h4><p><a href="https://www.visualstudio.com/zh-cn/features/msft-android-emulator-vs.aspx#中国 (简体中文" target="_blank" rel="noopener">Visual Studio Emulator for Android</a>)是利用了Hyper-V技术进行硬件加速的免费android模拟器。也是Android Studio自带的原装模拟器之外的一个很好的选择。而且你并不需要安装Visual Studio。 在用于React Native开发前，需要先在注册表中进行一些修改：</p>
+<ol>
+<li>打开运行命令（按下Windows+R键）</li>
+<li>输入regedit.exe然后回车</li>
+<li>在注册表编辑器中找到HKEY_LOCAL_MACHINE\SOFTWARE\Wow6432Node\Android SDK Tools条目</li>
+<li>右键点击Android SDK Tools，选择新建 &gt; 字符串值</li>
+<li>名称设为Path</li>
+<li>双击Path，将其值设为你的Android SDK的路径。（例如C:\Program Files\Android\sdk）</li>
+</ol>
+<h2 id="测试安装"><a href="#测试安装" class="headerlink" title="测试安装"></a>测试安装</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">react-native init AwesomeProject</span><br><span class="line">cd AwesomeProject</span><br><span class="line">react-native run-android</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>提示：你可以使用<code>--version</code>参数创建指定版本的项目。例如<code>react-native init MyApp --version 0.39.2</code>。注意版本号必须精确到两个小数点。</p>
+</blockquote>
+<p><strong>Windows用户请注意，请不要在命令行默认的System32目录中init项目！会有各种权限限制导致不能运行！</strong></p>
+<h3 id="修改项目"><a href="#修改项目" class="headerlink" title="修改项目"></a>修改项目</h3><p>现在你已经成功运行了项目，我们可以开始尝试动手改一改了：</p>
+<ul>
+<li>使用你喜欢的文本编辑器打开<code>index.android.js</code>并随便改上几行</li>
+<li>按两下R键，或是用Menu键（通常是F2，在Genymotion模拟器中是<code>⌘+M</code>）打开开发者菜单，然后选择 <em>Reload JS</em> 就可以看到你的最新修改。</li>
+<li>在终端下运行<code>adb logcat *:S ReactNative:V ReactNativeJS:V</code>可以看到你的应用的日志。</li>
+</ul>
+<h3 id="完成了！"><a href="#完成了！" class="headerlink" title="完成了！"></a>完成了！</h3><p>恭喜！你已经成功运行并修改了你的第一个React Native应用。</p>
+<p><img src="http://reactnative.cn/static/docs/0.44/img/react-native-congratulations.png" alt=""></p>
+<h2 id="接下来"><a href="#接下来" class="headerlink" title="接下来"></a>接下来</h2><ul>
+<li>如果你想要在真机上运行应用，请参阅<a href="http://reactnative.cn/docs/0.44/running-on-device-android.html#content" target="_blank" rel="noopener">在设备上运行</a>。</li>
+<li>如果你碰到了一些问题，请参阅<a href="http://bbs.reactnative.cn/topic/130" target="_blank" rel="noopener">常见问题</a></li>
+</ul>
+
+      
+    </div>
+
+    
+      
+      
+
+  <div class="post-copyright">
+    <p class="copyright-item">
+      <span>原文作者: </span>
+      <a href="http://www.honye.top">Honye</a>
+    </p>
+    <p class="copyright-item">
+      <span>原文链接: </span>
+      <a href="http://www.honye.top/posts/4b0b1b34.html">http://www.honye.top/posts/4b0b1b34.html</a>
+    </p>
+    <p class="copyright-item">
+      <span>许可协议: </span>
+      
+      <a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/" target="_blank">知识共享署名-非商业性使用 4.0 国际许可协议</a>
+    </p>
+  </div>
+
+
+
+      
+      
+    
+
+    
+      <footer class="post-footer">
+        
+          <div class="post-tags">
+            
+              <a href="/tags/React/">React</a>
+            
+          </div>
+        
+        
+        
+  <nav class="post-nav">
+    
+      <a class="prev" href="/posts/ed3c977b.html">
+        <i class="iconfont icon-left"></i>
+        <span class="prev-text nav-default">React Native 之在设备上运行</span>
+        <span class="prev-text nav-mobile">上一篇</span>
+      </a>
+    
+    
+      <a class="next" href="/posts/99def624.html">
+        <span class="next-text nav-default">HBuilder 上传图片到七牛云</span>
+        <span class="prev-text nav-mobile">下一篇</span>
+        <i class="iconfont icon-right"></i>
+      </a>
+    
+  </nav>
+
+
+      </footer>
+    
+
+  </article>
+
+
+          </div>
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+      </main>
+
+      <footer id="footer" class="footer">
+
+  <div class="social-links">
+    
+      
+        
+          <a href="mailto:hongye.jun@qq.com" class="iconfont icon-email" title="email"></a>
+        
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+        
+          <a href="https://github.com/honye" class="iconfont icon-github" title="github"></a>
+        
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+
+    
+      <a href="/atom.xml" class="iconfont icon-rss" title="rss"></a>
+    
+  </div>
+
+
+
+<div class="copyright">
+  <span class="power-by">
+    由 <a class="hexo-link" href="https://hexo.io/">Hexo</a> 强力驱动
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    主题 - 
+    <a class="theme-link" href="https://github.com/ahonn/hexo-theme-even">Even</a>
+  </span>
+
+  <span class="copyright-year">
+    
+    &copy; 
+     
+      2016 - 
+    
+    2019
+
+    <span class="heart">
+      <i class="iconfont icon-heart"></i>
+    </span>
+    <span class="author">Honye</span>
+  </span>
+</div>
+
+      </footer>
+
+      <div class="back-to-top" id="back-to-top">
+        <i class="iconfont icon-up"></i>
+      </div>
+    </div>
+
+    
+  
+  
+
+  
+
+
+
+    
+  
+
+
+
+  
+  
+
+
+
+
+
+  
+    <script type="text/javascript" src="/lib/jquery/jquery.min.js"></script>
+  
+
+  
+    <script type="text/javascript" src="/lib/slideout/slideout.js"></script>
+  
+
+  
+    <script type="text/javascript" src="/lib/fancybox/jquery.fancybox.pack.js"></script>
+  
+
+  
+    <script type="text/javascript" src="/lib/pjax/jquery.pjax.min.js"></script>
+  
+
+  
+    <script type="text/javascript" src="/lib/nprogress/nprogress.min.js"></script>
+  
+
+
+    <script type="text/javascript" src="/js/src/even.js?v=2.10.2"></script>
+
+  </body>
+</html>
