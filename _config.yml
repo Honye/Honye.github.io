@@ -13,7 +13,7 @@ favicon: https://static.hinpc.com/image/2016/20160807-hi-logo.png      # 网站�
 
 # URL
 ## If your site is put in a subdirectory, set url as 'http://yoursite.com/child' and root as '/child/'
-url: http://www.honye.top
+url: http://www.honye.com
 root: /
 # permalink: :year/:month/:day/:title/    # 永久链接格式
 permalink: posts/:abbrlink.html    # 此处使用插件hexo-abbrlink
@@ -126,3 +126,30 @@ jsonContent:
 disqus_shortname: your-disqus-shortname
 # 多说评论则替换成如下配置：
 # duoshuo_shortname: your-duoshuo-shortname
+
+# RESTFul API
+restful:
+  # site 可配置为数组选择性生成某些属性
+  # site: ['title', 'subtitle', 'description', 'author', 'since', email', 'favicon', 'avatar']
+  # site: true        # hexo.config mix theme.config
+  site: ['title', 'subtitle', 'description', 'author', 'since', 'email', 'avatar']
+  posts_size: 10    # 文章列表分页，0 表示不分页
+  posts_props:      # 文章列表项的需要生成的属性
+    title: true
+    slug: true
+    date: true
+    updated: true
+    comments: true
+    path: true
+    excerpt: false
+    cover: true      # 封面图，取文章第一张图片
+    content: false
+    keywords: false
+    categories: true
+    tags: true
+  categories: true         # 分类数据
+  use_category_slug: false # Use slug for filename of category data
+  tags: true               # 标签数据
+  use_tag_slug: false      # Use slug for filename of tag data
+  post: true               # 文章数据
+  pages: false             # 额外的 Hexo 页面数据, 如 About
