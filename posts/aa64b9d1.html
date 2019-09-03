@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang=zh>
+<head><meta name="generator" content="Hexo 3.9.0">
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="description" content="在我们日常开发中经常需要用到登录授权，大多接口都需要携带 Auth 信息。在 Postman 中调试接口时发送登录请求后再复制粘贴 Token，麻烦。Postman 的 Scripts 功能可以较好的解决这个问题。 官文：https://learning.getpostman.com/docs/postman/scripts/intro_to_scripts/">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Postman 使用之 Scripts">
+<meta property="og:url" content="http://www.honye.com/posts/aa64b9d1.html">
+<meta property="og:site_name" content="Honye&#39;s Blog">
+<meta property="og:description" content="在我们日常开发中经常需要用到登录授权，大多接口都需要携带 Auth 信息。在 Postman 中调试接口时发送登录请求后再复制粘贴 Token，麻烦。Postman 的 Scripts 功能可以较好的解决这个问题。 官文：https://learning.getpostman.com/docs/postman/scripts/intro_to_scripts/">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://www.honye.com/images/20181118172735.png">
+<meta property="og:image" content="http://www.honye.com/images/20181118172817.png">
+<meta property="og:image" content="http://www.honye.com/images/20181118172846.png">
+<meta property="og:updated_time" content="2019-09-03T15:11:51.722Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Postman 使用之 Scripts">
+<meta name="twitter:description" content="在我们日常开发中经常需要用到登录授权，大多接口都需要携带 Auth 信息。在 Postman 中调试接口时发送登录请求后再复制粘贴 Token，麻烦。Postman 的 Scripts 功能可以较好的解决这个问题。 官文：https://learning.getpostman.com/docs/postman/scripts/intro_to_scripts/">
+<meta name="twitter:image" content="http://www.honye.com/images/20181118172735.png">
+    
+    
+        
+          
+              <link rel="shortcut icon" href="/images/favicon.ico">
+          
+        
+        
+          
+            <link rel="icon" type="image/png" href="/images/favicon-192x192.png" sizes="192x192">
+          
+        
+        
+          
+            <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+          
+        
+    
+    <!-- title -->
+    <title>Postman 使用之 Scripts</title>
+    <!-- styles -->
+    <link rel="stylesheet" href="/css/style.css">
+    <!-- persian styles -->
+    
+      <link rel="stylesheet" href="/css/rtl.css">
+    
+    <!-- rss -->
+    
+    
+</head>
+
+<body class="max-width mx-auto px3 ltr">
+    
+      <div id="header-post">
+  <a id="menu-icon" href="#"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fas fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/about/">About</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a href="https://github.com/Honye?tab=repositories">Projects</a></li>
+        
+      </ul>
+    </span>
+    <br/>
+    <span id="actions">
+      <ul>
+        
+        
+        <li><a class="icon" href="/posts/9aae91d8.html"><i class="fas fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
+        
+        <li><a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
+        <li><a class="icon" href="#"><i class="fas fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">Previous post</span>
+      <span id="i-next" class="info" style="display:none;">Next post</span>
+      <span id="i-top" class="info" style="display:none;">Back to top</span>
+      <span id="i-share" class="info" style="display:none;">Share post</span>
+    </span>
+    <br/>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=http://www.honye.com/posts/aa64b9d1.html"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=http://www.honye.com/posts/aa64b9d1.html&text=Postman 使用之 Scripts"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=http://www.honye.com/posts/aa64b9d1.html&title=Postman 使用之 Scripts"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=http://www.honye.com/posts/aa64b9d1.html&is_video=false&description=Postman 使用之 Scripts"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=Postman 使用之 Scripts&body=Check out this article: http://www.honye.com/posts/aa64b9d1.html"><i class="fas fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=http://www.honye.com/posts/aa64b9d1.html&title=Postman 使用之 Scripts"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=http://www.honye.com/posts/aa64b9d1.html&title=Postman 使用之 Scripts"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=http://www.honye.com/posts/aa64b9d1.html&title=Postman 使用之 Scripts"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=http://www.honye.com/posts/aa64b9d1.html&title=Postman 使用之 Scripts"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=http://www.honye.com/posts/aa64b9d1.html&name=Postman 使用之 Scripts&description=&lt;p&gt;在我们日常开发中经常需要用到登录授权，大多接口都需要携带 Auth 信息。在 Postman 中调试接口时发送登录请求后再复制粘贴 Token，麻烦。Postman 的 Scripts 功能可以较好的解决这个问题。&lt;/p&gt;
+&lt;p&gt;官文：&lt;a href=&#34;https://learning.getpostman.com/docs/postman/scripts/intro_to_scripts/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;https://learning.getpostman.com/docs/postman/scripts/intro_to_scripts/&lt;/a&gt;&lt;/p&gt;"><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+    <div id="toc">
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Test-scripts"><span class="toc-number">1.</span> <span class="toc-text">Test scripts</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#pm-test"><span class="toc-number">1.1.</span> <span class="toc-text">pm.test</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Variables"><span class="toc-number">2.</span> <span class="toc-text">Variables</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#More"><span class="toc-number">3.</span> <span class="toc-text">More</span></a></li></ol>
+    </div>
+  </span>
+</div>
+
+    
+    <div class="content index py4">
+        
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+  <header>
+    
+    <h1 class="posttitle" itemprop="name headline">
+        Postman 使用之 Scripts
+    </h1>
+
+
+
+    <div class="meta">
+      <span class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <span itemprop="name">Honye's Blog</span>
+      </span>
+      
+    <div class="postdate">
+      
+        <time datetime="2018-11-25T22:02:53.000Z" itemprop="datePublished">2018-11-25</time>
+        
+      
+    </div>
+
+
+      
+
+      
+
+    </div>
+  </header>
+  
+
+  <div class="content" itemprop="articleBody">
+    <p>在我们日常开发中经常需要用到登录授权，大多接口都需要携带 Auth 信息。在 Postman 中调试接口时发送登录请求后再复制粘贴 Token，麻烦。Postman 的 Scripts 功能可以较好的解决这个问题。</p>
+<p>官文：<a href="https://learning.getpostman.com/docs/postman/scripts/intro_to_scripts/" target="_blank" rel="noopener">https://learning.getpostman.com/docs/postman/scripts/intro_to_scripts/</a></p>
+<a id="more"></a>
+
+<h2 id="Test-scripts"><a href="#Test-scripts" class="headerlink" title="Test scripts"></a>Test scripts</h2><p>Test scripts 是在请求结束后运行的 JavaScript 脚本。在登录请求结束后将 Token 设置到<a href="https://learning.getpostman.com/docs/postman/environments_and_globals/intro_to_environments_and_globals" target="_blank" rel="noopener">环境变量</a>中，在需要 Auth 的接口中取用变量。</p>
+<h3 id="pm-test"><a href="#pm-test" class="headerlink" title="pm.test"></a>pm.test</h3><p><code>pm.test(testName:String, specFunction:Function):Function</code> 可以用来确认 Response 是否和预期返回的一致。</p>
+<table>
+<thead>
+<tr>
+<th align="left">param</th>
+<th align="left">description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">testName</td>
+<td align="left">测试名，在 <strong>Test Results</strong> 面板中显示</td>
+</tr>
+<tr>
+<td align="left">specFunction</td>
+<td align="left">测试执行函数</td>
+</tr>
+</tbody></table>
+<p>首先确认 Request 是否请求成功，HTTP 状态码为 200。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">pm.test(<span class="string">"Status code is 200"</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    pm.response.to.have.status(<span class="number">200</span>);</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+<p>接着判断 Response 是否如期返回 token。如果有返回就设置到环境变量中，如果没有就不管了。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">pm.test(<span class="string">"Response has token"</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    pm.response.to.have.jsonBody(<span class="string">"token"</span>);</span><br><span class="line">    <span class="comment">// 如果上面断言不通过，下面的语句不会执行</span></span><br><span class="line">    <span class="keyword">const</span> token = pm.response.json().token;</span><br><span class="line">    pm.environment.set(<span class="string">"token"</span>, token);</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+<p>合并。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">pm.test(<span class="string">"Status code is 200"</span>, <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">    pm.response.to.have.status(<span class="number">200</span>);</span><br><span class="line">    pm.test(<span class="string">'Response has token'</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">        pm.response.to.have.jsonBody(<span class="string">"token"</span>);</span><br><span class="line">        <span class="keyword">const</span> token = pm.response.json().token;</span><br><span class="line">        pm.environment.set(<span class="string">"token"</span>, token);</span><br><span class="line">    &#125;)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+<p><img src="../images/20181118172735.png" alt="Test Results (1)"></p>
+<p><img src="../images/20181118172817.png" alt="Test Results (2)"></p>
+<h2 id="Variables"><a href="#Variables" class="headerlink" title="Variables"></a>Variables</h2><p>经过上述的 Test scripts 已经将登录请求得到的 token 设置到了环境变量中。现在在需要验证 Auth 信息的请求中引用变量，以 Authorization为例。</p>
+<p>变量引用有两种方式，一种是通过 <code></code> 的形式访问，这种形式只能在 Request Builder 中使用，也就是只能在 URL、Params、Authorzation、Headers、Body 中使用，另一种是通过 Scripts 访问，如上述用到的 <code>pm.enviroment.set(variableName:String, variableValue:String)</code>。更多查阅官文：<a href="https://learning.getpostman.com/docs/postman/environments_and_globals/variables" target="_blank" rel="noopener">https://learning.getpostman.com/docs/postman/environments_and_globals/variables</a></p>
+<p>Authorization 🌰：</p>
+<p><img src="../images/20181118172846.png" alt="Variables demo"></p>
+<h2 id="More"><a href="#More" class="headerlink" title="More"></a>More</h2><p>Postman 的功能很强大，灵活应用可以很好提高工作效率和质量。比如灵活使用 <a href="https://learning.getpostman.com/docs/postman/environments_and_globals/intro_to_environments_and_globals" target="_blank" rel="noopener">Environment</a> 可以方便的在测试和生产环境切换，使用 <a href="https://learning.getpostman.com/docs/postman/scripts/intro_to_scripts" target="_blank" rel="noopener">Scripts</a> 可以实现依次发送多个请求，或者 token 失效后自动刷新 token。活学活用查阅官文：<a href="https://learning.getpostman.com/docs" target="_blank" rel="noopener">https://learning.getpostman.com/docs</a></p>
+
+  </div>
+</article>
+
+
+
+        
+          <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/about/">About</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a href="https://github.com/Honye?tab=repositories">Projects</a></li>
+        
+      </ul>
+    </div>
+
+    <div id="toc-footer" style="display: none">
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Test-scripts"><span class="toc-number">1.</span> <span class="toc-text">Test scripts</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#pm-test"><span class="toc-number">1.1.</span> <span class="toc-text">pm.test</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Variables"><span class="toc-number">2.</span> <span class="toc-text">Variables</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#More"><span class="toc-number">3.</span> <span class="toc-text">More</span></a></li></ol>
+    </div>
+
+    <div id="share-footer" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=http://www.honye.com/posts/aa64b9d1.html"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=http://www.honye.com/posts/aa64b9d1.html&text=Postman 使用之 Scripts"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=http://www.honye.com/posts/aa64b9d1.html&title=Postman 使用之 Scripts"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=http://www.honye.com/posts/aa64b9d1.html&is_video=false&description=Postman 使用之 Scripts"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=Postman 使用之 Scripts&body=Check out this article: http://www.honye.com/posts/aa64b9d1.html"><i class="fas fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=http://www.honye.com/posts/aa64b9d1.html&title=Postman 使用之 Scripts"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=http://www.honye.com/posts/aa64b9d1.html&title=Postman 使用之 Scripts"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=http://www.honye.com/posts/aa64b9d1.html&title=Postman 使用之 Scripts"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=http://www.honye.com/posts/aa64b9d1.html&title=Postman 使用之 Scripts"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=http://www.honye.com/posts/aa64b9d1.html&name=Postman 使用之 Scripts&description=&lt;p&gt;在我们日常开发中经常需要用到登录授权，大多接口都需要携带 Auth 信息。在 Postman 中调试接口时发送登录请求后再复制粘贴 Token，麻烦。Postman 的 Scripts 功能可以较好的解决这个问题。&lt;/p&gt;
+&lt;p&gt;官文：&lt;a href=&#34;https://learning.getpostman.com/docs/postman/scripts/intro_to_scripts/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;https://learning.getpostman.com/docs/postman/scripts/intro_to_scripts/&lt;/a&gt;&lt;/p&gt;"><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+
+    <div id="actions-footer">
+        <a id="menu" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;"><i class="fas fa-bars fa-lg" aria-hidden="true"></i> Menu</a>
+        <a id="toc" class="icon" href="#" onclick="$('#toc-footer').toggle();return false;"><i class="fas fa-list fa-lg" aria-hidden="true"></i> TOC</a>
+        <a id="share" class="icon" href="#" onclick="$('#share-footer').toggle();return false;"><i class="fas fa-share-alt fa-lg" aria-hidden="true"></i> Share</a>
+        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up fa-lg" aria-hidden="true"></i> Top</a>
+    </div>
+
+  </div>
+</div>
+
+        
+        <footer id="footer">
+  <div class="footer-left">
+    Copyright &copy; 2019 Honye
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/about/">About</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a href="https://github.com/Honye?tab=repositories">Projects</a></li>
+        
+      </ul>
+    </nav>
+  </div>
+</footer>
+
+    </div>
+    <!-- styles -->
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+<link rel="stylesheet" href="/lib/justified-gallery/css/justifiedGallery.min.css">
+
+    <!-- jquery -->
+<script src="/lib/jquery/jquery.min.js"></script>
+<script src="/lib/justified-gallery/js/jquery.justifiedGallery.min.js"></script>
+<!-- clipboard -->
+
+  <script src="/lib/clipboard/clipboard.min.js"></script>
+  <script type="text/javascript">
+  $(function() {
+    // copy-btn HTML
+    var btn = "<span class=\"btn-copy tooltipped tooltipped-sw\" aria-label=\"Copy to clipboard!\">";
+    btn += '<i class="far fa-clone"></i>';
+    btn += '</span>'; 
+    // mount it!
+    $(".highlight .code pre").before(btn);
+    var clip = new ClipboardJS('.btn-copy', {
+      target: function(trigger) {
+        return trigger.nextElementSibling;
+      }
+    });
+    clip.on('success', function(e) {
+      e.trigger.setAttribute('aria-label', "Copied!");
+      e.clearSelection();
+    })
+  })
+  </script>
+
+<script src="/js/main.js"></script>
+<!-- search -->
+
+<!-- Google Analytics -->
+
+<!-- Baidu Analytics -->
+
+<!-- Disqus Comments -->
+
+
+</body>
+</html>

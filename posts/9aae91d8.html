@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang=zh>
+<head><meta name="generator" content="Hexo 3.9.0">
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="description" content="更新时间：2018-03-03 修复因 React Navigation 更新引起的 addListener is not  a function 的问题。 react-navigation 是 React Native 官方推荐的导航库。redux 是一个状态容器，redux 的简单使用可参考阮一峰的 Redux 入门教程，现在网上也有很多中文文档。 在 React Navigation 最新版">
+<meta name="keywords" content="React Native,Redux">
+<meta property="og:type" content="article">
+<meta property="og:title" content="React Navigation 集成 Redux">
+<meta property="og:url" content="http://www.honye.com/posts/9aae91d8.html">
+<meta property="og:site_name" content="Honye&#39;s Blog">
+<meta property="og:description" content="更新时间：2018-03-03 修复因 React Navigation 更新引起的 addListener is not  a function 的问题。 react-navigation 是 React Native 官方推荐的导航库。redux 是一个状态容器，redux 的简单使用可参考阮一峰的 Redux 入门教程，现在网上也有很多中文文档。 在 React Navigation 最新版">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/3762216-ce7c29ca1d694ed5.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/800">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/3762216-a738f6219e7475a0.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/400">
+<meta property="og:updated_time" content="2019-09-03T15:11:51.722Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="React Navigation 集成 Redux">
+<meta name="twitter:description" content="更新时间：2018-03-03 修复因 React Navigation 更新引起的 addListener is not  a function 的问题。 react-navigation 是 React Native 官方推荐的导航库。redux 是一个状态容器，redux 的简单使用可参考阮一峰的 Redux 入门教程，现在网上也有很多中文文档。 在 React Navigation 最新版">
+<meta name="twitter:image" content="http://upload-images.jianshu.io/upload_images/3762216-ce7c29ca1d694ed5.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/800">
+    
+    
+        
+          
+              <link rel="shortcut icon" href="/images/favicon.ico">
+          
+        
+        
+          
+            <link rel="icon" type="image/png" href="/images/favicon-192x192.png" sizes="192x192">
+          
+        
+        
+          
+            <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+          
+        
+    
+    <!-- title -->
+    <title>React Navigation 集成 Redux</title>
+    <!-- styles -->
+    <link rel="stylesheet" href="/css/style.css">
+    <!-- persian styles -->
+    
+      <link rel="stylesheet" href="/css/rtl.css">
+    
+    <!-- rss -->
+    
+    
+</head>
+
+<body class="max-width mx-auto px3 ltr">
+    
+      <div id="header-post">
+  <a id="menu-icon" href="#"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fas fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/about/">About</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a href="https://github.com/Honye?tab=repositories">Projects</a></li>
+        
+      </ul>
+    </span>
+    <br/>
+    <span id="actions">
+      <ul>
+        
+        <li><a class="icon" href="/posts/aa64b9d1.html"><i class="fas fa-chevron-left" aria-hidden="true" onmouseover="$('#i-prev').toggle();" onmouseout="$('#i-prev').toggle();"></i></a></li>
+        
+        
+        <li><a class="icon" href="/posts/9437166e.html"><i class="fas fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
+        
+        <li><a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
+        <li><a class="icon" href="#"><i class="fas fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">Previous post</span>
+      <span id="i-next" class="info" style="display:none;">Next post</span>
+      <span id="i-top" class="info" style="display:none;">Back to top</span>
+      <span id="i-share" class="info" style="display:none;">Share post</span>
+    </span>
+    <br/>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=http://www.honye.com/posts/9aae91d8.html"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=http://www.honye.com/posts/9aae91d8.html&text=React Navigation 集成 Redux"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=http://www.honye.com/posts/9aae91d8.html&title=React Navigation 集成 Redux"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=http://www.honye.com/posts/9aae91d8.html&is_video=false&description=React Navigation 集成 Redux"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=React Navigation 集成 Redux&body=Check out this article: http://www.honye.com/posts/9aae91d8.html"><i class="fas fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=http://www.honye.com/posts/9aae91d8.html&title=React Navigation 集成 Redux"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=http://www.honye.com/posts/9aae91d8.html&title=React Navigation 集成 Redux"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=http://www.honye.com/posts/9aae91d8.html&title=React Navigation 集成 Redux"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=http://www.honye.com/posts/9aae91d8.html&title=React Navigation 集成 Redux"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=http://www.honye.com/posts/9aae91d8.html&name=React Navigation 集成 Redux&description=&lt;p&gt;更新时间：2018-03-03&lt;/p&gt;
+&lt;p&gt;修复因 React Navigation 更新引起的 &lt;font color=&#34;red&#34;&gt;&lt;code&gt;addListener is not  a function&lt;/code&gt;&lt;/font&gt; 的问题。&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://reactnavigation.org/docs/intro/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;react-navigation&lt;/a&gt; 是 React Native 官方推荐的导航库。&lt;a href=&#34;https://redux.js.org/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;redux&lt;/a&gt; 是一个状态容器，redux 的简单使用可参考阮一峰的 &lt;a href=&#34;http://www.ruanyifeng.com/blog/2016/09/redux_tutorial_part_one_basic_usages.html&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Redux 入门教程&lt;/a&gt;，现在网上也有很多中文文档。&lt;/p&gt;
+&lt;p&gt;在 React Navigation 最新版本中需要添加 &lt;code&gt;react-navigation-redux-helpers&lt;/code&gt; 包&lt;/p&gt;
+&lt;figure class=&#34;highlight bash&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;2&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;$ yarn add react-native-navigation-redux-helpers&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;comment&#34;&gt;# 或者 npm install --save react-native-navigation-redux-helpers&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;"><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+    <div id="toc">
+      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#首先写-redux-helper-工具-redux-js"><span class="toc-number">1.</span> <span class="toc-text">首先写 redux helper 工具 redux.js</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#首先写一个-navigator"><span class="toc-number">2.</span> <span class="toc-text">首先写一个 navigator</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Action"><span class="toc-number">3.</span> <span class="toc-text">Action</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Reducer"><span class="toc-number">4.</span> <span class="toc-text">Reducer</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#配置-Store"><span class="toc-number">5.</span> <span class="toc-text">配置 Store</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#自定义-Navigator"><span class="toc-number">6.</span> <span class="toc-text">自定义 Navigator</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#绑定到应用中"><span class="toc-number">7.</span> <span class="toc-text">绑定到应用中</span></a></li></ol>
+    </div>
+  </span>
+</div>
+
+    
+    <div class="content index py4">
+        
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+  <header>
+    
+    <h1 class="posttitle" itemprop="name headline">
+        React Navigation 集成 Redux
+    </h1>
+
+
+
+    <div class="meta">
+      <span class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <span itemprop="name">Honye's Blog</span>
+      </span>
+      
+    <div class="postdate">
+      
+        <time datetime="2017-12-07T21:54:53.000Z" itemprop="datePublished">2017-12-07</time>
+        
+      
+    </div>
+
+
+      
+
+      
+    <div class="article-tag">
+        <i class="fas fa-tag"></i>
+        <a class="tag-link" href="/tags/React-Native/">React Native</a>, <a class="tag-link" href="/tags/Redux/">Redux</a>
+    </div>
+
+
+    </div>
+  </header>
+  
+
+  <div class="content" itemprop="articleBody">
+    <p>更新时间：2018-03-03</p>
+<p>修复因 React Navigation 更新引起的 <font color="red"><code>addListener is not  a function</code></font> 的问题。</p>
+<p><a href="https://reactnavigation.org/docs/intro/" target="_blank" rel="noopener">react-navigation</a> 是 React Native 官方推荐的导航库。<a href="https://redux.js.org/" target="_blank" rel="noopener">redux</a> 是一个状态容器，redux 的简单使用可参考阮一峰的 <a href="http://www.ruanyifeng.com/blog/2016/09/redux_tutorial_part_one_basic_usages.html" target="_blank" rel="noopener">Redux 入门教程</a>，现在网上也有很多中文文档。</p>
+<p>在 React Navigation 最新版本中需要添加 <code>react-navigation-redux-helpers</code> 包</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ yarn add react-native-navigation-redux-helpers</span><br><span class="line"><span class="comment"># 或者 npm install --save react-native-navigation-redux-helpers</span></span><br></pre></td></tr></table></figure>
+
+<a id="more"></a>
+<h3 id="首先写-redux-helper-工具-redux-js"><a href="#首先写-redux-helper-工具-redux-js" class="headerlink" title="首先写 redux helper 工具 redux.js"></a>首先写 redux helper 工具 <code>redux.js</code></h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123;</span><br><span class="line">    createReactNavigationReduxMiddleware,</span><br><span class="line">    createReduxBoundAddListener</span><br><span class="line">&#125; <span class="keyword">from</span> <span class="string">'react-navigation-redux-helpers'</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 注意: createReactNavigationReduxMiddleware 必须在 createReduxBoundAddListener 之前执行</span></span><br><span class="line"><span class="keyword">const</span> middleware = createReactNavigationReduxMiddleware(<span class="string">'root'</span>, state =&gt; state.nav,);</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> addListener = createReduxBoundAddListener(<span class="string">'root'</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> &#123;</span><br><span class="line">    middleware,</span><br><span class="line">    addListener</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<h3 id="首先写一个-navigator"><a href="#首先写一个-navigator" class="headerlink" title="首先写一个 navigator"></a>首先写一个 navigator</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> AppNavigator = StackNavigator(&#123;</span><br><span class="line">    Home: &#123; <span class="attr">screen</span>: HomeTab &#125;,  <span class="comment">// 这是一个 TabNavigator</span></span><br><span class="line">    Details: &#123; <span class="attr">screen</span>: DetailPage &#125;,  <span class="comment">// 简单的页面</span></span><br><span class="line">  &#125;);</span><br></pre></td></tr></table></figure>
+
+<p>集成 Redux 主要含三部分：Store，Action，Reducer</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/3762216-ce7c29ca1d694ed5.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/800" alt="Redux"></p>
+<h3 id="Action"><a href="#Action" class="headerlink" title="Action"></a>Action</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">export</span> <span class="function"><span class="keyword">function</span> <span class="title">getBanners</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="function"><span class="params">dispatch</span> =&gt;</span> &#123;</span><br><span class="line">        <span class="comment">// request 是我自己封装的网络请求方法</span></span><br><span class="line">        request(&#123;</span><br><span class="line">            url: apis.BANNER  <span class="comment">// 常量 API 地址</span></span><br><span class="line">        &#125;).then(<span class="function"><span class="params">res</span> =&gt;</span> &#123;</span><br><span class="line">            dispatch(&#123;</span><br><span class="line">                type: actionTypes.BANNER,  <span class="comment">// 常量行为类型</span></span><br><span class="line">                data: res</span><br><span class="line">            &#125;)</span><br><span class="line">        &#125;)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="Reducer"><a href="#Reducer" class="headerlink" title="Reducer"></a>Reducer</h3><ol>
+<li><p>othersReducer.js</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 初始 state</span></span><br><span class="line"><span class="keyword">const</span> initState = &#123;</span><br><span class="line">    banners: [],</span><br><span class="line">    articles: [],</span><br><span class="line">    loading: <span class="literal">false</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="function"><span class="keyword">function</span> <span class="title">discoveryData</span>(<span class="params">state=initState, action</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">switch</span>(action.type) &#123;</span><br><span class="line">        <span class="keyword">case</span> actionTypes.BANNER:</span><br><span class="line">            <span class="keyword">return</span> &#123;...state, <span class="attr">banners</span>:action.data, <span class="attr">loading</span>:<span class="literal">false</span>&#125;</span><br><span class="line">        <span class="keyword">default</span>:</span><br><span class="line">            <span class="keyword">return</span> state;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>navReducer.js 用于导航</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123; AppNavigator &#125; <span class="keyword">from</span> <span class="string">'../navigators/AppNavigator'</span>;</span><br><span class="line"><span class="keyword">import</span> &#123; NavigationActions &#125; <span class="keyword">from</span> <span class="string">'react-navigation'</span>;</span><br><span class="line"><span class="comment">// Home 是个 TabNavigator，在这里 firstAction 为 null，会导致后续程序会出错，所以自己手写了一个 action</span></span><br><span class="line"><span class="keyword">const</span> firstAction = AppNavigator.router.getActionForPathAndParams(<span class="string">'Home'</span>) || &#123;</span><br><span class="line">    type: <span class="string">'Navigation/NAVIGATE'</span>,</span><br><span class="line">    touteName: <span class="string">'Home'</span></span><br><span class="line">&#125;;</span><br><span class="line"><span class="keyword">const</span> initialNavState = AppNavigator.router.getStateForAction(firstAction);</span><br><span class="line"><span class="keyword">const</span> navReducer = <span class="function">(<span class="params">state = initialNavState, action</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">const</span> nextState = AppNavigator.router.getStateForAction(action, state);</span><br><span class="line">    <span class="keyword">return</span> nextState || state;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> navReducer;</span><br></pre></td></tr></table></figure>
+
+</li>
+</ol>
+<p>在以前版本里，我是把 firstAction 和 initialNavState 注释掉了，如果不注释掉会在 getStateForAction 时报 <code>undefined</code> 错误<br><img src="http://upload-images.jianshu.io/upload_images/3762216-a738f6219e7475a0.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/400" alt="undefined"><br>解决方案多种：<br>一种是将 TabNavigator 放在单纯的 Component 中作为 StackNavigator 的 screen，这样就可以使用 initialNavState了，弊端是不方便从其它页面跳转到  TabNavigator 的指定 Tab 页。<br>另一种就是我现在使用的方案了。<br>如果你有更好的解决方案请告诉我！！</p>
+<p>在新版本中不再出现上述问题，而是出现代码中提到的 null 问题<br>3. 整合 Reducer</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123; combineReducers &#125; <span class="keyword">from</span> <span class="string">'redux'</span>;</span><br><span class="line"><span class="keyword">import</span> navReducer <span class="keyword">from</span> <span class="string">'./navReducer'</span>;</span><br><span class="line"><span class="keyword">import</span> othersReducer <span class="keyword">from</span> <span class="string">'./othersReducer'</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> AppReducer = combineReducers(&#123;</span><br><span class="line">    nav: navReducer,</span><br><span class="line">    othersReducer</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> AppReducer;</span><br></pre></td></tr></table></figure>
+
+<h3 id="配置-Store"><a href="#配置-Store" class="headerlink" title="配置 Store"></a>配置 Store</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123; createStore, applyMiddleware &#125; <span class="keyword">from</span> <span class="string">'redux'</span>;</span><br><span class="line"><span class="keyword">import</span> thunkMiddleware <span class="keyword">from</span> <span class="string">'redux-thunk'</span>;  <span class="comment">// 中间件</span></span><br><span class="line"><span class="keyword">import</span> reducers <span class="keyword">from</span> <span class="string">'./../reducers'</span>;  <span class="comment">// 整合后的 Reducer</span></span><br><span class="line"><span class="keyword">import</span> &#123; middleware &#125; <span class="keyword">from</span> <span class="string">'./redux'</span>;  <span class="comment">// redux helper</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> configStore = applyMiddleware(thunkMiddleware, middleware)(createStore)</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> configStore(reducers);</span><br></pre></td></tr></table></figure>
+
+<h3 id="自定义-Navigator"><a href="#自定义-Navigator" class="headerlink" title="自定义 Navigator"></a>自定义 Navigator</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123; connect &#125; <span class="keyword">from</span> <span class="string">'react-redux'</span>;</span><br><span class="line"><span class="keyword">import</span> &#123; addNavigationHelpers, NavigationActions &#125; <span class="keyword">from</span> <span class="string">'react-navigation'</span>;</span><br><span class="line"><span class="keyword">import</span> &#123; addListener &#125; <span class="keyword">from</span> <span class="string">'./redux'</span>;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">AppWithNavigationState</span> <span class="keyword">extends</span> <span class="title">Component</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">  componentDidMount() &#123;</span><br><span class="line">    BackHandler.addEventListener(<span class="string">'hardwareBackPress'</span>, <span class="keyword">this</span>.onBackPress)</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  componentWillUnmount() &#123;</span><br><span class="line">    BackHandler.removeEventListener(<span class="string">'hardwareBackPress'</span>, <span class="keyword">this</span>.onBackPress)</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  onBackPress = <span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">const</span> &#123; dispatch, nav &#125; = <span class="keyword">this</span>.props;</span><br><span class="line">    dispatch(NavigationActions.back())</span><br><span class="line">    <span class="keyword">return</span> !(nav.index===<span class="number">0</span>)</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  render() &#123;</span><br><span class="line">    <span class="keyword">return</span> (</span><br><span class="line">      &lt;AppNavigator </span><br><span class="line">        navigation=&#123;addNavigationHelpers(&#123; </span><br><span class="line">          dispatch: <span class="keyword">this</span>.props.dispatch,</span><br><span class="line">          state: <span class="keyword">this</span>.props.nav,</span><br><span class="line">          addListener  <span class="comment">// 关键所在</span></span><br><span class="line">        &#125;)&#125; </span><br><span class="line">      /&gt;</span><br><span class="line">    )</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> mapStateToProps = <span class="function"><span class="params">state</span> =&gt;</span> (&#123;</span><br><span class="line">  nav: state.nav,</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> connect(mapStateToProps)(AppWithNavigationState);</span><br></pre></td></tr></table></figure>
+
+<h3 id="绑定到应用中"><a href="#绑定到应用中" class="headerlink" title="绑定到应用中"></a>绑定到应用中</h3><p>在入口文件中绑定 Redux 的 store 管理库</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123; Provider &#125; <span class="keyword">from</span> <span class="string">'react-redux'</span>;</span><br><span class="line"><span class="keyword">import</span> store <span class="keyword">from</span> <span class="string">'./src/store'</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="class"><span class="keyword">class</span> <span class="title">App</span> <span class="keyword">extends</span> <span class="title">React</span>.<span class="title">Component</span> </span>&#123;</span><br><span class="line">  render() &#123;</span><br><span class="line">    <span class="keyword">return</span> (</span><br><span class="line">      &lt;Provider store=&#123;store&#125;&gt;</span><br><span class="line">        &lt;AppWithNavigationState /&gt;</span><br><span class="line">      &lt;<span class="regexp">/Provider&gt;</span></span><br><span class="line"><span class="regexp">    );</span></span><br><span class="line"><span class="regexp">  &#125;</span></span><br><span class="line"><span class="regexp">&#125;</span></span><br></pre></td></tr></table></figure>
+
+<p>所有源码我已经放到了 GitHub <a href="https://github.com/Hongye567/react-native-mark" target="_blank" rel="noopener">查看源码</a></p>
+
+  </div>
+</article>
+
+
+
+        
+          <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/about/">About</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a href="https://github.com/Honye?tab=repositories">Projects</a></li>
+        
+      </ul>
+    </div>
+
+    <div id="toc-footer" style="display: none">
+      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#首先写-redux-helper-工具-redux-js"><span class="toc-number">1.</span> <span class="toc-text">首先写 redux helper 工具 redux.js</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#首先写一个-navigator"><span class="toc-number">2.</span> <span class="toc-text">首先写一个 navigator</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Action"><span class="toc-number">3.</span> <span class="toc-text">Action</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Reducer"><span class="toc-number">4.</span> <span class="toc-text">Reducer</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#配置-Store"><span class="toc-number">5.</span> <span class="toc-text">配置 Store</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#自定义-Navigator"><span class="toc-number">6.</span> <span class="toc-text">自定义 Navigator</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#绑定到应用中"><span class="toc-number">7.</span> <span class="toc-text">绑定到应用中</span></a></li></ol>
+    </div>
+
+    <div id="share-footer" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=http://www.honye.com/posts/9aae91d8.html"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=http://www.honye.com/posts/9aae91d8.html&text=React Navigation 集成 Redux"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=http://www.honye.com/posts/9aae91d8.html&title=React Navigation 集成 Redux"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=http://www.honye.com/posts/9aae91d8.html&is_video=false&description=React Navigation 集成 Redux"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=React Navigation 集成 Redux&body=Check out this article: http://www.honye.com/posts/9aae91d8.html"><i class="fas fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=http://www.honye.com/posts/9aae91d8.html&title=React Navigation 集成 Redux"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=http://www.honye.com/posts/9aae91d8.html&title=React Navigation 集成 Redux"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=http://www.honye.com/posts/9aae91d8.html&title=React Navigation 集成 Redux"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=http://www.honye.com/posts/9aae91d8.html&title=React Navigation 集成 Redux"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=http://www.honye.com/posts/9aae91d8.html&name=React Navigation 集成 Redux&description=&lt;p&gt;更新时间：2018-03-03&lt;/p&gt;
+&lt;p&gt;修复因 React Navigation 更新引起的 &lt;font color=&#34;red&#34;&gt;&lt;code&gt;addListener is not  a function&lt;/code&gt;&lt;/font&gt; 的问题。&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://reactnavigation.org/docs/intro/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;react-navigation&lt;/a&gt; 是 React Native 官方推荐的导航库。&lt;a href=&#34;https://redux.js.org/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;redux&lt;/a&gt; 是一个状态容器，redux 的简单使用可参考阮一峰的 &lt;a href=&#34;http://www.ruanyifeng.com/blog/2016/09/redux_tutorial_part_one_basic_usages.html&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Redux 入门教程&lt;/a&gt;，现在网上也有很多中文文档。&lt;/p&gt;
+&lt;p&gt;在 React Navigation 最新版本中需要添加 &lt;code&gt;react-navigation-redux-helpers&lt;/code&gt; 包&lt;/p&gt;
+&lt;figure class=&#34;highlight bash&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;2&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;$ yarn add react-native-navigation-redux-helpers&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;comment&#34;&gt;# 或者 npm install --save react-native-navigation-redux-helpers&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;"><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+
+    <div id="actions-footer">
+        <a id="menu" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;"><i class="fas fa-bars fa-lg" aria-hidden="true"></i> Menu</a>
+        <a id="toc" class="icon" href="#" onclick="$('#toc-footer').toggle();return false;"><i class="fas fa-list fa-lg" aria-hidden="true"></i> TOC</a>
+        <a id="share" class="icon" href="#" onclick="$('#share-footer').toggle();return false;"><i class="fas fa-share-alt fa-lg" aria-hidden="true"></i> Share</a>
+        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up fa-lg" aria-hidden="true"></i> Top</a>
+    </div>
+
+  </div>
+</div>
+
+        
+        <footer id="footer">
+  <div class="footer-left">
+    Copyright &copy; 2019 Honye
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/about/">About</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a href="https://github.com/Honye?tab=repositories">Projects</a></li>
+        
+      </ul>
+    </nav>
+  </div>
+</footer>
+
+    </div>
+    <!-- styles -->
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+<link rel="stylesheet" href="/lib/justified-gallery/css/justifiedGallery.min.css">
+
+    <!-- jquery -->
+<script src="/lib/jquery/jquery.min.js"></script>
+<script src="/lib/justified-gallery/js/jquery.justifiedGallery.min.js"></script>
+<!-- clipboard -->
+
+  <script src="/lib/clipboard/clipboard.min.js"></script>
+  <script type="text/javascript">
+  $(function() {
+    // copy-btn HTML
+    var btn = "<span class=\"btn-copy tooltipped tooltipped-sw\" aria-label=\"Copy to clipboard!\">";
+    btn += '<i class="far fa-clone"></i>';
+    btn += '</span>'; 
+    // mount it!
+    $(".highlight .code pre").before(btn);
+    var clip = new ClipboardJS('.btn-copy', {
+      target: function(trigger) {
+        return trigger.nextElementSibling;
+      }
+    });
+    clip.on('success', function(e) {
+      e.trigger.setAttribute('aria-label', "Copied!");
+      e.clearSelection();
+    })
+  })
+  </script>
+
+<script src="/js/main.js"></script>
+<!-- search -->
+
+<!-- Google Analytics -->
+
+<!-- Baidu Analytics -->
+
+<!-- Disqus Comments -->
+
+
+</body>
+</html>

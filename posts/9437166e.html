@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang=zh>
+<head><meta name="generator" content="Hexo 3.9.0">
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="description" content="概述jpush-react-native 是极光推送官方开发的 React Native 版本插件，可以快速集成推送功能。现在最新版本的 JPush SDK 分离了 JPush 及 JCore，让开发者可以分开集成 JMessage 及 JPush（以前 JMessage 包含了 JPush）。 我没有 mac 设备，所以只说 Android 的配置。">
+<meta name="keywords" content="React Native">
+<meta property="og:type" content="article">
+<meta property="og:title" content="React Native 集成极光推送 jpush-react-native">
+<meta property="og:url" content="http://www.honye.com/posts/9437166e.html">
+<meta property="og:site_name" content="Honye&#39;s Blog">
+<meta property="og:description" content="概述jpush-react-native 是极光推送官方开发的 React Native 版本插件，可以快速集成推送功能。现在最新版本的 JPush SDK 分离了 JPush 及 JCore，让开发者可以分开集成 JMessage 及 JPush（以前 JMessage 包含了 JPush）。 我没有 mac 设备，所以只说 Android 的配置。">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1745101-4eb12666d3d3099f.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://github.com/KenChoi1992/SomeArticles/raw/master/screenshots/plugin3.png">
+<meta property="og:updated_time" content="2019-09-03T15:11:51.722Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="React Native 集成极光推送 jpush-react-native">
+<meta name="twitter:description" content="概述jpush-react-native 是极光推送官方开发的 React Native 版本插件，可以快速集成推送功能。现在最新版本的 JPush SDK 分离了 JPush 及 JCore，让开发者可以分开集成 JMessage 及 JPush（以前 JMessage 包含了 JPush）。 我没有 mac 设备，所以只说 Android 的配置。">
+<meta name="twitter:image" content="http://upload-images.jianshu.io/upload_images/1745101-4eb12666d3d3099f.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+    
+    
+        
+          
+              <link rel="shortcut icon" href="/images/favicon.ico">
+          
+        
+        
+          
+            <link rel="icon" type="image/png" href="/images/favicon-192x192.png" sizes="192x192">
+          
+        
+        
+          
+            <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+          
+        
+    
+    <!-- title -->
+    <title>React Native 集成极光推送 jpush-react-native</title>
+    <!-- styles -->
+    <link rel="stylesheet" href="/css/style.css">
+    <!-- persian styles -->
+    
+      <link rel="stylesheet" href="/css/rtl.css">
+    
+    <!-- rss -->
+    
+    
+</head>
+
+<body class="max-width mx-auto px3 ltr">
+    
+      <div id="header-post">
+  <a id="menu-icon" href="#"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fas fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/about/">About</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a href="https://github.com/Honye?tab=repositories">Projects</a></li>
+        
+      </ul>
+    </span>
+    <br/>
+    <span id="actions">
+      <ul>
+        
+        <li><a class="icon" href="/posts/9aae91d8.html"><i class="fas fa-chevron-left" aria-hidden="true" onmouseover="$('#i-prev').toggle();" onmouseout="$('#i-prev').toggle();"></i></a></li>
+        
+        
+        <li><a class="icon" href="/posts/f0c4d7aa.html"><i class="fas fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
+        
+        <li><a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
+        <li><a class="icon" href="#"><i class="fas fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">Previous post</span>
+      <span id="i-next" class="info" style="display:none;">Next post</span>
+      <span id="i-top" class="info" style="display:none;">Back to top</span>
+      <span id="i-share" class="info" style="display:none;">Share post</span>
+    </span>
+    <br/>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=http://www.honye.com/posts/9437166e.html"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=http://www.honye.com/posts/9437166e.html&text=React Native 集成极光推送 jpush-react-native"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=http://www.honye.com/posts/9437166e.html&title=React Native 集成极光推送 jpush-react-native"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=http://www.honye.com/posts/9437166e.html&is_video=false&description=React Native 集成极光推送 jpush-react-native"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=React Native 集成极光推送 jpush-react-native&body=Check out this article: http://www.honye.com/posts/9437166e.html"><i class="fas fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=http://www.honye.com/posts/9437166e.html&title=React Native 集成极光推送 jpush-react-native"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=http://www.honye.com/posts/9437166e.html&title=React Native 集成极光推送 jpush-react-native"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=http://www.honye.com/posts/9437166e.html&title=React Native 集成极光推送 jpush-react-native"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=http://www.honye.com/posts/9437166e.html&title=React Native 集成极光推送 jpush-react-native"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=http://www.honye.com/posts/9437166e.html&name=React Native 集成极光推送 jpush-react-native&description=&lt;h2 id=&#34;概述&#34;&gt;&lt;a href=&#34;#概述&#34; class=&#34;headerlink&#34; title=&#34;概述&#34;&gt;&lt;/a&gt;概述&lt;/h2&gt;&lt;p&gt;&lt;a href=&#34;https://github.com/jpush/jpush-react-native&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;jpush-react-native&lt;/a&gt; 是极光推送官方开发的 React Native 版本插件，可以快速集成推送功能。现在最新版本的 JPush SDK 分离了 JPush 及 JCore，让开发者可以分开集成 JMessage 及 JPush（以前 JMessage 包含了 JPush）。&lt;/p&gt;
+&lt;p&gt;我没有 mac 设备，所以只说 Android 的配置。&lt;/p&gt;"><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+    <div id="toc">
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#概述"><span class="toc-number">1.</span> <span class="toc-text">概述</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#安装"><span class="toc-number">2.</span> <span class="toc-text">安装</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#配置"><span class="toc-number">3.</span> <span class="toc-text">配置</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-自动配置部分"><span class="toc-number">3.1.</span> <span class="toc-text">1. 自动配置部分</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-手动配置部分"><span class="toc-number">3.2.</span> <span class="toc-text">2. 手动配置部分</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#使用"><span class="toc-number">4.</span> <span class="toc-text">使用</span></a></li></ol>
+    </div>
+  </span>
+</div>
+
+    
+    <div class="content index py4">
+        
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+  <header>
+    
+    <h1 class="posttitle" itemprop="name headline">
+        React Native 集成极光推送 jpush-react-native
+    </h1>
+
+
+
+    <div class="meta">
+      <span class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <span itemprop="name">Honye's Blog</span>
+      </span>
+      
+    <div class="postdate">
+      
+        <time datetime="2017-06-22T21:35:43.000Z" itemprop="datePublished">2017-06-22</time>
+        
+      
+    </div>
+
+
+      
+
+      
+    <div class="article-tag">
+        <i class="fas fa-tag"></i>
+        <a class="tag-link" href="/tags/React-Native/">React Native</a>
+    </div>
+
+
+    </div>
+  </header>
+  
+
+  <div class="content" itemprop="articleBody">
+    <h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><p><a href="https://github.com/jpush/jpush-react-native" target="_blank" rel="noopener">jpush-react-native</a> 是极光推送官方开发的 React Native 版本插件，可以快速集成推送功能。现在最新版本的 JPush SDK 分离了 JPush 及 JCore，让开发者可以分开集成 JMessage 及 JPush（以前 JMessage 包含了 JPush）。</p>
+<p>我没有 mac 设备，所以只说 Android 的配置。</p>
+<a id="more"></a>
+
+<h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><p>打开终端，进入项目文件夹，执行以下命令：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ npm install jpush-react-native --save</span><br><span class="line"><span class="comment"># jpush-react-native 1.4.2 版本以后需要同时安装 jcore-react-native</span></span><br><span class="line">$ npm install jcore-react-native --save</span><br></pre></td></tr></table></figure>
+
+<h2 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h2><h3 id="1-自动配置部分"><a href="#1-自动配置部分" class="headerlink" title="1. 自动配置部分"></a>1. 自动配置部分</h3><p>官方：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ react-native link</span><br></pre></td></tr></table></figure>
+
+<p>作者推荐：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 针对性的link，避免之前手动配置的其它插件重复配置造成报错</span></span><br><span class="line">$ react-native link jpush-react-native</span><br><span class="line">$ react-native link jcore-react-native</span><br></pre></td></tr></table></figure>
+
+<p>执行完 link 项目后可能会出现报错，这没关系，需要手动配置一下 build.gradle 文件。</p>
+<h3 id="2-手动配置部分"><a href="#2-手动配置部分" class="headerlink" title="2. 手动配置部分"></a>2. 手动配置部分</h3><p>在 Android Studio 中打开你的项目，然后找到 app 或者你自己定义的需要集成 jpush-react-native 的模块，打开此模块下的 build.gradle 文件，做以下改动：</p>
+<blockquote>
+<p>project/android/app/build.gradle</p>
+</blockquote>
+<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">android &#123;</span><br><span class="line">    ...</span><br><span class="line">    defaultConfig &#123;</span><br><span class="line">        applicationId <span class="string">"yourApplicationId"</span> <span class="comment">// 此处改成你在极光官网上申请应用时填写的包名</span></span><br><span class="line">        ...</span><br><span class="line">        manifestPlaceholders = [</span><br><span class="line"><span class="symbol">                JPUSH_APPKEY:</span> <span class="string">"yourAppKey"</span>, <span class="comment">//在此替换你的 APPKey</span></span><br><span class="line"><span class="symbol">                APP_CHANNEL:</span> <span class="string">"developer-default"</span>    <span class="comment">//应用渠道号, 默认即可</span></span><br><span class="line">        ]</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">...</span><br><span class="line">dependencies &#123;</span><br><span class="line">    compile fileTree(<span class="string">dir:</span> <span class="string">"libs"</span>, <span class="string">include:</span> [<span class="string">"*.jar"</span>])</span><br><span class="line">    compile project(<span class="string">':jpush-react-native'</span>)  <span class="comment">// 添加 jpush 依赖</span></span><br><span class="line">    compile project(<span class="string">':jcore-react-native'</span>)  <span class="comment">// 添加 jcore 依赖</span></span><br><span class="line">    compile <span class="string">"com.facebook.react:react-native:+"</span>  <span class="comment">// From node_modules</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>检查 android 项目下的 settings.gradle 配置有没有包含以下内容：</p>
+<blockquote>
+<p>project/android/settings.gradle</p>
+</blockquote>
+<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">include <span class="string">':app'</span>, <span class="string">':jpush-react-native'</span>, <span class="string">':jcore-react-native'</span></span><br><span class="line">project(<span class="string">':jpush-react-native'</span>).projectDir = <span class="keyword">new</span> File(rootProject.projectDir, <span class="string">'../node_modules/jpush-react-native/android'</span>)</span><br><span class="line">project(<span class="string">':jcore-react-native'</span>).projectDir = <span class="keyword">new</span> File(rootProject.projectDir, <span class="string">'../node_modules/jcore-react-native/android'</span>)</span><br></pre></td></tr></table></figure>
+
+<p>检查一下 app 下的 AndroidManifest 配置，有没有增加 &lt;meta-data&gt; 部分。</p>
+<blockquote>
+<p>project/android/app/AndroidManifest.xml</p>
+</blockquote>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">application</span></span></span><br><span class="line"><span class="tag">    <span class="attr">...</span></span></span><br><span class="line">    &lt;!-- Required . Enable it you can get statistics data with channel --&gt;</span><br><span class="line">    <span class="tag">&lt;<span class="name">meta-data</span> <span class="attr">android:name</span>=<span class="string">"JPUSH_CHANNEL"</span> <span class="attr">android:value</span>=<span class="string">"$&#123;APP_CHANNEL&#125;"</span>/&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta-data</span> <span class="attr">android:name</span>=<span class="string">"JPUSH_APPKEY"</span> <span class="attr">android:value</span>=<span class="string">"$&#123;JPUSH_APPKEY&#125;"</span>/&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;/<span class="name">application</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>现在重新 sync 一下项目，应该能看到 jpush-react-native 以及 jcore-react-native 作为 android Library 项目导进来了。</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/1745101-4eb12666d3d3099f.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt></p>
+<p>接下来加入 JPushPackage</p>
+<ul>
+<li>RN 0.29.0 以下版本</li>
+</ul>
+<p>打开 app 下的 MainActivity，在 ReactInstanceManager 的 build 方法中加入 JPushPackage：</p>
+<blockquote>
+<p>project/android/app/MainActivity.java</p>
+</blockquote>
+<p><img src="https://github.com/KenChoi1992/SomeArticles/raw/master/screenshots/plugin3.png" alt></p>
+<ul>
+<li>RN 0.29.0 以上版本</li>
+</ul>
+<p>打开 app 下的 MainApplication.java 文件，然后加入 JPushPackage，<a href="https://github.com/jpush/jpush-react-native/blob/master/example/android/app/src/com/pushdemo/MainApplication.java" target="_blank" rel="noopener">参考 demo</a>：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 设置为 true 将不弹出 toast</span></span><br><span class="line"><span class="keyword">private</span> <span class="keyword">boolean</span> SHUTDOWN_TOAST = <span class="keyword">false</span>;</span><br><span class="line"><span class="comment">// 设置为 true 将不打印 log</span></span><br><span class="line"><span class="keyword">private</span> <span class="keyword">boolean</span> SHUTDOWN_LOG = <span class="keyword">false</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">private</span> <span class="keyword">final</span> ReactNativeHost mReactNativeHost = <span class="keyword">new</span> ReactNativeHost(<span class="keyword">this</span>) &#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">boolean</span> <span class="title">getUseDeveloperSupport</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> BuildConfig.DEBUG;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">protected</span> List&lt;ReactPackage&gt; <span class="title">getPackages</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> Arrays.&lt;ReactPackage&gt;asList(</span><br><span class="line">                <span class="keyword">new</span> MainReactPackage(),</span><br><span class="line">                <span class="keyword">new</span> JPushPackage(SHUTDOWN_TOAST, SHUTDOWN_LOG)</span><br><span class="line">        );</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<p>然后在 MainActivity 中加入一些初始化代码即可：</p>
+<blockquote>
+<p>project/android/app/src/java/…/MainActivity.java</p>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MainActivity</span> <span class="keyword">extends</span> <span class="title">ReactActivity</span> </span>&#123;</span><br><span class="line">    ...</span><br><span class="line">    </span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onCreate</span><span class="params">(Bundle savedInstanceState)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">super</span>.onCreate(savedInstanceState);</span><br><span class="line">        JPushInterface.init(<span class="keyword">this</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onPause</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">super</span>.onPause();</span><br><span class="line">        JPushInterface.onPause(<span class="keyword">this</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onResume</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">super</span>.onResume();</span><br><span class="line">        JPushInterface.onResume(<span class="keyword">this</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onDestroy</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">super</span>.onDestroy();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>这样就完成了所有的配置。接下来就可以在 JS 中调用插件提供的 API 了。</p>
+<h2 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> JPushModule <span class="keyword">from</span> <span class="string">'jpush-react-native'</span>;</span><br><span class="line"></span><br><span class="line">...</span><br><span class="line"></span><br><span class="line">componentDidMount() &#123;</span><br><span class="line">     <span class="comment">// 新版本必需写回调函数</span></span><br><span class="line">    <span class="comment">// JPushModule.notifyJSDidLoad();</span></span><br><span class="line">    JPushModule.notifyJSDidLoad(<span class="function">(<span class="params">resultCode</span>) =&gt;</span> &#123;</span><br><span class="line">      <span class="keyword">if</span> (resultCode === <span class="number">0</span>) &#123;&#125;</span><br><span class="line">    &#125;);   </span><br><span class="line">    <span class="comment">// 接收自定义消息</span></span><br><span class="line">    JPushModule.addReceiveCustomMsgListener(<span class="function">(<span class="params">message</span>) =&gt;</span> &#123;</span><br><span class="line">      <span class="keyword">this</span>.setState(&#123;<span class="attr">pushMsg</span>: message&#125;);</span><br><span class="line">    &#125;);</span><br><span class="line">    <span class="comment">// 接收推送通知</span></span><br><span class="line">    JPushModule.addReceiveNotificationListener(<span class="function">(<span class="params">message</span>) =&gt;</span> &#123;</span><br><span class="line">      <span class="built_in">console</span>.log(<span class="string">"receive notification: "</span> + message);</span><br><span class="line">    &#125;);</span><br><span class="line">    <span class="comment">// 打开通知</span></span><br><span class="line">    JPushModule.addReceiveOpenNotificationListener(<span class="function">(<span class="params">map</span>) =&gt;</span> &#123;</span><br><span class="line">      <span class="built_in">console</span>.log(<span class="string">"Opening notification!"</span>);</span><br><span class="line">      <span class="built_in">console</span>.log(<span class="string">"map.extra: "</span> + map.extras);</span><br><span class="line">      <span class="comment">// 可执行跳转操作，也可跳转原生页面</span></span><br><span class="line">      <span class="comment">// this.props.navigation.navigate("SecondActivity");</span></span><br><span class="line">    &#125;);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  componentWillUnmount() &#123;</span><br><span class="line">    JPushModule.removeReceiveCustomMsgListener();</span><br><span class="line">    JPushModule.removeReceiveNotificationListener();</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
+
+<p>更多高级应用查看<a href="https://github.com/jpush/jpush-react-native#api" target="_blank" rel="noopener">官方说明</a></p>
+
+  </div>
+</article>
+
+
+
+        
+          <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/about/">About</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a href="https://github.com/Honye?tab=repositories">Projects</a></li>
+        
+      </ul>
+    </div>
+
+    <div id="toc-footer" style="display: none">
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#概述"><span class="toc-number">1.</span> <span class="toc-text">概述</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#安装"><span class="toc-number">2.</span> <span class="toc-text">安装</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#配置"><span class="toc-number">3.</span> <span class="toc-text">配置</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-自动配置部分"><span class="toc-number">3.1.</span> <span class="toc-text">1. 自动配置部分</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-手动配置部分"><span class="toc-number">3.2.</span> <span class="toc-text">2. 手动配置部分</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#使用"><span class="toc-number">4.</span> <span class="toc-text">使用</span></a></li></ol>
+    </div>
+
+    <div id="share-footer" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=http://www.honye.com/posts/9437166e.html"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=http://www.honye.com/posts/9437166e.html&text=React Native 集成极光推送 jpush-react-native"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=http://www.honye.com/posts/9437166e.html&title=React Native 集成极光推送 jpush-react-native"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=http://www.honye.com/posts/9437166e.html&is_video=false&description=React Native 集成极光推送 jpush-react-native"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=React Native 集成极光推送 jpush-react-native&body=Check out this article: http://www.honye.com/posts/9437166e.html"><i class="fas fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=http://www.honye.com/posts/9437166e.html&title=React Native 集成极光推送 jpush-react-native"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=http://www.honye.com/posts/9437166e.html&title=React Native 集成极光推送 jpush-react-native"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=http://www.honye.com/posts/9437166e.html&title=React Native 集成极光推送 jpush-react-native"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=http://www.honye.com/posts/9437166e.html&title=React Native 集成极光推送 jpush-react-native"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=http://www.honye.com/posts/9437166e.html&name=React Native 集成极光推送 jpush-react-native&description=&lt;h2 id=&#34;概述&#34;&gt;&lt;a href=&#34;#概述&#34; class=&#34;headerlink&#34; title=&#34;概述&#34;&gt;&lt;/a&gt;概述&lt;/h2&gt;&lt;p&gt;&lt;a href=&#34;https://github.com/jpush/jpush-react-native&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;jpush-react-native&lt;/a&gt; 是极光推送官方开发的 React Native 版本插件，可以快速集成推送功能。现在最新版本的 JPush SDK 分离了 JPush 及 JCore，让开发者可以分开集成 JMessage 及 JPush（以前 JMessage 包含了 JPush）。&lt;/p&gt;
+&lt;p&gt;我没有 mac 设备，所以只说 Android 的配置。&lt;/p&gt;"><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+
+    <div id="actions-footer">
+        <a id="menu" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;"><i class="fas fa-bars fa-lg" aria-hidden="true"></i> Menu</a>
+        <a id="toc" class="icon" href="#" onclick="$('#toc-footer').toggle();return false;"><i class="fas fa-list fa-lg" aria-hidden="true"></i> TOC</a>
+        <a id="share" class="icon" href="#" onclick="$('#share-footer').toggle();return false;"><i class="fas fa-share-alt fa-lg" aria-hidden="true"></i> Share</a>
+        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up fa-lg" aria-hidden="true"></i> Top</a>
+    </div>
+
+  </div>
+</div>
+
+        
+        <footer id="footer">
+  <div class="footer-left">
+    Copyright &copy; 2019 Honye
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/about/">About</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a href="https://github.com/Honye?tab=repositories">Projects</a></li>
+        
+      </ul>
+    </nav>
+  </div>
+</footer>
+
+    </div>
+    <!-- styles -->
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+<link rel="stylesheet" href="/lib/justified-gallery/css/justifiedGallery.min.css">
+
+    <!-- jquery -->
+<script src="/lib/jquery/jquery.min.js"></script>
+<script src="/lib/justified-gallery/js/jquery.justifiedGallery.min.js"></script>
+<!-- clipboard -->
+
+  <script src="/lib/clipboard/clipboard.min.js"></script>
+  <script type="text/javascript">
+  $(function() {
+    // copy-btn HTML
+    var btn = "<span class=\"btn-copy tooltipped tooltipped-sw\" aria-label=\"Copy to clipboard!\">";
+    btn += '<i class="far fa-clone"></i>';
+    btn += '</span>'; 
+    // mount it!
+    $(".highlight .code pre").before(btn);
+    var clip = new ClipboardJS('.btn-copy', {
+      target: function(trigger) {
+        return trigger.nextElementSibling;
+      }
+    });
+    clip.on('success', function(e) {
+      e.trigger.setAttribute('aria-label', "Copied!");
+      e.clearSelection();
+    })
+  })
+  </script>
+
+<script src="/js/main.js"></script>
+<!-- search -->
+
+<!-- Google Analytics -->
+
+<!-- Baidu Analytics -->
+
+<!-- Disqus Comments -->
+
+
+</body>
+</html>

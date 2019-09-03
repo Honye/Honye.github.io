@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang=zh>
+<head><meta name="generator" content="Hexo 3.9.0">
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="description" content="利用 window.setInterval() 实现倒计时示例：1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950var id;var interval = 1000; /** * @param year 结束日期的年 * @param month 结束日期的月 *">
+<meta name="keywords" content="JavaScript">
+<meta property="og:type" content="article">
+<meta property="og:title" content="JS 实现倒计时">
+<meta property="og:url" content="http://www.honye.com/posts/2883d964.html">
+<meta property="og:site_name" content="Honye&#39;s Blog">
+<meta property="og:description" content="利用 window.setInterval() 实现倒计时示例：1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950var id;var interval = 1000; /** * @param year 结束日期的年 * @param month 结束日期的月 *">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2019-09-03T15:11:51.722Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="JS 实现倒计时">
+<meta name="twitter:description" content="利用 window.setInterval() 实现倒计时示例：1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950var id;var interval = 1000; /** * @param year 结束日期的年 * @param month 结束日期的月 *">
+    
+    
+        
+          
+              <link rel="shortcut icon" href="/images/favicon.ico">
+          
+        
+        
+          
+            <link rel="icon" type="image/png" href="/images/favicon-192x192.png" sizes="192x192">
+          
+        
+        
+          
+            <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+          
+        
+    
+    <!-- title -->
+    <title>JS 实现倒计时</title>
+    <!-- styles -->
+    <link rel="stylesheet" href="/css/style.css">
+    <!-- persian styles -->
+    
+      <link rel="stylesheet" href="/css/rtl.css">
+    
+    <!-- rss -->
+    
+    
+</head>
+
+<body class="max-width mx-auto px3 ltr">
+    
+      <div id="header-post">
+  <a id="menu-icon" href="#"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fas fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/about/">About</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a href="https://github.com/Honye?tab=repositories">Projects</a></li>
+        
+      </ul>
+    </span>
+    <br/>
+    <span id="actions">
+      <ul>
+        
+        <li><a class="icon" href="/posts/a5a9b325.html"><i class="fas fa-chevron-left" aria-hidden="true" onmouseover="$('#i-prev').toggle();" onmouseout="$('#i-prev').toggle();"></i></a></li>
+        
+        
+        <li><a class="icon" href="/posts/6fa78ea3.html"><i class="fas fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
+        
+        <li><a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
+        <li><a class="icon" href="#"><i class="fas fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">Previous post</span>
+      <span id="i-next" class="info" style="display:none;">Next post</span>
+      <span id="i-top" class="info" style="display:none;">Back to top</span>
+      <span id="i-share" class="info" style="display:none;">Share post</span>
+    </span>
+    <br/>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=http://www.honye.com/posts/2883d964.html"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=http://www.honye.com/posts/2883d964.html&text=JS 实现倒计时"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=http://www.honye.com/posts/2883d964.html&title=JS 实现倒计时"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=http://www.honye.com/posts/2883d964.html&is_video=false&description=JS 实现倒计时"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=JS 实现倒计时&body=Check out this article: http://www.honye.com/posts/2883d964.html"><i class="fas fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=http://www.honye.com/posts/2883d964.html&title=JS 实现倒计时"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=http://www.honye.com/posts/2883d964.html&title=JS 实现倒计时"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=http://www.honye.com/posts/2883d964.html&title=JS 实现倒计时"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=http://www.honye.com/posts/2883d964.html&title=JS 实现倒计时"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=http://www.honye.com/posts/2883d964.html&name=JS 实现倒计时&description=&lt;h3 id=&#34;利用-window-setInterval-实现倒计时&#34;&gt;&lt;a href=&#34;#利用-window-setInterval-实现倒计时&#34; class=&#34;headerlink&#34; title=&#34;利用 window.setInterval() 实现倒计时&#34;&gt;&lt;/a&gt;利用 window.setInterval() 实现倒计时&lt;/h3&gt;&lt;h4 id=&#34;示例：&#34;&gt;&lt;a href=&#34;#示例：&#34; class=&#34;headerlink&#34; title=&#34;示例：&#34;&gt;&lt;/a&gt;&lt;em&gt;示例：&lt;/em&gt;&lt;/h4&gt;&lt;figure class=&#34;highlight javascript&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;12&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;13&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;14&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;15&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;16&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;17&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;18&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;19&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;20&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;21&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;22&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;23&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;24&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;25&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;26&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;27&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;28&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;29&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;30&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;31&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;32&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;33&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;34&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;35&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;36&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;37&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;38&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;39&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;40&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;41&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;42&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;43&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;44&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;45&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;46&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;47&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;48&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;49&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;50&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;keyword&#34;&gt;var&lt;/span&gt; id;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;keyword&#34;&gt;var&lt;/span&gt; interval = &lt;span class=&#34;number&#34;&gt;1000&lt;/span&gt;; &lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;comment&#34;&gt;/**&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;comment&#34;&gt; * @param year 结束日期的年&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;comment&#34;&gt; * @param month 结束日期的月&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;comment&#34;&gt; * @param day 结束日期的日&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;comment&#34;&gt; * @param divname 需做出响应的元素id&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;comment&#34;&gt; */&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;function&#34;&gt;&lt;span class=&#34;keyword&#34;&gt;function&lt;/span&gt; &lt;span class=&#34;title&#34;&gt;ShowCountDown&lt;/span&gt;(&lt;span class=&#34;params&#34;&gt;year,month,day,divname&lt;/span&gt;) &lt;/span&gt;&amp;#123; &lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;	&lt;span class=&#34;comment&#34;&gt;// 设置结束日期&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;	&lt;span class=&#34;keyword&#34;&gt;var&lt;/span&gt; endDate = &lt;span class=&#34;keyword&#34;&gt;new&lt;/span&gt; &lt;span class=&#34;built_in&#34;&gt;Date&lt;/span&gt;(year, month&lt;span class=&#34;number&#34;&gt;-1&lt;/span&gt;, day); &lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;	&lt;span class=&#34;comment&#34;&gt;// 获取当前日期&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;	&lt;span class=&#34;keyword&#34;&gt;var&lt;/span&gt; now = &lt;span class=&#34;keyword&#34;&gt;new&lt;/span&gt; &lt;span class=&#34;built_in&#34;&gt;Date&lt;/span&gt;(); &lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;	&lt;span class=&#34;comment&#34;&gt;// 计算剩余毫秒数&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;	&lt;span class=&#34;keyword&#34;&gt;var&lt;/span&gt; leftTime=endDate.getTime()-now.getTime(); &lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;	&lt;span class=&#34;comment&#34;&gt;// 计算剩余秒数&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;	&lt;span class=&#34;keyword&#34;&gt;var&lt;/span&gt; leftsecond = &lt;span class=&#34;built_in&#34;&gt;parseInt&lt;/span&gt;(leftTime/&lt;span class=&#34;number&#34;&gt;1000&lt;/span&gt;); &lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;	&lt;span class=&#34;comment&#34;&gt;// 剩余天数（整数倍）&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;	&lt;span class=&#34;keyword&#34;&gt;var&lt;/span&gt; day1=&lt;span class=&#34;built_in&#34;&gt;Math&lt;/span&gt;.floor(leftsecond/(&lt;span class=&#34;number&#34;&gt;60&lt;/span&gt;*&lt;span class=&#34;number&#34;&gt;60&lt;/span&gt;*&lt;span class=&#34;number&#34;&gt;24&lt;/span&gt;)); &lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;	&lt;span class=&#34;comment&#34;&gt;// 剩余小时数（除去大单位后整数倍）&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;	&lt;span class=&#34;keyword&#34;&gt;var&lt;/span&gt; hour=&lt;span class=&#34;built_in&#34;&gt;Math&lt;/span&gt;.floor((leftsecond-day1*&lt;span class=&#34;number&#34;&gt;24&lt;/span&gt;*&lt;span class=&#34;number&#34;&gt;60&lt;/span&gt;*&lt;span class=&#34;number&#34;&gt;60&lt;/span&gt;)/&lt;span class=&#34;number&#34;&gt;3600&lt;/span&gt;); &lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;	&lt;span class=&#34;comment&#34;&gt;// 剩余分钟数（除去大单位后整数倍）&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;	&lt;span class=&#34;keyword&#34;&gt;var&lt;/span&gt; minute=&lt;span class=&#34;built_in&#34;&gt;Math&lt;/span&gt;.floor((leftsecond-day1*&lt;span class=&#34;number&#34;&gt;24&lt;/span&gt;*&lt;span class=&#34;number&#34;&gt;60&lt;/span&gt;*&lt;span class=&#34;number&#34;&gt;60&lt;/span&gt;-hour*&lt;span class=&#34;number&#34;&gt;3600&lt;/span&gt;)/&lt;span class=&#34;number&#34;&gt;60&lt;/span&gt;); &lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;	&lt;span class=&#34;comment&#34;&gt;// 剩余秒数（除去大单位后整数倍）&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;	&lt;span class=&#34;keyword&#34;&gt;var&lt;/span&gt; second=&lt;span class=&#34;built_in&#34;&gt;Math&lt;/span&gt;.floor(leftsecond-day1*&lt;span class=&#34;number&#34;&gt;24&lt;/span&gt;*&lt;span class=&#34;number&#34;&gt;60&lt;/span&gt;*&lt;span class=&#34;number&#34;&gt;60&lt;/span&gt;-hour*&lt;span class=&#34;number&#34;&gt;3600&lt;/span&gt;-minute*&lt;span class=&#34;number&#34;&gt;60&lt;/span&gt;); &lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;	&lt;span class=&#34;keyword&#34;&gt;var&lt;/span&gt; cc = &lt;span class=&#34;built_in&#34;&gt;document&lt;/span&gt;.getElementById(divname); &lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;	cc.innerHTML = &lt;span class=&#34;string&#34;&gt;&#34;距离&#34;&lt;/span&gt; + year + &lt;span class=&#34;string&#34;&gt;&#34;年&#34;&lt;/span&gt; + month + &lt;span class=&#34;string&#34;&gt;&#34;月&#34;&lt;/span&gt; + day + &lt;span class=&#34;string&#34;&gt;&#34;日还有：&#34;&lt;/span&gt; + day1 + &lt;span class=&#34;string&#34;&gt;&#34;天&#34;&lt;/span&gt; + hour + &lt;span class=&#34;string&#34;&gt;&#34;小时&#34;&lt;/span&gt; + minute + &lt;span class=&#34;string&#34;&gt;&#34;分&#34;&lt;/span&gt; + second + &lt;span class=&#34;string&#34;&gt;&#34;秒&#34;&lt;/span&gt;; &lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&amp;#125; &lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;comment&#34;&gt;/**&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;comment&#34;&gt; * 开始倒计时&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;comment&#34;&gt; */&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;function&#34;&gt;&lt;span class=&#34;keyword&#34;&gt;function&lt;/span&gt; &lt;span class=&#34;title&#34;&gt;start&lt;/span&gt;(&lt;span class=&#34;params&#34;&gt;&lt;/span&gt;)&lt;/span&gt;&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;	id = &lt;span class=&#34;built_in&#34;&gt;window&lt;/span&gt;.setInterval( &lt;span class=&#34;function&#34;&gt;&lt;span class=&#34;keyword&#34;&gt;function&lt;/span&gt;(&lt;span class=&#34;params&#34;&gt;&lt;/span&gt;) &lt;/span&gt;&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;			ShowCountDown(&lt;span class=&#34;number&#34;&gt;2023&lt;/span&gt;,&lt;span class=&#34;number&#34;&gt;8&lt;/span&gt;,&lt;span class=&#34;number&#34;&gt;7&lt;/span&gt;,&lt;span class=&#34;string&#34;&gt;&#39;divdown1&#39;&lt;/span&gt;);&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;		&amp;#125;, interval); &lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;comment&#34;&gt;/**&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;comment&#34;&gt; * 停止倒计时&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;comment&#34;&gt; */&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;function&#34;&gt;&lt;span class=&#34;keyword&#34;&gt;function&lt;/span&gt; &lt;span class=&#34;title&#34;&gt;stop&lt;/span&gt;(&lt;span class=&#34;params&#34;&gt;&lt;/span&gt;)&lt;/span&gt;&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;	&lt;span class=&#34;keyword&#34;&gt;if&lt;/span&gt; (id) &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;		&lt;span class=&#34;built_in&#34;&gt;window&lt;/span&gt;.clearInterval(id);&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;	&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;"><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+    <div id="toc">
+      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#利用-window-setInterval-实现倒计时"><span class="toc-number">1.</span> <span class="toc-text">利用 window.setInterval() 实现倒计时</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#示例："><span class="toc-number">1.1.</span> <span class="toc-text">示例：</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#window-setInterval-注解"><span class="toc-number">2.</span> <span class="toc-text">window.setInterval() 注解</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-window-setInterval"><span class="toc-number">2.1.</span> <span class="toc-text">1. window.setInterval()</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-window-clearInterval"><span class="toc-number">2.2.</span> <span class="toc-text">2. window.clearInterval()</span></a></li></ol></li></ol>
+    </div>
+  </span>
+</div>
+
+    
+    <div class="content index py4">
+        
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+  <header>
+    
+    <h1 class="posttitle" itemprop="name headline">
+        JS 实现倒计时
+    </h1>
+
+
+
+    <div class="meta">
+      <span class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <span itemprop="name">Honye's Blog</span>
+      </span>
+      
+    <div class="postdate">
+      
+        <time datetime="2017-03-21T13:58:21.000Z" itemprop="datePublished">2017-03-21</time>
+        
+      
+    </div>
+
+
+      
+
+      
+    <div class="article-tag">
+        <i class="fas fa-tag"></i>
+        <a class="tag-link" href="/tags/JavaScript/">JavaScript</a>
+    </div>
+
+
+    </div>
+  </header>
+  
+
+  <div class="content" itemprop="articleBody">
+    <h3 id="利用-window-setInterval-实现倒计时"><a href="#利用-window-setInterval-实现倒计时" class="headerlink" title="利用 window.setInterval() 实现倒计时"></a>利用 window.setInterval() 实现倒计时</h3><h4 id="示例："><a href="#示例：" class="headerlink" title="示例："></a><em>示例：</em></h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> id;</span><br><span class="line"><span class="keyword">var</span> interval = <span class="number">1000</span>; </span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * @param year 结束日期的年</span></span><br><span class="line"><span class="comment"> * @param month 结束日期的月</span></span><br><span class="line"><span class="comment"> * @param day 结束日期的日</span></span><br><span class="line"><span class="comment"> * @param divname 需做出响应的元素id</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">ShowCountDown</span>(<span class="params">year,month,day,divname</span>) </span>&#123; </span><br><span class="line">	<span class="comment">// 设置结束日期</span></span><br><span class="line">	<span class="keyword">var</span> endDate = <span class="keyword">new</span> <span class="built_in">Date</span>(year, month<span class="number">-1</span>, day); </span><br><span class="line">	<span class="comment">// 获取当前日期</span></span><br><span class="line">	<span class="keyword">var</span> now = <span class="keyword">new</span> <span class="built_in">Date</span>(); </span><br><span class="line">	<span class="comment">// 计算剩余毫秒数</span></span><br><span class="line">	<span class="keyword">var</span> leftTime=endDate.getTime()-now.getTime(); </span><br><span class="line">	<span class="comment">// 计算剩余秒数</span></span><br><span class="line">	<span class="keyword">var</span> leftsecond = <span class="built_in">parseInt</span>(leftTime/<span class="number">1000</span>); </span><br><span class="line">	<span class="comment">// 剩余天数（整数倍）</span></span><br><span class="line">	<span class="keyword">var</span> day1=<span class="built_in">Math</span>.floor(leftsecond/(<span class="number">60</span>*<span class="number">60</span>*<span class="number">24</span>)); </span><br><span class="line">	<span class="comment">// 剩余小时数（除去大单位后整数倍）</span></span><br><span class="line">	<span class="keyword">var</span> hour=<span class="built_in">Math</span>.floor((leftsecond-day1*<span class="number">24</span>*<span class="number">60</span>*<span class="number">60</span>)/<span class="number">3600</span>); </span><br><span class="line">	<span class="comment">// 剩余分钟数（除去大单位后整数倍）</span></span><br><span class="line">	<span class="keyword">var</span> minute=<span class="built_in">Math</span>.floor((leftsecond-day1*<span class="number">24</span>*<span class="number">60</span>*<span class="number">60</span>-hour*<span class="number">3600</span>)/<span class="number">60</span>); </span><br><span class="line">	<span class="comment">// 剩余秒数（除去大单位后整数倍）</span></span><br><span class="line">	<span class="keyword">var</span> second=<span class="built_in">Math</span>.floor(leftsecond-day1*<span class="number">24</span>*<span class="number">60</span>*<span class="number">60</span>-hour*<span class="number">3600</span>-minute*<span class="number">60</span>); </span><br><span class="line"></span><br><span class="line">	<span class="keyword">var</span> cc = <span class="built_in">document</span>.getElementById(divname); </span><br><span class="line">	cc.innerHTML = <span class="string">"距离"</span> + year + <span class="string">"年"</span> + month + <span class="string">"月"</span> + day + <span class="string">"日还有："</span> + day1 + <span class="string">"天"</span> + hour + <span class="string">"小时"</span> + minute + <span class="string">"分"</span> + second + <span class="string">"秒"</span>; </span><br><span class="line">&#125; </span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 开始倒计时</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">start</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">	id = <span class="built_in">window</span>.setInterval( <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line"></span><br><span class="line">			ShowCountDown(<span class="number">2023</span>,<span class="number">8</span>,<span class="number">7</span>,<span class="string">'divdown1'</span>);</span><br><span class="line"></span><br><span class="line">		&#125;, interval); </span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 停止倒计时</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">stop</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">	<span class="keyword">if</span> (id) &#123;</span><br><span class="line">		<span class="built_in">window</span>.clearInterval(id);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<a id="more"></a>
+<h3 id="window-setInterval-注解"><a href="#window-setInterval-注解" class="headerlink" title="window.setInterval() 注解"></a>window.setInterval() 注解</h3><h4 id="1-window-setInterval"><a href="#1-window-setInterval" class="headerlink" title="1. window.setInterval()"></a>1. <code>window.setInterval()</code></h4><p><strong>功能：</strong><br>按照指定的周期（以毫秒计）来调用函数或计算表达式。<br><strong>语法：</strong><br><code>setInterval(code,millisec)</code><br><strong>参数：</strong><br>code: 在定时时间到时要执行的JavaScript代码串。<br>millisec: 设定的定时时间，用毫秒数表示。<br><strong>返回值：</strong><br>定时器的ID值，可用于clearInterval()方法停止指定的定时器。<br><strong>注：</strong><br>setInterval()方法会不停地调用函数，直到用clearInterval()终止定时或窗口被关闭。</p>
+<h4 id="2-window-clearInterval"><a href="#2-window-clearInterval" class="headerlink" title="2. window.clearInterval()"></a>2. <code>window.clearInterval()</code></h4><p><strong>功能：</strong><br>取消由 setInterval() 方法设置的定时器。<br><strong>语法：</strong><br><code>clearInterval(id_of_setinterval)</code><br><strong>参数：</strong><br>id_of_setinterval: 由 setInterval() 返回的 id 值。该值标识了一个 setInterval 定时器。<br>也就是：window.setInterval() 返回的就是 window.clearInterval() 的参数</p>
+
+  </div>
+</article>
+
+
+
+        
+          <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/about/">About</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a href="https://github.com/Honye?tab=repositories">Projects</a></li>
+        
+      </ul>
+    </div>
+
+    <div id="toc-footer" style="display: none">
+      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#利用-window-setInterval-实现倒计时"><span class="toc-number">1.</span> <span class="toc-text">利用 window.setInterval() 实现倒计时</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#示例："><span class="toc-number">1.1.</span> <span class="toc-text">示例：</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#window-setInterval-注解"><span class="toc-number">2.</span> <span class="toc-text">window.setInterval() 注解</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-window-setInterval"><span class="toc-number">2.1.</span> <span class="toc-text">1. window.setInterval()</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-window-clearInterval"><span class="toc-number">2.2.</span> <span class="toc-text">2. window.clearInterval()</span></a></li></ol></li></ol>
+    </div>
+
+    <div id="share-footer" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=http://www.honye.com/posts/2883d964.html"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=http://www.honye.com/posts/2883d964.html&text=JS 实现倒计时"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=http://www.honye.com/posts/2883d964.html&title=JS 实现倒计时"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=http://www.honye.com/posts/2883d964.html&is_video=false&description=JS 实现倒计时"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=JS 实现倒计时&body=Check out this article: http://www.honye.com/posts/2883d964.html"><i class="fas fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=http://www.honye.com/posts/2883d964.html&title=JS 实现倒计时"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=http://www.honye.com/posts/2883d964.html&title=JS 实现倒计时"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=http://www.honye.com/posts/2883d964.html&title=JS 实现倒计时"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=http://www.honye.com/posts/2883d964.html&title=JS 实现倒计时"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=http://www.honye.com/posts/2883d964.html&name=JS 实现倒计时&description=&lt;h3 id=&#34;利用-window-setInterval-实现倒计时&#34;&gt;&lt;a href=&#34;#利用-window-setInterval-实现倒计时&#34; class=&#34;headerlink&#34; title=&#34;利用 window.setInterval() 实现倒计时&#34;&gt;&lt;/a&gt;利用 window.setInterval() 实现倒计时&lt;/h3&gt;&lt;h4 id=&#34;示例：&#34;&gt;&lt;a href=&#34;#示例：&#34; class=&#34;headerlink&#34; title=&#34;示例：&#34;&gt;&lt;/a&gt;&lt;em&gt;示例：&lt;/em&gt;&lt;/h4&gt;&lt;figure class=&#34;highlight javascript&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;12&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;13&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;14&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;15&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;16&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;17&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;18&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;19&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;20&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;21&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;22&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;23&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;24&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;25&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;26&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;27&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;28&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;29&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;30&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;31&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;32&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;33&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;34&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;35&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;36&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;37&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;38&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;39&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;40&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;41&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;42&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;43&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;44&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;45&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;46&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;47&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;48&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;49&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;50&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;keyword&#34;&gt;var&lt;/span&gt; id;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;keyword&#34;&gt;var&lt;/span&gt; interval = &lt;span class=&#34;number&#34;&gt;1000&lt;/span&gt;; &lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;comment&#34;&gt;/**&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;comment&#34;&gt; * @param year 结束日期的年&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;comment&#34;&gt; * @param month 结束日期的月&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;comment&#34;&gt; * @param day 结束日期的日&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;comment&#34;&gt; * @param divname 需做出响应的元素id&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;comment&#34;&gt; */&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;function&#34;&gt;&lt;span class=&#34;keyword&#34;&gt;function&lt;/span&gt; &lt;span class=&#34;title&#34;&gt;ShowCountDown&lt;/span&gt;(&lt;span class=&#34;params&#34;&gt;year,month,day,divname&lt;/span&gt;) &lt;/span&gt;&amp;#123; &lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;	&lt;span class=&#34;comment&#34;&gt;// 设置结束日期&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;	&lt;span class=&#34;keyword&#34;&gt;var&lt;/span&gt; endDate = &lt;span class=&#34;keyword&#34;&gt;new&lt;/span&gt; &lt;span class=&#34;built_in&#34;&gt;Date&lt;/span&gt;(year, month&lt;span class=&#34;number&#34;&gt;-1&lt;/span&gt;, day); &lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;	&lt;span class=&#34;comment&#34;&gt;// 获取当前日期&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;	&lt;span class=&#34;keyword&#34;&gt;var&lt;/span&gt; now = &lt;span class=&#34;keyword&#34;&gt;new&lt;/span&gt; &lt;span class=&#34;built_in&#34;&gt;Date&lt;/span&gt;(); &lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;	&lt;span class=&#34;comment&#34;&gt;// 计算剩余毫秒数&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;	&lt;span class=&#34;keyword&#34;&gt;var&lt;/span&gt; leftTime=endDate.getTime()-now.getTime(); &lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;	&lt;span class=&#34;comment&#34;&gt;// 计算剩余秒数&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;	&lt;span class=&#34;keyword&#34;&gt;var&lt;/span&gt; leftsecond = &lt;span class=&#34;built_in&#34;&gt;parseInt&lt;/span&gt;(leftTime/&lt;span class=&#34;number&#34;&gt;1000&lt;/span&gt;); &lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;	&lt;span class=&#34;comment&#34;&gt;// 剩余天数（整数倍）&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;	&lt;span class=&#34;keyword&#34;&gt;var&lt;/span&gt; day1=&lt;span class=&#34;built_in&#34;&gt;Math&lt;/span&gt;.floor(leftsecond/(&lt;span class=&#34;number&#34;&gt;60&lt;/span&gt;*&lt;span class=&#34;number&#34;&gt;60&lt;/span&gt;*&lt;span class=&#34;number&#34;&gt;24&lt;/span&gt;)); &lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;	&lt;span class=&#34;comment&#34;&gt;// 剩余小时数（除去大单位后整数倍）&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;	&lt;span class=&#34;keyword&#34;&gt;var&lt;/span&gt; hour=&lt;span class=&#34;built_in&#34;&gt;Math&lt;/span&gt;.floor((leftsecond-day1*&lt;span class=&#34;number&#34;&gt;24&lt;/span&gt;*&lt;span class=&#34;number&#34;&gt;60&lt;/span&gt;*&lt;span class=&#34;number&#34;&gt;60&lt;/span&gt;)/&lt;span class=&#34;number&#34;&gt;3600&lt;/span&gt;); &lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;	&lt;span class=&#34;comment&#34;&gt;// 剩余分钟数（除去大单位后整数倍）&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;	&lt;span class=&#34;keyword&#34;&gt;var&lt;/span&gt; minute=&lt;span class=&#34;built_in&#34;&gt;Math&lt;/span&gt;.floor((leftsecond-day1*&lt;span class=&#34;number&#34;&gt;24&lt;/span&gt;*&lt;span class=&#34;number&#34;&gt;60&lt;/span&gt;*&lt;span class=&#34;number&#34;&gt;60&lt;/span&gt;-hour*&lt;span class=&#34;number&#34;&gt;3600&lt;/span&gt;)/&lt;span class=&#34;number&#34;&gt;60&lt;/span&gt;); &lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;	&lt;span class=&#34;comment&#34;&gt;// 剩余秒数（除去大单位后整数倍）&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;	&lt;span class=&#34;keyword&#34;&gt;var&lt;/span&gt; second=&lt;span class=&#34;built_in&#34;&gt;Math&lt;/span&gt;.floor(leftsecond-day1*&lt;span class=&#34;number&#34;&gt;24&lt;/span&gt;*&lt;span class=&#34;number&#34;&gt;60&lt;/span&gt;*&lt;span class=&#34;number&#34;&gt;60&lt;/span&gt;-hour*&lt;span class=&#34;number&#34;&gt;3600&lt;/span&gt;-minute*&lt;span class=&#34;number&#34;&gt;60&lt;/span&gt;); &lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;	&lt;span class=&#34;keyword&#34;&gt;var&lt;/span&gt; cc = &lt;span class=&#34;built_in&#34;&gt;document&lt;/span&gt;.getElementById(divname); &lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;	cc.innerHTML = &lt;span class=&#34;string&#34;&gt;&#34;距离&#34;&lt;/span&gt; + year + &lt;span class=&#34;string&#34;&gt;&#34;年&#34;&lt;/span&gt; + month + &lt;span class=&#34;string&#34;&gt;&#34;月&#34;&lt;/span&gt; + day + &lt;span class=&#34;string&#34;&gt;&#34;日还有：&#34;&lt;/span&gt; + day1 + &lt;span class=&#34;string&#34;&gt;&#34;天&#34;&lt;/span&gt; + hour + &lt;span class=&#34;string&#34;&gt;&#34;小时&#34;&lt;/span&gt; + minute + &lt;span class=&#34;string&#34;&gt;&#34;分&#34;&lt;/span&gt; + second + &lt;span class=&#34;string&#34;&gt;&#34;秒&#34;&lt;/span&gt;; &lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&amp;#125; &lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;comment&#34;&gt;/**&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;comment&#34;&gt; * 开始倒计时&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;comment&#34;&gt; */&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;function&#34;&gt;&lt;span class=&#34;keyword&#34;&gt;function&lt;/span&gt; &lt;span class=&#34;title&#34;&gt;start&lt;/span&gt;(&lt;span class=&#34;params&#34;&gt;&lt;/span&gt;)&lt;/span&gt;&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;	id = &lt;span class=&#34;built_in&#34;&gt;window&lt;/span&gt;.setInterval( &lt;span class=&#34;function&#34;&gt;&lt;span class=&#34;keyword&#34;&gt;function&lt;/span&gt;(&lt;span class=&#34;params&#34;&gt;&lt;/span&gt;) &lt;/span&gt;&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;			ShowCountDown(&lt;span class=&#34;number&#34;&gt;2023&lt;/span&gt;,&lt;span class=&#34;number&#34;&gt;8&lt;/span&gt;,&lt;span class=&#34;number&#34;&gt;7&lt;/span&gt;,&lt;span class=&#34;string&#34;&gt;&#39;divdown1&#39;&lt;/span&gt;);&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;		&amp;#125;, interval); &lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;comment&#34;&gt;/**&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;comment&#34;&gt; * 停止倒计时&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;comment&#34;&gt; */&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;function&#34;&gt;&lt;span class=&#34;keyword&#34;&gt;function&lt;/span&gt; &lt;span class=&#34;title&#34;&gt;stop&lt;/span&gt;(&lt;span class=&#34;params&#34;&gt;&lt;/span&gt;)&lt;/span&gt;&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;	&lt;span class=&#34;keyword&#34;&gt;if&lt;/span&gt; (id) &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;		&lt;span class=&#34;built_in&#34;&gt;window&lt;/span&gt;.clearInterval(id);&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;	&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;"><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+
+    <div id="actions-footer">
+        <a id="menu" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;"><i class="fas fa-bars fa-lg" aria-hidden="true"></i> Menu</a>
+        <a id="toc" class="icon" href="#" onclick="$('#toc-footer').toggle();return false;"><i class="fas fa-list fa-lg" aria-hidden="true"></i> TOC</a>
+        <a id="share" class="icon" href="#" onclick="$('#share-footer').toggle();return false;"><i class="fas fa-share-alt fa-lg" aria-hidden="true"></i> Share</a>
+        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up fa-lg" aria-hidden="true"></i> Top</a>
+    </div>
+
+  </div>
+</div>
+
+        
+        <footer id="footer">
+  <div class="footer-left">
+    Copyright &copy; 2019 Honye
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/about/">About</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a href="https://github.com/Honye?tab=repositories">Projects</a></li>
+        
+      </ul>
+    </nav>
+  </div>
+</footer>
+
+    </div>
+    <!-- styles -->
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+<link rel="stylesheet" href="/lib/justified-gallery/css/justifiedGallery.min.css">
+
+    <!-- jquery -->
+<script src="/lib/jquery/jquery.min.js"></script>
+<script src="/lib/justified-gallery/js/jquery.justifiedGallery.min.js"></script>
+<!-- clipboard -->
+
+  <script src="/lib/clipboard/clipboard.min.js"></script>
+  <script type="text/javascript">
+  $(function() {
+    // copy-btn HTML
+    var btn = "<span class=\"btn-copy tooltipped tooltipped-sw\" aria-label=\"Copy to clipboard!\">";
+    btn += '<i class="far fa-clone"></i>';
+    btn += '</span>'; 
+    // mount it!
+    $(".highlight .code pre").before(btn);
+    var clip = new ClipboardJS('.btn-copy', {
+      target: function(trigger) {
+        return trigger.nextElementSibling;
+      }
+    });
+    clip.on('success', function(e) {
+      e.trigger.setAttribute('aria-label', "Copied!");
+      e.clearSelection();
+    })
+  })
+  </script>
+
+<script src="/js/main.js"></script>
+<!-- search -->
+
+<!-- Google Analytics -->
+
+<!-- Baidu Analytics -->
+
+<!-- Disqus Comments -->
+
+
+</body>
+</html>

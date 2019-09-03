@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang=zh>
+<head><meta name="generator" content="Hexo 3.9.0">
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="description" content="之前为在 GitHub 博客上写自己的 html 网页，在 hexo 根目录下的 source 文件夹中放了自己的 js 文件，每次 hexo g 后，pubic 文件夹中的 js 文件就混乱了，与自己实际 js 不一致。 解决方案：  hexo g 编译后在 public 文件夹中修改，将自己的 js 文件覆盖 hexo 编译后的 js 文件。或者 hexo d 提交到 GitHub 后直接到">
+<meta name="keywords" content="Hexo">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Hexo 编译时 JS 混乱解决方案">
+<meta property="og:url" content="http://www.honye.com/posts/528ee353.html">
+<meta property="og:site_name" content="Honye&#39;s Blog">
+<meta property="og:description" content="之前为在 GitHub 博客上写自己的 html 网页，在 hexo 根目录下的 source 文件夹中放了自己的 js 文件，每次 hexo g 后，pubic 文件夹中的 js 文件就混乱了，与自己实际 js 不一致。 解决方案：  hexo g 编译后在 public 文件夹中修改，将自己的 js 文件覆盖 hexo 编译后的 js 文件。或者 hexo d 提交到 GitHub 后直接到">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2019-09-03T15:11:51.718Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Hexo 编译时 JS 混乱解决方案">
+<meta name="twitter:description" content="之前为在 GitHub 博客上写自己的 html 网页，在 hexo 根目录下的 source 文件夹中放了自己的 js 文件，每次 hexo g 后，pubic 文件夹中的 js 文件就混乱了，与自己实际 js 不一致。 解决方案：  hexo g 编译后在 public 文件夹中修改，将自己的 js 文件覆盖 hexo 编译后的 js 文件。或者 hexo d 提交到 GitHub 后直接到">
+    
+    
+        
+          
+              <link rel="shortcut icon" href="/images/favicon.ico">
+          
+        
+        
+          
+            <link rel="icon" type="image/png" href="/images/favicon-192x192.png" sizes="192x192">
+          
+        
+        
+          
+            <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+          
+        
+    
+    <!-- title -->
+    <title>Hexo 编译时 JS 混乱解决方案</title>
+    <!-- styles -->
+    <link rel="stylesheet" href="/css/style.css">
+    <!-- persian styles -->
+    
+      <link rel="stylesheet" href="/css/rtl.css">
+    
+    <!-- rss -->
+    
+    
+</head>
+
+<body class="max-width mx-auto px3 ltr">
+    
+      <div id="header-post">
+  <a id="menu-icon" href="#"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fas fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/about/">About</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a href="https://github.com/Honye?tab=repositories">Projects</a></li>
+        
+      </ul>
+    </span>
+    <br/>
+    <span id="actions">
+      <ul>
+        
+        <li><a class="icon" href="/posts/b3459307.html"><i class="fas fa-chevron-left" aria-hidden="true" onmouseover="$('#i-prev').toggle();" onmouseout="$('#i-prev').toggle();"></i></a></li>
+        
+        
+        <li><a class="icon" href="/posts/8a8d53c0.html"><i class="fas fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
+        
+        <li><a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
+        <li><a class="icon" href="#"><i class="fas fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">Previous post</span>
+      <span id="i-next" class="info" style="display:none;">Next post</span>
+      <span id="i-top" class="info" style="display:none;">Back to top</span>
+      <span id="i-share" class="info" style="display:none;">Share post</span>
+    </span>
+    <br/>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=http://www.honye.com/posts/528ee353.html"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=http://www.honye.com/posts/528ee353.html&text=Hexo 编译时 JS 混乱解决方案"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=http://www.honye.com/posts/528ee353.html&title=Hexo 编译时 JS 混乱解决方案"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=http://www.honye.com/posts/528ee353.html&is_video=false&description=Hexo 编译时 JS 混乱解决方案"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=Hexo 编译时 JS 混乱解决方案&body=Check out this article: http://www.honye.com/posts/528ee353.html"><i class="fas fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=http://www.honye.com/posts/528ee353.html&title=Hexo 编译时 JS 混乱解决方案"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=http://www.honye.com/posts/528ee353.html&title=Hexo 编译时 JS 混乱解决方案"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=http://www.honye.com/posts/528ee353.html&title=Hexo 编译时 JS 混乱解决方案"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=http://www.honye.com/posts/528ee353.html&title=Hexo 编译时 JS 混乱解决方案"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=http://www.honye.com/posts/528ee353.html&name=Hexo 编译时 JS 混乱解决方案&description=&lt;p&gt;之前为在 GitHub 博客上写自己的 html 网页，在 hexo 根目录下的 source 文件夹中放了自己的 js 文件，每次 &lt;code&gt;hexo g&lt;/code&gt; 后，pubic 文件夹中的 js 文件就混乱了，与自己实际 js 不一致。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;解决方案：&lt;/strong&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;code&gt;hexo g&lt;/code&gt; 编译后在 public 文件夹中修改，将自己的 js 文件覆盖 hexo 编译后的 js 文件。或者 &lt;code&gt;hexo d&lt;/code&gt; 提交到 GitHub 后直接到 GitHub 线上修改 js 文件。&lt;/li&gt;
+&lt;li&gt;博客中的 js 引用使用外链的形式。如将 js 文件上传&lt;a href=&#34;http://www.qiniu.com/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;七牛云&lt;/a&gt;，引用七牛云上的 js。&lt;/li&gt;
+&lt;li&gt;跳过 hexo 渲染【推荐】。&lt;br&gt;Hexo 3.0 以下使用：&lt;br&gt;在主目录下添加 README.md 文件或者 html 文件。&lt;br&gt;Hexo 3.0 以上支持：&lt;br&gt;修改 Hexo 主目录下的 _config.yml 配置文件中的 skip_render 参数。&lt;/li&gt;
+&lt;/ol&gt;"><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+    <div id="toc">
+      
+    </div>
+  </span>
+</div>
+
+    
+    <div class="content index py4">
+        
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+  <header>
+    
+    <h1 class="posttitle" itemprop="name headline">
+        Hexo 编译时 JS 混乱解决方案
+    </h1>
+
+
+
+    <div class="meta">
+      <span class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <span itemprop="name">Honye's Blog</span>
+      </span>
+      
+    <div class="postdate">
+      
+        <time datetime="2017-03-03T16:00:17.000Z" itemprop="datePublished">2017-03-03</time>
+        
+      
+    </div>
+
+
+      
+
+      
+    <div class="article-tag">
+        <i class="fas fa-tag"></i>
+        <a class="tag-link" href="/tags/Hexo/">Hexo</a>
+    </div>
+
+
+    </div>
+  </header>
+  
+
+  <div class="content" itemprop="articleBody">
+    <p>之前为在 GitHub 博客上写自己的 html 网页，在 hexo 根目录下的 source 文件夹中放了自己的 js 文件，每次 <code>hexo g</code> 后，pubic 文件夹中的 js 文件就混乱了，与自己实际 js 不一致。</p>
+<p><strong>解决方案：</strong></p>
+<ol>
+<li><code>hexo g</code> 编译后在 public 文件夹中修改，将自己的 js 文件覆盖 hexo 编译后的 js 文件。或者 <code>hexo d</code> 提交到 GitHub 后直接到 GitHub 线上修改 js 文件。</li>
+<li>博客中的 js 引用使用外链的形式。如将 js 文件上传<a href="http://www.qiniu.com/" target="_blank" rel="noopener">七牛云</a>，引用七牛云上的 js。</li>
+<li>跳过 hexo 渲染【推荐】。<br>Hexo 3.0 以下使用：<br>在主目录下添加 README.md 文件或者 html 文件。<br>Hexo 3.0 以上支持：<br>修改 Hexo 主目录下的 _config.yml 配置文件中的 skip_render 参数。</li>
+</ol>
+<a id="more"></a>
+
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">skip_render:</span> <span class="string">"test.html"</span>    <span class="comment"># source 文件夹下指定文件</span></span><br><span class="line"></span><br><span class="line"><span class="attr">skip_render:</span> <span class="string">test/*</span>    <span class="comment"># 单个文件夹下全部文件</span></span><br><span class="line"></span><br><span class="line"><span class="attr">skip_render:</span> <span class="string">test/*.md</span>    <span class="comment"># 单个文件夹下指定类型文件</span></span><br><span class="line"></span><br><span class="line"><span class="attr">skip_render:</span> <span class="string">test/**</span>    <span class="comment"># 单个文件夹下全部文件及子文件</span></span><br><span class="line"></span><br><span class="line"><span class="attr">skip_render:</span>         <span class="comment"># 多个文件夹以及其他情况</span></span><br><span class="line"><span class="bullet">    -</span> <span class="string">test/*</span></span><br><span class="line"><span class="bullet">    -</span> <span class="string">test/*.html</span></span><br></pre></td></tr></table></figure>
+
+<p><em>注：若修改配置后不见效果，先执行 <code>hexo clean</code> 后再执行 <code>hexo g</code> 重新编译</em></p>
+<p><a href="https://segmentfault.com/q/1010000003957602/revision" target="_blank" rel="noopener">原文&gt;&gt;</a><br><a href="https://xuanwo.org/2014/08/14/hexo-usual-problem/" target="_blank" rel="noopener">Hexo 常见问题解决方案</a></p>
+
+  </div>
+</article>
+
+
+
+        
+          <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/about/">About</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a href="https://github.com/Honye?tab=repositories">Projects</a></li>
+        
+      </ul>
+    </div>
+
+    <div id="toc-footer" style="display: none">
+      
+    </div>
+
+    <div id="share-footer" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=http://www.honye.com/posts/528ee353.html"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=http://www.honye.com/posts/528ee353.html&text=Hexo 编译时 JS 混乱解决方案"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=http://www.honye.com/posts/528ee353.html&title=Hexo 编译时 JS 混乱解决方案"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=http://www.honye.com/posts/528ee353.html&is_video=false&description=Hexo 编译时 JS 混乱解决方案"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=Hexo 编译时 JS 混乱解决方案&body=Check out this article: http://www.honye.com/posts/528ee353.html"><i class="fas fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=http://www.honye.com/posts/528ee353.html&title=Hexo 编译时 JS 混乱解决方案"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=http://www.honye.com/posts/528ee353.html&title=Hexo 编译时 JS 混乱解决方案"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=http://www.honye.com/posts/528ee353.html&title=Hexo 编译时 JS 混乱解决方案"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=http://www.honye.com/posts/528ee353.html&title=Hexo 编译时 JS 混乱解决方案"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=http://www.honye.com/posts/528ee353.html&name=Hexo 编译时 JS 混乱解决方案&description=&lt;p&gt;之前为在 GitHub 博客上写自己的 html 网页，在 hexo 根目录下的 source 文件夹中放了自己的 js 文件，每次 &lt;code&gt;hexo g&lt;/code&gt; 后，pubic 文件夹中的 js 文件就混乱了，与自己实际 js 不一致。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;解决方案：&lt;/strong&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;code&gt;hexo g&lt;/code&gt; 编译后在 public 文件夹中修改，将自己的 js 文件覆盖 hexo 编译后的 js 文件。或者 &lt;code&gt;hexo d&lt;/code&gt; 提交到 GitHub 后直接到 GitHub 线上修改 js 文件。&lt;/li&gt;
+&lt;li&gt;博客中的 js 引用使用外链的形式。如将 js 文件上传&lt;a href=&#34;http://www.qiniu.com/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;七牛云&lt;/a&gt;，引用七牛云上的 js。&lt;/li&gt;
+&lt;li&gt;跳过 hexo 渲染【推荐】。&lt;br&gt;Hexo 3.0 以下使用：&lt;br&gt;在主目录下添加 README.md 文件或者 html 文件。&lt;br&gt;Hexo 3.0 以上支持：&lt;br&gt;修改 Hexo 主目录下的 _config.yml 配置文件中的 skip_render 参数。&lt;/li&gt;
+&lt;/ol&gt;"><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+
+    <div id="actions-footer">
+        <a id="menu" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;"><i class="fas fa-bars fa-lg" aria-hidden="true"></i> Menu</a>
+        <a id="toc" class="icon" href="#" onclick="$('#toc-footer').toggle();return false;"><i class="fas fa-list fa-lg" aria-hidden="true"></i> TOC</a>
+        <a id="share" class="icon" href="#" onclick="$('#share-footer').toggle();return false;"><i class="fas fa-share-alt fa-lg" aria-hidden="true"></i> Share</a>
+        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up fa-lg" aria-hidden="true"></i> Top</a>
+    </div>
+
+  </div>
+</div>
+
+        
+        <footer id="footer">
+  <div class="footer-left">
+    Copyright &copy; 2019 Honye
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/about/">About</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a href="https://github.com/Honye?tab=repositories">Projects</a></li>
+        
+      </ul>
+    </nav>
+  </div>
+</footer>
+
+    </div>
+    <!-- styles -->
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+<link rel="stylesheet" href="/lib/justified-gallery/css/justifiedGallery.min.css">
+
+    <!-- jquery -->
+<script src="/lib/jquery/jquery.min.js"></script>
+<script src="/lib/justified-gallery/js/jquery.justifiedGallery.min.js"></script>
+<!-- clipboard -->
+
+  <script src="/lib/clipboard/clipboard.min.js"></script>
+  <script type="text/javascript">
+  $(function() {
+    // copy-btn HTML
+    var btn = "<span class=\"btn-copy tooltipped tooltipped-sw\" aria-label=\"Copy to clipboard!\">";
+    btn += '<i class="far fa-clone"></i>';
+    btn += '</span>'; 
+    // mount it!
+    $(".highlight .code pre").before(btn);
+    var clip = new ClipboardJS('.btn-copy', {
+      target: function(trigger) {
+        return trigger.nextElementSibling;
+      }
+    });
+    clip.on('success', function(e) {
+      e.trigger.setAttribute('aria-label', "Copied!");
+      e.clearSelection();
+    })
+  })
+  </script>
+
+<script src="/js/main.js"></script>
+<!-- search -->
+
+<!-- Google Analytics -->
+
+<!-- Baidu Analytics -->
+
+<!-- Disqus Comments -->
+
+
+</body>
+</html>
