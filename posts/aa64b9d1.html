@@ -233,32 +233,34 @@
         <p>在我们日常开发中经常需要用到登录授权，大多接口都需要携带 Auth 信息。在 Postman 中调试接口时发送登录请求后再复制粘贴 Token，麻烦。Postman 的 Scripts 功能可以较好的解决这个问题。</p>
 <p>官文：<a href="https://learning.getpostman.com/docs/postman/scripts/intro_to_scripts/" target="_blank" rel="noopener">https://learning.getpostman.com/docs/postman/scripts/intro_to_scripts/</a></p>
 <a id="more"></a>
+
 <h2 id="Test-scripts"><a href="#Test-scripts" class="headerlink" title="Test scripts"></a>Test scripts</h2><p>Test scripts 是在请求结束后运行的 JavaScript 脚本。在登录请求结束后将 Token 设置到<a href="https://learning.getpostman.com/docs/postman/environments_and_globals/intro_to_environments_and_globals" target="_blank" rel="noopener">环境变量</a>中，在需要 Auth 的接口中取用变量。</p>
 <h3 id="pm-test"><a href="#pm-test" class="headerlink" title="pm.test"></a>pm.test</h3><p><code>pm.test(testName:String, specFunction:Function):Function</code> 可以用来确认 Response 是否和预期返回的一致。</p>
 <table>
 <thead>
 <tr>
-<th style="text-align:left">param</th>
-<th style="text-align:left">description</th>
+<th align="left">param</th>
+<th align="left">description</th>
 </tr>
 </thead>
-<tbody>
-<tr>
-<td style="text-align:left">testName</td>
-<td style="text-align:left">测试名，在 <strong>Test Results</strong> 面板中显示</td>
+<tbody><tr>
+<td align="left">testName</td>
+<td align="left">测试名，在 <strong>Test Results</strong> 面板中显示</td>
 </tr>
 <tr>
-<td style="text-align:left">specFunction</td>
-<td style="text-align:left">测试执行函数</td>
+<td align="left">specFunction</td>
+<td align="left">测试执行函数</td>
 </tr>
-</tbody>
-</table>
+</tbody></table>
 <p>首先确认 Request 是否请求成功，HTTP 状态码为 200。</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">pm.test(<span class="string">"Status code is 200"</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    pm.response.to.have.status(<span class="number">200</span>);</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
 <p>接着判断 Response 是否如期返回 token。如果有返回就设置到环境变量中，如果没有就不管了。</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">pm.test(<span class="string">"Response has token"</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    pm.response.to.have.jsonBody(<span class="string">"token"</span>);</span><br><span class="line">    <span class="comment">// 如果上面断言不通过，下面的语句不会执行</span></span><br><span class="line">    <span class="keyword">const</span> token = pm.response.json().token;</span><br><span class="line">    pm.environment.set(<span class="string">"token"</span>, token);</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
 <p>合并。</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">pm.test(<span class="string">"Status code is 200"</span>, <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">    pm.response.to.have.status(<span class="number">200</span>);</span><br><span class="line">    pm.test(<span class="string">'Response has token'</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">        pm.response.to.have.jsonBody(<span class="string">"token"</span>);</span><br><span class="line">        <span class="keyword">const</span> token = pm.response.json().token;</span><br><span class="line">        pm.environment.set(<span class="string">"token"</span>, token);</span><br><span class="line">    &#125;)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
 <p><img src="../images/20181118172735.png" alt="Test Results (1)"></p>
 <p><img src="../images/20181118172817.png" alt="Test Results (2)"></p>
 <h2 id="Variables"><a href="#Variables" class="headerlink" title="Variables"></a>Variables</h2><p>经过上述的 Test scripts 已经将登录请求得到的 token 设置到了环境变量中。现在在需要验证 Auth 信息的请求中引用变量，以 Authorization为例。</p>
