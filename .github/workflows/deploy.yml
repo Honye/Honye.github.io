@@ -1,0 +1,38 @@
+name: Hexo blog deployer
+
+on:
+  push:
+    - hexo-config
+
+jobs:
+  build:
+    name: Build + Publish
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@hexo-config
+
+      - name: Use Node.js 10.x
+        uses: actions/setup-node@v1
+        with:
+          node-version: 10.x
+      
+      - name: setup hexo env
+        run: |
+          npm install hexo-cli -g
+          npm install
+
+      - name: hexo generate
+        run: |
+          hexo clean
+          hexo g
+
+      - name: deploy
+        env:
+          GH_REF: github.com/Honye/Honye.github.io.git
+          GH_TOKEN: ${{ secrets.GH_TOKEN }}
+          run: |
+            git config --global user.name "Honye"
+            git config --global user.email "hongye.jun@qq.com"
+            chmod +x ./build.sh
+            ./build.sh
