@@ -2,7 +2,8 @@ name: Hexo blog deployer
 
 on:
   push:
-    - hexo-config
+    branches:
+      - hexo-config
 
 jobs:
   build:
