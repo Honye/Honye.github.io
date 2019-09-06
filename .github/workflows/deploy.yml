@@ -35,5 +35,5 @@ jobs:
           CODING_REF: git.coding.net/Honye/Honye.git
           CODING_TOKEN: ${{ secrets.CODING_TOKEN }}
         run: |
-          chmod +x ./build.sh
-          ./build.sh
+          chmod +x ./deploy.sh
+          ./deploy.sh
