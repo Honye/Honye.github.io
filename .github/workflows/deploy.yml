@@ -31,11 +31,9 @@ jobs:
       - name: deploy
         env:
           GH_REF: github.com/Honye/Honye.github.io.git
-          GH_TOKEN: ${{ secrets.GH_TOKEN }}
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           CODING_REF: git.coding.net/Honye/Honye.git
           CODING_TOKEN: ${{ secrets.CODING_TOKEN }}
         run: |
-          git config --global user.name "Honye"
-          git config --global user.email "hongye.jun@qq.com"
           chmod +x ./build.sh
           ./build.sh

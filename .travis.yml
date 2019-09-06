@@ -5,7 +5,7 @@ node_js: stable
 before_script:
   - git config --global user.name "Honye"
   - git config --global user.email "hongye.jun@qq.com"
-  - chmod +x ./build.sh  # 为shell文件添加可执行权限
+  - chmod +x ./deploy.sh  # 为shell文件添加可执行权限
 
 install:
   - npm install hexo-cli -g
@@ -16,7 +16,7 @@ script:
   - hexo g
 
 after_script:
-  - ./build.sh
+  - ./deploy.sh
 # E: Build LifeCycle
 
 branches:
