@@ -1,7 +1,10 @@
 ---
 title: 体验 GitHub Actions 自动部署 Hexo 博客
-date: 2019-09-05
-tags: [Hexo, GitHub]
+tags:
+  - Hexo
+  - GitHub
+abbrlink: eaaf4b45
+date: 2019-09-05 00:00:00
 ---
 
 博客原先是使用 [Travis][travis] 实现自动部署的，现 GitHub 有个 [Actions][actions] 体验 CI 功能就试试。项目中还保留着 Travis 配置，只是关掉了，不能使用 Actions 的是可以使用 Travis。
@@ -24,39 +27,39 @@ GitHub Actions 目前采用 [YAML](yaml) 语法，还处于体验版，何时能
 name: Hexo deployer # Actions 名字
 
 on: # 触发条件
-	push:
-		branches:
-			- hexo-config # 仅向 hexo-config 分支 push 时触发
-		
+  push:
+    branches:
+      - hexo-config # 仅向 hexo-config 分支 push 时触发
+
 jobs:
-	build: # job id
-		name: Build and publish # job 名，不写默认使用 job id
-		runs-on: ubuntu-latest # 运行环境，可选 ubuntu-latest, ubuntu-18.04, ubuntu-16.04, windows-latest, windows-2019, windows-2016, macOS-latest, macOS-10.14
-		
-		steps:
-			- uses: actions/checkout@v1
-			
-			- name: Use Node.js 10.x
-				uses: actions/setup-node@v1
-				with:
-					node-version: 10.x
-					
-			- name: Setup hexo env
-				run: |
-					npm install hexo-cli -g
-					npm install
-			
-			- name: Generate public files
-				run: |
-					hexo clean
-					hexo g
-					
-			- name: Deploy
-				env:
-					GH_REF: github.com/Honye/Honye.github.io.git
-					GH_TOKEN: ${{ secrets.GH_TOKEN }}
-				run: |
-					git config --global user.name "Honye"
+  build: # job id
+    name: Build and publish # job 名，不写默认使用 job id
+    runs-on: ubuntu-latest # 运行环境，可选 ubuntu-latest, ubuntu-18.04, ubuntu-16.04, windows-latest, windows-2019, windows-2016, macOS-latest, macOS-10.14
+
+    steps:
+      - uses: actions/checkout@v1
+
+      - name: Use Node.js 10.x
+        uses: actions/setup-node@v1
+        with:
+          node-version: 10.x
+
+      - name: Setup hexo env
+        run: |
+          npm install hexo-cli -g
+          npm install
+
+      - name: Generate public files
+        run: |
+          hexo clean
+          hexo g  
+
+      - name: Deploy
+        env:
+        GH_REF: github.com/Honye/Honye.github.io.git
+        GH_TOKEN: ${{ secrets.GH_TOKEN }}
+        run: |
+          git config --global user.name "Honye"
           git config --global user.email "hongye.jun@qq.com"
           git clone https://${GH_REF} .deploy_git
           cd .deploy_git
