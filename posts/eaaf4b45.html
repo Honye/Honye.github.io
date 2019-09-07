@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang=zh>
+<head><meta name="generator" content="Hexo 3.9.0">
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="description" content="博客原先是使用 Travis 实现自动部署的，现 GitHub 有个 Actions 体验 CI 功能就试试。项目中还保留着 Travis 配置，只是关掉了，不能使用 Actions 的是可以使用 Travis。  GitHub 操作可让您灵活地构建自动化的软件部署生命周期工作流程。您可以编写个别任务、调用的操作，以及结合它们创建自定义工作流程。 工作流程是您可以在仓库中创建的自定义自动化流程，用">
+<meta name="keywords" content="Hexo,GitHub">
+<meta property="og:type" content="article">
+<meta property="og:title" content="体验 GitHub Actions 自动部署 Hexo 博客">
+<meta property="og:url" content="http://www.honye.com/posts/eaaf4b45.html">
+<meta property="og:site_name" content="Honye&#39;s Blog">
+<meta property="og:description" content="博客原先是使用 Travis 实现自动部署的，现 GitHub 有个 Actions 体验 CI 功能就试试。项目中还保留着 Travis 配置，只是关掉了，不能使用 Actions 的是可以使用 Travis。  GitHub 操作可让您灵活地构建自动化的软件部署生命周期工作流程。您可以编写个别任务、调用的操作，以及结合它们创建自定义工作流程。 工作流程是您可以在仓库中创建的自定义自动化流程，用">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2019-09-07T02:42:52.556Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="体验 GitHub Actions 自动部署 Hexo 博客">
+<meta name="twitter:description" content="博客原先是使用 Travis 实现自动部署的，现 GitHub 有个 Actions 体验 CI 功能就试试。项目中还保留着 Travis 配置，只是关掉了，不能使用 Actions 的是可以使用 Travis。  GitHub 操作可让您灵活地构建自动化的软件部署生命周期工作流程。您可以编写个别任务、调用的操作，以及结合它们创建自定义工作流程。 工作流程是您可以在仓库中创建的自定义自动化流程，用">
+    
+    
+        
+          
+              <link rel="shortcut icon" href="/images/favicon.ico">
+          
+        
+        
+          
+            <link rel="icon" type="image/png" href="/images/favicon-192x192.png" sizes="192x192">
+          
+        
+        
+          
+            <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+          
+        
+    
+    <!-- title -->
+    <title>体验 GitHub Actions 自动部署 Hexo 博客</title>
+    <!-- styles -->
+    <link rel="stylesheet" href="/css/style.css">
+    <!-- persian styles -->
+    
+      <link rel="stylesheet" href="/css/rtl.css">
+    
+    <!-- rss -->
+    
+    
+</head>
+
+<body class="max-width mx-auto px3 ltr">
+    
+      <div id="header-post">
+  <a id="menu-icon" href="#"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fas fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/about/">About</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a href="https://github.com/Honye?tab=repositories">Projects</a></li>
+        
+      </ul>
+    </span>
+    <br/>
+    <span id="actions">
+      <ul>
+        
+        
+        <li><a class="icon" href="/posts/aa64b9d1.html"><i class="fas fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
+        
+        <li><a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
+        <li><a class="icon" href="#"><i class="fas fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">Previous post</span>
+      <span id="i-next" class="info" style="display:none;">Next post</span>
+      <span id="i-top" class="info" style="display:none;">Back to top</span>
+      <span id="i-share" class="info" style="display:none;">Share post</span>
+    </span>
+    <br/>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=http://www.honye.com/posts/eaaf4b45.html"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=http://www.honye.com/posts/eaaf4b45.html&text=体验 GitHub Actions 自动部署 Hexo 博客"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=http://www.honye.com/posts/eaaf4b45.html&title=体验 GitHub Actions 自动部署 Hexo 博客"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=http://www.honye.com/posts/eaaf4b45.html&is_video=false&description=体验 GitHub Actions 自动部署 Hexo 博客"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=体验 GitHub Actions 自动部署 Hexo 博客&body=Check out this article: http://www.honye.com/posts/eaaf4b45.html"><i class="fas fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=http://www.honye.com/posts/eaaf4b45.html&title=体验 GitHub Actions 自动部署 Hexo 博客"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=http://www.honye.com/posts/eaaf4b45.html&title=体验 GitHub Actions 自动部署 Hexo 博客"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=http://www.honye.com/posts/eaaf4b45.html&title=体验 GitHub Actions 自动部署 Hexo 博客"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=http://www.honye.com/posts/eaaf4b45.html&title=体验 GitHub Actions 自动部署 Hexo 博客"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=http://www.honye.com/posts/eaaf4b45.html&name=体验 GitHub Actions 自动部署 Hexo 博客&description="><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+    <div id="toc">
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#新建-Actions"><span class="toc-number">1.</span> <span class="toc-text">新建 Actions</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Secrets"><span class="toc-number">1.1.</span> <span class="toc-text">Secrets</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#YAML"><span class="toc-number">1.2.</span> <span class="toc-text">YAML</span></a></li></ol></li></ol>
+    </div>
+  </span>
+</div>
+
+    
+    <div class="content index py4">
+        
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+  <header>
+    
+    <h1 class="posttitle" itemprop="name headline">
+        体验 GitHub Actions 自动部署 Hexo 博客
+    </h1>
+
+
+
+    <div class="meta">
+      <span class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <span itemprop="name">Honye's Blog</span>
+      </span>
+      
+    <div class="postdate">
+      
+        <time datetime="2019-09-05T00:00:00.000Z" itemprop="datePublished">2019-09-05</time>
+        
+      
+    </div>
+
+
+      
+
+      
+    <div class="article-tag">
+        <i class="fas fa-tag"></i>
+        <a class="tag-link" href="/tags/GitHub/">GitHub</a>, <a class="tag-link" href="/tags/Hexo/">Hexo</a>
+    </div>
+
+
+    </div>
+  </header>
+  
+
+  <div class="content" itemprop="articleBody">
+    <p>博客原先是使用 <a href="https://travis-ci.org/" title="Travis CI" target="_blank" rel="noopener">Travis</a> 实现自动部署的，现 GitHub 有个 <a href="https://github.com/features/actions" title="GitHub Actions" target="_blank" rel="noopener">Actions</a> 体验 CI 功能就试试。项目中还保留着 Travis 配置，只是关掉了，不能使用 Actions 的是可以使用 Travis。</p>
+<blockquote>
+<p>GitHub 操作可让您灵活地构建自动化的软件部署生命周期工作流程。您可以编写个别任务、调用的操作，以及结合它们创建自定义工作流程。 工作流程是您可以在仓库中创建的自定义自动化流程，用于在 GitHub 上构建、测试、封装、发行或部署任何代码项目。</p>
+</blockquote>
+<p><a href="https://github.com/features/actions" target="_blank" rel="noopener">GitHub Actions</a> 目前采用 <a href="http://www.ruanyifeng.com/blog/2016/07/yaml.html" target="_blank" rel="noopener">YAML</a> 语法，还处于体验版，何时能正式上线就不知道了。毕竟 <a href="https://github.com/features/package-registry" target="_blank" rel="noopener">GitHub Package Registry</a> 到现在还没上线呢。</p>
+<h2 id="新建-Actions"><a href="#新建-Actions" class="headerlink" title="新建 Actions"></a>新建 Actions</h2><h3 id="Secrets"><a href="#Secrets" class="headerlink" title="Secrets"></a>Secrets</h3><p>在 GitHub 设置生成一个 [Token][Create Token]，需要有有仓库的读写权限。打开项目设置，增加 <strong>Secrets</strong> <code>GH_TOKEN</code> 保存刚刚生成的 Token。Actions 默认有个 secret <code>GITHUB_TOKEN</code>，试了下不成功。</p>
+<h3 id="YAML"><a href="#YAML" class="headerlink" title="YAML"></a>YAML</h3><p>新建 <a href="可配置的自动化流程，通过设置可用来编译、测试、打包、发布和部署你的项目。">Workflow</a> 文件必须在 <code>.github/workflows</code> 目录中，采用 [YAML][yaml] 语法，名字随意，我命名为 <code>deploy.yml</code>。</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">name:</span> <span class="string">Hexo</span> <span class="string">deployer</span> <span class="comment"># Actions 名字</span></span><br><span class="line"></span><br><span class="line"><span class="attr">on:</span> <span class="comment"># 触发条件</span></span><br><span class="line">	<span class="attr">push:</span></span><br><span class="line">		<span class="attr">branches:</span></span><br><span class="line">			<span class="bullet">-</span> <span class="string">hexo-config</span> <span class="comment"># 仅向 hexo-config 分支 push 时触发</span></span><br><span class="line">		</span><br><span class="line"><span class="attr">jobs:</span></span><br><span class="line">	<span class="attr">build:</span> <span class="comment"># job id</span></span><br><span class="line">		<span class="attr">name:</span> <span class="string">Build</span> <span class="string">and</span> <span class="string">publish</span> <span class="comment"># job 名，不写默认使用 job id</span></span><br><span class="line">		<span class="attr">runs-on:</span> <span class="string">ubuntu-latest</span> <span class="comment"># 运行环境，可选 ubuntu-latest, ubuntu-18.04, ubuntu-16.04, windows-latest, windows-2019, windows-2016, macOS-latest, macOS-10.14</span></span><br><span class="line">		</span><br><span class="line">		<span class="attr">steps:</span></span><br><span class="line">			<span class="bullet">-</span> <span class="attr">uses:</span> <span class="string">actions/checkout@v1</span></span><br><span class="line">			</span><br><span class="line">			<span class="bullet">-</span> <span class="attr">name:</span> <span class="string">Use</span> <span class="string">Node.js</span> <span class="number">10.</span><span class="string">x</span></span><br><span class="line">				<span class="attr">uses:</span> <span class="string">actions/setup-node@v1</span></span><br><span class="line">				<span class="attr">with:</span></span><br><span class="line">					<span class="attr">node-version:</span> <span class="number">10.</span><span class="string">x</span></span><br><span class="line">					</span><br><span class="line">			<span class="bullet">-</span> <span class="attr">name:</span> <span class="string">Setup</span> <span class="string">hexo</span> <span class="string">env</span></span><br><span class="line">				<span class="attr">run:</span> <span class="string">|</span></span><br><span class="line"><span class="string">					npm install hexo-cli -g</span></span><br><span class="line"><span class="string">					npm install</span></span><br><span class="line"><span class="string">			</span></span><br><span class="line"><span class="string">			- name: Generate public files</span></span><br><span class="line"><span class="string">				run: |</span></span><br><span class="line"><span class="string">					hexo clean</span></span><br><span class="line"><span class="string">					hexo g</span></span><br><span class="line"><span class="string">					</span></span><br><span class="line"><span class="string">			- name: Deploy</span></span><br><span class="line"><span class="string">				env:</span></span><br><span class="line"><span class="string">					GH_REF: github.com/Honye/Honye.github.io.git</span></span><br><span class="line"><span class="string">					GH_TOKEN: $<span class="template-variable">&#123;&#123; secrets.GH_TOKEN &#125;&#125;</span></span></span><br><span class="line"><span class="string">				run: |</span></span><br><span class="line"><span class="string">					git config --global user.name "Honye"</span></span><br><span class="line"><span class="string">          git config --global user.email "hongye.jun@qq.com"</span></span><br><span class="line"><span class="string">          git clone https://$&#123;GH_REF&#125; .deploy_git</span></span><br><span class="line"><span class="string">          cd .deploy_git</span></span><br><span class="line"><span class="string">          git checkout master</span></span><br><span class="line"><span class="string">          cd ../</span></span><br><span class="line"><span class="string">          mv .deploy_git/.git/ ./public/</span></span><br><span class="line"><span class="string">          cd ./public/</span></span><br><span class="line"><span class="string">          git add .</span></span><br><span class="line"><span class="string">          git commit -m "CI built at `date +"%Y-%m-%d %H:%M:%S"`"</span></span><br><span class="line"><span class="string">          git push --force --quiet "https://$&#123;GH_TOKEN&#125;@$&#123;GH_REF&#125;" master:master</span></span><br></pre></td></tr></table></figure>
+
+
+  </div>
+</article>
+
+
+
+        
+          <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/about/">About</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a href="https://github.com/Honye?tab=repositories">Projects</a></li>
+        
+      </ul>
+    </div>
+
+    <div id="toc-footer" style="display: none">
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#新建-Actions"><span class="toc-number">1.</span> <span class="toc-text">新建 Actions</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Secrets"><span class="toc-number">1.1.</span> <span class="toc-text">Secrets</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#YAML"><span class="toc-number">1.2.</span> <span class="toc-text">YAML</span></a></li></ol></li></ol>
+    </div>
+
+    <div id="share-footer" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=http://www.honye.com/posts/eaaf4b45.html"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=http://www.honye.com/posts/eaaf4b45.html&text=体验 GitHub Actions 自动部署 Hexo 博客"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=http://www.honye.com/posts/eaaf4b45.html&title=体验 GitHub Actions 自动部署 Hexo 博客"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=http://www.honye.com/posts/eaaf4b45.html&is_video=false&description=体验 GitHub Actions 自动部署 Hexo 博客"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=体验 GitHub Actions 自动部署 Hexo 博客&body=Check out this article: http://www.honye.com/posts/eaaf4b45.html"><i class="fas fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=http://www.honye.com/posts/eaaf4b45.html&title=体验 GitHub Actions 自动部署 Hexo 博客"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=http://www.honye.com/posts/eaaf4b45.html&title=体验 GitHub Actions 自动部署 Hexo 博客"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=http://www.honye.com/posts/eaaf4b45.html&title=体验 GitHub Actions 自动部署 Hexo 博客"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=http://www.honye.com/posts/eaaf4b45.html&title=体验 GitHub Actions 自动部署 Hexo 博客"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=http://www.honye.com/posts/eaaf4b45.html&name=体验 GitHub Actions 自动部署 Hexo 博客&description="><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+
+    <div id="actions-footer">
+        <a id="menu" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;"><i class="fas fa-bars fa-lg" aria-hidden="true"></i> Menu</a>
+        <a id="toc" class="icon" href="#" onclick="$('#toc-footer').toggle();return false;"><i class="fas fa-list fa-lg" aria-hidden="true"></i> TOC</a>
+        <a id="share" class="icon" href="#" onclick="$('#share-footer').toggle();return false;"><i class="fas fa-share-alt fa-lg" aria-hidden="true"></i> Share</a>
+        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up fa-lg" aria-hidden="true"></i> Top</a>
+    </div>
+
+  </div>
+</div>
+
+        
+        <footer id="footer">
+  <div class="footer-left">
+    Copyright &copy; 2019 Honye
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/about/">About</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a href="https://github.com/Honye?tab=repositories">Projects</a></li>
+        
+      </ul>
+    </nav>
+  </div>
+</footer>
+
+    </div>
+    <!-- styles -->
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+<link rel="stylesheet" href="/lib/justified-gallery/css/justifiedGallery.min.css">
+
+    <!-- jquery -->
+<script src="/lib/jquery/jquery.min.js"></script>
+<script src="/lib/justified-gallery/js/jquery.justifiedGallery.min.js"></script>
+<!-- clipboard -->
+
+  <script src="/lib/clipboard/clipboard.min.js"></script>
+  <script type="text/javascript">
+  $(function() {
+    // copy-btn HTML
+    var btn = "<span class=\"btn-copy tooltipped tooltipped-sw\" aria-label=\"Copy to clipboard!\">";
+    btn += '<i class="far fa-clone"></i>';
+    btn += '</span>'; 
+    // mount it!
+    $(".highlight .code pre").before(btn);
+    var clip = new ClipboardJS('.btn-copy', {
+      target: function(trigger) {
+        return trigger.nextElementSibling;
+      }
+    });
+    clip.on('success', function(e) {
+      e.trigger.setAttribute('aria-label', "Copied!");
+      e.clearSelection();
+    })
+  })
+  </script>
+
+<script src="/js/main.js"></script>
+<!-- search -->
+
+<!-- Google Analytics -->
+
+<!-- Baidu Analytics -->
+
+<!-- Disqus Comments -->
+
+
+</body>
+</html>
