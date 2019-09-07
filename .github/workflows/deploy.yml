@@ -7,28 +7,28 @@ on:
 
 jobs:
   build:
-    name: Build + Publish
+    name: Build and publish
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@master
+      - uses: actions/checkout@v1
 
       - name: Use Node.js 10.x
         uses: actions/setup-node@v1
         with:
           node-version: 10.x
       
-      - name: setup hexo env
+      - name: Setup Hexo env
         run: |
           npm install hexo-cli -g
           npm install
 
-      - name: hexo generate
+      - name: Generate public files
         run: |
           hexo clean
           hexo g
 
-      - name: deploy
+      - name: Deploy
         env:
           GH_REF: github.com/Honye/Honye.github.io.git
           GH_TOKEN: ${{ secrets.GH_TOKEN }}
