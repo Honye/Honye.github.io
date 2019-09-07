@@ -63,7 +63,7 @@ pm.test("Status code is 200", function () {
 
 经过上述的 Test scripts 已经将登录请求得到的 token 设置到了环境变量中。现在在需要验证 Auth 信息的请求中引用变量，以 Authorization为例。
 
-变量引用有两种方式，一种是通过 `{{variableName}}` 的形式访问，这种形式只能在 Request Builder 中使用，也就是只能在 URL、Params、Authorzation、Headers、Body 中使用，另一种是通过 Scripts 访问，如上述用到的 `pm.enviroment.set(variableName:String, variableValue:String)`。更多查阅官文：<https://learning.getpostman.com/docs/postman/environments_and_globals/variables>
+变量引用有两种方式，一种是通过 <code><span>{</span>{variableName}}</code> 的形式访问，这种形式只能在 Request Builder 中使用，也就是只能在 URL、Params、Authorzation、Headers、Body 中使用，另一种是通过 Scripts 访问，如上述用到的 `pm.enviroment.set(variableName:String, variableValue:String)`。更多查阅官文：<https://learning.getpostman.com/docs/postman/environments_and_globals/variables>
 
 Authorization 🌰：
 
