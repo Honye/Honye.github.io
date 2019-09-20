@@ -1,6 +1,6 @@
-﻿# Honye's Blog
+# Honye's Blog
 
-[![Build Status](https://travis-ci.org/Honye/Honye.github.io.svg?branch=hexo-config)](https://travis-ci.org/Honye/Honye.github.io)
+[![GitHub Actions Status](https://github.com/honye/honye.github.io/workflows/Hexo%20blog%20deployer/badge.svg)](https://github.com/Honye/Honye.github.io/actions) [![Build Status](https://travis-ci.org/Honye/Honye.github.io.svg?branch=hexo-config)](https://travis-ci.org/Honye/Honye.github.io)
 
 使用 [hexo](https://hexo.io/) 建站
 
@@ -15,4 +15,5 @@
 [Hexo 在 GitHub 和 Coding 同时发布](https://www.jianshu.com/p/9215862b5eda)
 
 ## 三方插件
+
 [hexo-abbrlink 生成永久链](https://github.com/rozbo/hexo-abbrlink)
