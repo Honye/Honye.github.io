@@ -32,7 +32,7 @@ code_dir: downloads/code      #include code 文件夹
 i18n_dir: :lang      #国际化（i18n）文件夹
 skip_render:      #跳过指定文件的渲染，您可使用 glob 表达式来匹配路径
   - 2048/js/*
-  - static/*
+  - 2048/*.md
   - README.md
 
 # Writing
@@ -153,3 +153,7 @@ restful:
   use_tag_slug: false      # Use slug for filename of tag data
   post: true               # 文章数据
   pages: false             # 额外的 Hexo 页面数据, 如 About
+
+# sitemap
+sitemap:
+  path: sitemap.xml
