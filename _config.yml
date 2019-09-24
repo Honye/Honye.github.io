@@ -13,7 +13,7 @@ favicon: https://static.hinpc.com/image/2016/20160807-hi-logo.png      # 网站�
 
 # URL
 ## If your site is put in a subdirectory, set url as 'http://yoursite.com/child' and root as '/child/'
-url: http://www.honye.com
+url: https://honye.github.io/
 root: /
 # permalink: :year/:month/:day/:title/    # 永久链接格式
 permalink: posts/:abbrlink.html    # 此处使用插件hexo-abbrlink
