@@ -3,6 +3,7 @@ title: 体验 GitHub Actions 自动部署 Hexo 博客
 tags:
   - Hexo
   - GitHub
+keywords: GitHub Actions,Hexo,GitHub
 abbrlink: eaaf4b45
 date: 2019-09-05 00:00:00
 ---
