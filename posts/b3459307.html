@@ -15,7 +15,7 @@
 <meta property="og:site_name" content="Honye&#39;s Blog">
 <meta property="og:description" content="之前是在 GitHub 上部署的静态博客，由于 GitHub 属于国外网站，访问速度慢，听闻可以在 Coding 部署博客，故而转向 Coding。 1. Hexo 环境搭建Hexo 的环境搭建我之前在 GitHub 搭建博客教程中已经说明，不在赘述。也可到 Hexo 官网查看文档。 2. 在 Coding 上新建项目理论上项目名称没要求，但是在我实际操作中出现了引用资源未找到的问题。在引用路径上">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-10-22T11:48:09.623Z">
+<meta property="og:updated_time" content="2019-11-05T16:07:41.001Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="hexo 在 coding 上部署博客">
 <meta name="twitter:description" content="之前是在 GitHub 上部署的静态博客，由于 GitHub 属于国外网站，访问速度慢，听闻可以在 Coding 部署博客，故而转向 Coding。 1. Hexo 环境搭建Hexo 的环境搭建我之前在 GitHub 搭建博客教程中已经说明，不在赘述。也可到 Hexo 官网查看文档。 2. 在 Coding 上新建项目理论上项目名称没要求，但是在我实际操作中出现了引用资源未找到的问题。在引用路径上">
@@ -156,7 +156,7 @@
 <a id="more"></a>
 
 <h3 id="3-Hexo-Push"><a href="#3-Hexo-Push" class="headerlink" title="3. Hexo Push"></a>3. Hexo Push</h3><p>提交和在 GitHub 大致没什么区别，只需要在 Hexo 主目录的 _config.yml 配置文件中更改下仓库地址即可。</p>
-<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">deploy:</span> </span><br><span class="line"><span class="attr">    type:</span> <span class="string">git</span></span><br><span class="line"><span class="attr">    repository:</span> <span class="attr">https://git.coding.net/&#123;user_name&#125;/&#123;project_name&#125;.git</span></span><br><span class="line"><span class="attr">    branch:</span> <span class="string">master</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">deploy:</span> </span><br><span class="line">    <span class="attr">type:</span> <span class="string">git</span></span><br><span class="line">    <span class="attr">repository:</span> <span class="string">https://git.coding.net/&#123;user_name&#125;/&#123;project_name&#125;.git</span></span><br><span class="line">    <span class="attr">branch:</span> <span class="string">master</span></span><br></pre></td></tr></table></figure>
 
 <p>提交玩后就可以访问查看效果了</p>
 
@@ -286,6 +286,8 @@
 
 <!-- Disqus Comments -->
 
+<!-- mouse click heart animation -->
+<script src="/js/heart.js"></script>
 
 </body>
 </html>

@@ -15,7 +15,7 @@
 <meta property="og:site_name" content="Honye&#39;s Blog">
 <meta property="og:description" content="之前为在 GitHub 博客上写自己的 html 网页，在 hexo 根目录下的 source 文件夹中放了自己的 js 文件，每次 hexo g 后，pubic 文件夹中的 js 文件就混乱了，与自己实际 js 不一致。 解决方案：  hexo g 编译后在 public 文件夹中修改，将自己的 js 文件覆盖 hexo 编译后的 js 文件。或者 hexo d 提交到 GitHub 后直接到">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-10-22T11:48:09.623Z">
+<meta property="og:updated_time" content="2019-11-05T16:07:41.001Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Hexo 编译时 JS 混乱解决方案">
 <meta name="twitter:description" content="之前为在 GitHub 博客上写自己的 html 网页，在 hexo 根目录下的 source 文件夹中放了自己的 js 文件，每次 hexo g 后，pubic 文件夹中的 js 文件就混乱了，与自己实际 js 不一致。 解决方案：  hexo g 编译后在 public 文件夹中修改，将自己的 js 文件覆盖 hexo 编译后的 js 文件。或者 hexo d 提交到 GitHub 后直接到">
@@ -163,7 +163,7 @@
 </ol>
 <a id="more"></a>
 
-<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">skip_render:</span> <span class="string">"test.html"</span>    <span class="comment"># source 文件夹下指定文件</span></span><br><span class="line"></span><br><span class="line"><span class="attr">skip_render:</span> <span class="string">test/*</span>    <span class="comment"># 单个文件夹下全部文件</span></span><br><span class="line"></span><br><span class="line"><span class="attr">skip_render:</span> <span class="string">test/*.md</span>    <span class="comment"># 单个文件夹下指定类型文件</span></span><br><span class="line"></span><br><span class="line"><span class="attr">skip_render:</span> <span class="string">test/**</span>    <span class="comment"># 单个文件夹下全部文件及子文件</span></span><br><span class="line"></span><br><span class="line"><span class="attr">skip_render:</span>         <span class="comment"># 多个文件夹以及其他情况</span></span><br><span class="line"><span class="bullet">    -</span> <span class="string">test/*</span></span><br><span class="line"><span class="bullet">    -</span> <span class="string">test/*.html</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">skip_render:</span> <span class="string">"test.html"</span>    <span class="comment"># source 文件夹下指定文件</span></span><br><span class="line"></span><br><span class="line"><span class="attr">skip_render:</span> <span class="string">test/*</span>    <span class="comment"># 单个文件夹下全部文件</span></span><br><span class="line"></span><br><span class="line"><span class="attr">skip_render:</span> <span class="string">test/*.md</span>    <span class="comment"># 单个文件夹下指定类型文件</span></span><br><span class="line"></span><br><span class="line"><span class="attr">skip_render:</span> <span class="string">test/**</span>    <span class="comment"># 单个文件夹下全部文件及子文件</span></span><br><span class="line"></span><br><span class="line"><span class="attr">skip_render:</span>         <span class="comment"># 多个文件夹以及其他情况</span></span><br><span class="line">    <span class="bullet">-</span> <span class="string">test/*</span></span><br><span class="line">    <span class="bullet">-</span> <span class="string">test/*.html</span></span><br></pre></td></tr></table></figure>
 
 <p><em>注：若修改配置后不见效果，先执行 <code>hexo clean</code> 后再执行 <code>hexo g</code> 重新编译</em></p>
 <p><a href="https://segmentfault.com/q/1010000003957602/revision" target="_blank" rel="noopener">原文&gt;&gt;</a><br><a href="https://xuanwo.org/2014/08/14/hexo-usual-problem/" target="_blank" rel="noopener">Hexo 常见问题解决方案</a></p>
@@ -298,6 +298,8 @@
 
 <!-- Disqus Comments -->
 
+<!-- mouse click heart animation -->
+<script src="/js/heart.js"></script>
 
 </body>
 </html>

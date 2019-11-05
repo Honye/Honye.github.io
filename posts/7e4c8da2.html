@@ -15,7 +15,7 @@
 <meta property="og:site_name" content="Honye&#39;s Blog">
 <meta property="og:description" content="在搜素文章时无意间发现一篇很漂亮的博客，一看时个人博客，自己也就想创建一个属于自己的博客，初步完成后就写下此文章便于日后查询。 本文是利用hexo在GitHub上建立的静态博客。主要有三个步骤：   下载和安装所需软件 搭建本地静态博客 将本地博客同步到GitHub上 购买设置专属域名（可选）">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-10-22T11:48:09.623Z">
+<meta property="og:updated_time" content="2019-11-05T16:07:41.001Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="利用hexo和github搭建博客（一）">
 <meta name="twitter:description" content="在搜素文章时无意间发现一篇很漂亮的博客，一看时个人博客，自己也就想创建一个属于自己的博客，初步完成后就写下此文章便于日后查询。 本文是利用hexo在GitHub上建立的静态博客。主要有三个步骤：   下载和安装所需软件 搭建本地静态博客 将本地博客同步到GitHub上 购买设置专属域名（可选）">
@@ -202,13 +202,13 @@
 </ul>
 </blockquote>
 <p>在本地博客目录下有一个<code>_config.yml</code>配置文件，使用编辑器打开，修改<code>Deployment</code>部分：</p>
-<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Deployment</span></span><br><span class="line"><span class="comment">## Docs: http://hexo.io/docs/deployment.html</span></span><br><span class="line"><span class="attr">deploy:</span></span><br><span class="line"><span class="attr">  type:</span> <span class="string">github</span></span><br><span class="line"><span class="attr">  repository:</span> <span class="attr">https://github.com/voidking/voidking.github.io.git</span></span><br><span class="line"><span class="attr">  branch:</span> <span class="string">master</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Deployment</span></span><br><span class="line"><span class="comment">## Docs: http://hexo.io/docs/deployment.html</span></span><br><span class="line"><span class="attr">deploy:</span></span><br><span class="line">  <span class="attr">type:</span> <span class="string">github</span></span><br><span class="line">  <span class="attr">repository:</span> <span class="string">https://github.com/voidking/voidking.github.io.git</span></span><br><span class="line">  <span class="attr">branch:</span> <span class="string">master</span></span><br></pre></td></tr></table></figure>
 
 <p><strong>注意：冒号后面必须跟一个空格，不然会出错</strong><br>再在博客目录下执行如下命令同步到GitHub</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
 
 <p>若报错 <code>error deployer not found:github</code> 可能是 hexo 更新问题<br>解决方案：将 <code>github</code> 改为 <code>git</code>、将 <code>https</code> 改为 <code>http</code> 后重试</p>
-<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Deployment</span></span><br><span class="line"><span class="comment">## Docs: http://hexo.io/docs/deployment.html</span></span><br><span class="line"><span class="attr">deploy:</span></span><br><span class="line"><span class="attr">  type:</span> <span class="string">git</span></span><br><span class="line"><span class="attr">  repository:</span> <span class="attr">http://github.com/voidking/voidking.github.io.git</span></span><br><span class="line"><span class="attr">  branch:</span> <span class="string">master</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Deployment</span></span><br><span class="line"><span class="comment">## Docs: http://hexo.io/docs/deployment.html</span></span><br><span class="line"><span class="attr">deploy:</span></span><br><span class="line">  <span class="attr">type:</span> <span class="string">git</span></span><br><span class="line">  <span class="attr">repository:</span> <span class="string">http://github.com/voidking/voidking.github.io.git</span></span><br><span class="line">  <span class="attr">branch:</span> <span class="string">master</span></span><br></pre></td></tr></table></figure>
 
 <p>若还是报错，先执行如下指令后重试</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ npm install hexo-deployer-git --save</span><br></pre></td></tr></table></figure>
@@ -349,6 +349,8 @@
 
 <!-- Disqus Comments -->
 
+<!-- mouse click heart animation -->
+<script src="/js/heart.js"></script>
 
 </body>
 </html>
