@@ -25,6 +25,8 @@
   </script>
 <% } %>
 <%- js('js/main') %>
+<!-- mouse click heart animation -->
+<%- js('js/heart') %>
 <!-- search -->
 <% if (config.search && (page.search || page.type === "search")){ %>
   <%- js('js/search.js') %>
@@ -99,5 +101,3 @@
         }());
     </script>
 <% } %>
-<!-- mouse click heart animation -->
-<%- js('js/heart') %>

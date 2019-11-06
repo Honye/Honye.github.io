@@ -6,6 +6,8 @@
 
 ## 笔记
 
+[体验 GitHub Actions 自动部署 Hexo 博客](https://honye.github.io/posts/eaaf4b45.html)
+
 [利用hexo和github搭建静态博客（一）](https://www.jianshu.com/p/0c14e0000998)
 
 [Hexo 编译文档时 JS 混乱解决方案](https://www.jianshu.com/p/f432500fdfc2)
